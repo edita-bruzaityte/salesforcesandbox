@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>Contact - Broker Page Layout</layout>
+        <sections>
+            <label><!-- Contact Details --></label>
+            <section>Contact Details</section>
+        </sections>
+        <sections>
+            <label><!-- History --></label>
+            <section>History</section>
+        </sections>
+        <sections>
+            <label><!-- Profile --></label>
+            <section>Profile</section>
+        </sections>
+        <sections>
+            <label><!-- UTM Section --></label>
+            <section>UTM Section</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Contact Lightning Page Layout</layout>
+        <sections>
+            <label><!-- Contact Details --></label>
+            <section>Contact Details</section>
+        </sections>
+        <sections>
+            <label><!-- History --></label>
+            <section>History</section>
+        </sections>
+        <sections>
+            <label><!-- Profile --></label>
+            <section>Profile</section>
+        </sections>
+        <sections>
+            <label><!-- UTM Section --></label>
+            <section>UTM Section</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Contact Lightning Page Layout v2</layout>
+        <sections>
+            <label><!-- Contact Details --></label>
+            <section>Contact Details</section>
+        </sections>
+        <sections>
+            <label><!-- History --></label>
+            <section>History</section>
+        </sections>
+        <sections>
+            <label><!-- Profile --></label>
+            <section>Profile</section>
+        </sections>
+        <sections>
+            <label><!-- UTM Section --></label>
+            <section>UTM Section</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Email --></label>
+        <name>Send_Email2</name>
+    </quickActions>
+    <recordTypes>
+        <description><!-- Record type used to assign to Contacts working for specific broker company --></description>
+        <label><!-- Broker --></label>
+        <name>Broker</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Used to group business and individual accounts into one category. This is due to the customer matching issues faced in July 2024. It is a temporary fix, in the future we should be back to using limited, sole trader etc record types. --></description>
+        <label><!-- General --></label>
+        <name>General</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- You don&apos;t have permission to edit this field, please contact your system admin --></errorMessage>
+        <name>Contact_Prevent_field_modification</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dialler_Calls</fullName>
+    <columns>CallStartDateTime</columns>
+    <columns>FromPhoneNumber</columns>
+    <columns>CallType</columns>
+    <columns>CallResolution</columns>
+    <columns>Owner</columns>
+    <columns>Name</columns>
+    <columns>EndUser</columns>
+    <columns>QualityScore</columns>
+    <columns>CallOrigin</columns>
+    <columns>RelatedRecord</columns>
+    <columns>OP_OutboundCallOutcome__c</columns>
+    <columns>Op_QueueName__c</columns>
+    <columns>User</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OP_Dialler__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Dialler Calls</label>
+</ListView>

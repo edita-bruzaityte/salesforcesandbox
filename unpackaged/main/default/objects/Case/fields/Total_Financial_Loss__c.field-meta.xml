@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Financial_Loss__c</fullName>
+    <formula>Financial_Redress__c  +   Premium_Write_off__c  +  Claims_Cost__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Sums the Financial Redress, Premium Write off and Claims Costs</inlineHelpText>
+    <label>Total Financial Loss</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

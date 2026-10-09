@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Op_QueueName__c</fullName>
+    <description>Replicates the Queue name to be used in list views.</description>
+    <externalId>false</externalId>
+    <formula>CASE(QueueName, 
+&quot;OP_OmniNewBusiness&quot;, &quot;New Business&quot;, 
+&quot;OP_OmniRenewals&quot;, &quot;Renewals&quot;,
+&quot;OP_OmniContactCenter&quot;, &quot;Customer Service&quot;,
+&quot;OP_OmniQuotezone&quot;, &quot;Quotezone&quot;,
+&quot;New Claims&quot;, &quot;New Claims&quot;,
+&quot;No Queue Found&quot;)</formula>
+    <label>Queue Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

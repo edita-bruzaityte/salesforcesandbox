@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;">Hi {{{Case.Contact_First_Name__c}}},<br />
+<br />
+We have tried to contact you to cancel your policy but have been unsuccessful getting the information required to do this. Just to let you know we need the following information to action this for you:</span></p>
+
+<p>&nbsp;</p>
+
+<ul>
+	<li><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;">First line of your address</span></li>
+	<li><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;">Postcode</span></li>
+	<li><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Have you had any claims, losses or incidents relating to this insurance, since the policy has started?</span></li>
+</ul>
+
+<p><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;">You can call us on 0203 808 7099 or reply to this email. Our service team are available from 9:00 to 18:00 Monday to Friday (excluding bank holidays).&nbsp;<br />
+<br />
+Once we get your reply, we’ll deal with it straight away for you. However, if we don't hear back from<br />
+you, the policy will stay active and will not be cancelled.</span></p>
+</body>
+</html>

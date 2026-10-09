@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- This field will capture any key information users see fit to store as being important to know about this person --></help>
+        <label><!-- About Contact --></label>
+        <name>About_Contact__c</name>
+    </CustomFieldTranslation>

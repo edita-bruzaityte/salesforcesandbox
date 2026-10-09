@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- What type of entity is being insured under this Insurance Policy --></help>
+        <label><!-- Business Type --></label>
+        <name>Business_Type__c</name>
+        <picklistValues>
+            <masterLabel>Employed</masterLabel>
+            <translation><!-- Employed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Limited Company</masterLabel>
+            <translation><!-- Limited Company --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partnership</masterLabel>
+            <translation><!-- Partnership --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Self Employed</masterLabel>
+            <translation><!-- Self Employed --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

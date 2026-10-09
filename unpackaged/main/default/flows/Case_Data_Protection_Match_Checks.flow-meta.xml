@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Assign true/false to the &#39;match&#39; variables based on the formula results</description>
+        <name>Assign_Postcode_DOB_results</name>
+        <label>Assign Postcode &amp; DOB results</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varDOBMatch</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fDOBMatch</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varPostcodeMatch</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>fPostcodeMatch</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Case</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Check if we found contact record matching provided email</description>
+        <name>Contact_record_found</name>
+        <label>Contact record found</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_found_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Postcode_DOB_results</targetReference>
+            </connector>
+            <label>Yes found Contact</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>fDOBMatch</name>
+        <dataType>Boolean</dataType>
+        <expression>NOT(ISBLANK({!Get_Case.DOB__c})) &amp;&amp;
+NOT(ISBLANK(TEXT({!Get_Contact.Birthdate}))) &amp;&amp;
+{!Get_Case.DOB__c} = {!Get_Contact.Birthdate}</expression>
+    </formulas>
+    <formulas>
+        <name>fPostcodeMatch</name>
+        <dataType>Boolean</dataType>
+        <expression>NOT(ISBLANK({!Get_Case.Postcode__c})) &amp;&amp;
+NOT(ISBLANK({!Get_Contact.MailingPostalCode})) &amp;&amp;
+UPPER(SUBSTITUTE({!Get_Case.Postcode__c}, &quot; &quot;, &quot;&quot;)) =
+UPPER(SUBSTITUTE({!Get_Contact.MailingPostalCode}, &quot; &quot;, &quot;&quot;))</expression>
+    </formulas>
+    <interviewLabel>Case - Data Protection Match Checks {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - Data Protection Match Checks</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Error_Log_record</name>
+        <label>Create Error Log record</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Automation_Name__c</field>
+            <value>
+                <stringValue>Case - Data Protection Match Checks</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Fault_Message__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Record__c</field>
+            <value>
+                <elementReference>recordid</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Error_Log__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Case</name>
+        <label>Get Case</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Contact</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_Error_Log_record</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordid</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Contact</name>
+        <label>Get Contact</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Contact_record_found</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_Error_Log_record</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Email</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Case.SuppliedEmail</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update case data protection fields</description>
+        <name>Update_Case</name>
+        <label>Update Case</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_Error_Log_record</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Case.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>DOB_Match__c</field>
+            <value>
+                <elementReference>varDOBMatch</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Postcode_Match__c</field>
+            <value>
+                <elementReference>varPostcodeMatch</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Case</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordid</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>varDOBMatch</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>varPostcodeMatch</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

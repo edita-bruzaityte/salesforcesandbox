@@ -1,0 +1,7 @@
+*** NEW LEAD ASSIGNMENT NOTIFICATION ***  
+
+The following lead has been assigned to the {!Lead.OwnerFullName}.
+
+Prospect Name: {!Lead.Name}
+Trade: {!Lead.Trade__c}
+Policy Type: {!Lead.Policy_Type__c}

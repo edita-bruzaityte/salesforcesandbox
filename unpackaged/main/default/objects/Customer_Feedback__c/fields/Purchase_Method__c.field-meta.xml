@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Purchase_Method__c</fullName>
+    <description>How purchase was completed - online or over the phone
+Question - How did you complete your purchase? (options - online vs over the phone)</description>
+    <externalId>false</externalId>
+    <inlineHelpText>How purchase was completed - online or over the phone
+Question - How did you complete your purchase? (options - online vs over the phone)</inlineHelpText>
+    <label>Purchase Method</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

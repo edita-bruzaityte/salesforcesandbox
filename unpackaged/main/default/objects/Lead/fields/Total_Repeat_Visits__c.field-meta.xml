@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Repeat_Visits__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>Update by flow to track how many times the same person visited our website and ran a quote</description>
+    <externalId>false</externalId>
+    <inlineHelpText>How many times they visited the website today?</inlineHelpText>
+    <label>Total Repeat Visits</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

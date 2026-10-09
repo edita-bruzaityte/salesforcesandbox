@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>✔️ We got your complaint | 📝 Guide to handling your complaint</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Email - 15 - Pioneer -  72hrs  hold Complaint letter</name>
+    <relatedEntityType>Case</relatedEntityType>
+    <style>none</style>
+    <subject>✔️ We got your complaint | 📝 Guide to handling your complaint</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

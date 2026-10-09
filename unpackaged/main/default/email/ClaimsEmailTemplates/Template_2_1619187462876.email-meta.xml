@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>✔️ We’ve received your Goods &amp; Tools claim  📑</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Email - Claim 02 Pioneer - Reciept of FNOL</name>
+    <relatedEntityType>Case</relatedEntityType>
+    <style>none</style>
+    <subject>✔️ We’ve received your Goods &amp; Tools claim  📑</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

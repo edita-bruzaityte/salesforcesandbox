@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Check if the variable has anything in it.</description>
+        <name>Check_if_Action_Plan_Template_was_found</name>
+        <label>Check if Action Plan Template was found</label>
+        <locationX>182</locationX>
+        <locationY>1008</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Action_Plan_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Action_Plan_Template</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Action_Plan</targetReference>
+            </connector>
+            <label>Action Plan Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if current date falls between Mon-Fri. This will adjust scheduled flow&#39;s execution to Mon-Fri only.</description>
+        <name>Check_if_Mon_Fri</name>
+        <label>Check if Mon-Fri</label>
+        <locationX>858</locationX>
+        <locationY>252</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_its_Mon_Fri</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>varMonFri</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Failed_Renewals_Record_Type</targetReference>
+            </connector>
+            <label>Yes its Mon-Fri</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if flow found Failed Renewals case record type</description>
+        <name>Check_if_Record_Type_was_found</name>
+        <label>Check if Record Type was found</label>
+        <locationX>611</locationX>
+        <locationY>684</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Record_Type</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Failed_Renewals_Record_Type</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_if_Renewals_Queue_was_found</targetReference>
+            </connector>
+            <label>Found Record Type</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if flow found Renewals case queue</description>
+        <name>Check_if_Renewals_Queue_was_found</name>
+        <label>Check if Renewals Queue was found</label>
+        <locationX>380</locationX>
+        <locationY>792</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Queue</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Renewals_Queue</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_New_Cases</targetReference>
+            </connector>
+            <label>Found Queue</label>
+        </rules>
+    </decisions>
+    <description>This flow will run daily to check which policies failed to renew and will create a case for customer service to follow up</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>varEndDate</name>
+        <dataType>Date</dataType>
+        <expression>TODAY() + 6</expression>
+    </formulas>
+    <formulas>
+        <description>Formula to check for Mon-Fri in the flow</description>
+        <name>varMonFri</name>
+        <dataType>Boolean</dataType>
+        <expression>WEEKDAY({!$Flow.CurrentDate}) &gt;= 2 
+
+&amp;&amp; WEEKDAY({!$Flow.CurrentDate}) &lt;= 6</expression>
+    </formulas>
+    <interviewLabel>Insurance Policy - Create Failed Renewal Case {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Insurance Policy - Create Failed Renewal Case</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Create Action Plan using Failed Renewals Management Action Plan template</description>
+        <name>Create_Action_Plan</name>
+        <label>Create Action Plan</label>
+        <locationX>50</locationX>
+        <locationY>1116</locationY>
+        <connector>
+            <targetReference>Update_Insurance_Policies</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>ActionPlanTemplateVersionId</field>
+            <value>
+                <elementReference>Get_Action_Plan_Template.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ActionPlanType</field>
+            <value>
+                <stringValue>Industries</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>EndDate</field>
+            <value>
+                <elementReference>varEndDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>IsUsingHolidayHours</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>varActionPlanName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>StartDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>TargetId</field>
+            <value>
+                <elementReference>varNewFailedRenewalCaseId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ActionPlan</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <description>Create all the new failed renewal cases</description>
+        <name>Create_New_Cases</name>
+        <label>Create New Cases</label>
+        <locationX>182</locationX>
+        <locationY>900</locationY>
+        <assignRecordIdToReference>varNewFailedRenewalCaseId</assignRecordIdToReference>
+        <connector>
+            <targetReference>Check_if_Action_Plan_Template_was_found</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>$Record.NameInsured.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>$Record.Insured_Contact__r.Contact_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Insurance_Policy__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Origin</field>
+            <value>
+                <stringValue>Automated Process</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Renewals_Queue.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Policy_Renewal_Date__c</field>
+            <value>
+                <elementReference>$Record.Renewal_Date__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_Failed_Renewals_Record_Type.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>Failed Renewal</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordCreates>
+    <recordLookups>
+        <description>Get Failed Renewals Management action plan template</description>
+        <name>Get_Action_Plan_Template</name>
+        <label>Get Action Plan Template</label>
+        <locationX>611</locationX>
+        <locationY>576</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Record_Type_was_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Failed Renewals Management</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Final</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ActionPlanTemplateVersion</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get Failed Renewal Record Type to assign to a new case</description>
+        <name>Get_Failed_Renewals_Record_Type</name>
+        <label>Get Failed Renewals Record Type</label>
+        <locationX>611</locationX>
+        <locationY>360</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Renewals_Queue</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Failed_Renewals</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Case</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get Renewals queue to use as default case owner</description>
+        <name>Renewals_Queue</name>
+        <label>Renewals Queue</label>
+        <locationX>611</locationX>
+        <locationY>468</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Action_Plan_Template</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Failed_Renewals</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update FailedRenewalCaseCreated field</description>
+        <name>Update_Insurance_Policies</name>
+        <label>Update Insurance Policies</label>
+        <locationX>50</locationX>
+        <locationY>1224</locationY>
+        <inputAssignments>
+            <field>FailedRenewalCaseCreated__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>732</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_if_Mon_Fri</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Failed_to_Renew__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>FailedRenewalCaseCreated__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>InsurancePolicy</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2025-10-01</startDate>
+            <startTime>08:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <textTemplates>
+        <name>varActionPlanName</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Failed Renewal action plan for {!$Record.Name}</text>
+    </textTemplates>
+    <variables>
+        <description>Store new case fields</description>
+        <name>varNewCase</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+    <variables>
+        <description>Collects a list of new cases that need to be created on the back of failed renewals</description>
+        <name>varNewCaseCollection</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+    <variables>
+        <description>Stores the id for new case</description>
+        <name>varNewFailedRenewalCaseId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

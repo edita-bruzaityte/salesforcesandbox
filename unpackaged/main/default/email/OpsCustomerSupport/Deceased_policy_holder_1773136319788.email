@@ -1,0 +1,25 @@
+<html>
+ <head>
+  <title></title>
+  <style type="text/css">.jcpwm-preloader {
+                transform: translateX(0px) !important;
+            }
+	</style>
+ </head>
+ <body style="height: auto; min-height: auto;">
+  <p>Hi {{{Case.Contact_First_Name__c}}},</p>
+  <p>Please accept our sincere condolences on the passing of your [relation], our policyholder. We appreciate that this may be a difficult time and will do our best to assist you with the necessary steps.</p>
+  <p>In order for us to proceed with your request, could you please confirm the following:</p>
+  <ul>
+   <li>Who will be the executor of the estate?</li>
+   <li>The executor’s full name , telephone number and email address&nbsp;</li>
+  </ul>
+  <p>Once we receive this information, we will be able to advise on the next steps.<br /> <br /> Kind regards,<br /> <br /> <span style="font-size:16px;">The Admiral Business Team</span><br /> <br /> <span style="font-size:16px;"><span style="font-family:Arial,Helvetica,sans-serif;"><img alt="AdmiralBusiness_logo-CMYK" src="" style="max-width: 844.075px; width: 158px; height: 47.9375px;" title="AdmiralBusiness_logo-CMYK" /></span></span></p>
+  <div id="" style="left: 8px; top: 356px;">
+   &nbsp;
+  </div>
+  <div id="" style="left: 8px; top: 356px;">
+   &nbsp;
+  </div>
+ </body>
+</html>

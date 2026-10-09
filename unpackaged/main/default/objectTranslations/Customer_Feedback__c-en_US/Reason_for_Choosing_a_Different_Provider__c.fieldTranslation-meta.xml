@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- For question - What was the main reason you chose a different provider? --></help>
+        <label><!-- Reason for Choosing a Different Provider --></label>
+        <name>Reason_for_Choosing_a_Different_Provider__c</name>
+    </CustomFieldTranslation>

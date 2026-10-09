@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>By clicking this button users will invoke screenflow that will re-assign task ownership to them</description>
+    <flowDefinition>Task_screensflow_Take_task_ownership</flowDefinition>
+    <label>Take Ownership</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>Flow</type>
+</QuickAction>

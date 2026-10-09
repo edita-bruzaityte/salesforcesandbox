@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- For question - Which of the following best describes what happened with your payment --></help>
+        <label><!-- What Happened With the Payment --></label>
+        <name>What_Happened_With_the_Payment__c</name>
+    </CustomFieldTranslation>

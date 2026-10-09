@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <description>1st Call Attempt</description>
+        <name>varFirstTask</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>1st Call Attempt</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>4th Call Attempt</description>
+        <name>varFourthTask</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>4th Call Attempt</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>2nd Call Attempt</description>
+        <name>varSecondTask</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>2nd Call Attempt</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>3rd Call Attempt</description>
+        <name>varThirdTask</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>3rd Call Attempt</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Check if Action Plan was found</description>
+        <name>Did_we_find_Action_Plan</name>
+        <label>Did we find Action Plan?</label>
+        <locationX>996</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Action_Plan</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Action_Plan</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Related_Case</targetReference>
+            </connector>
+            <label>Found Action Plan</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if the case was found</description>
+        <name>Did_we_find_the_Case</name>
+        <label>Did we find the Case?</label>
+        <locationX>710</locationX>
+        <locationY>647</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Case</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Related_Case</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Which_Task_is_being_updated</targetReference>
+            </connector>
+            <label>Found Case</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if first task is being updated. Because if yes, we first need to make updates to Action Plan, otherwise, just ownership field</description>
+        <name>Which_Task_is_being_updated</name>
+        <label>Which Task is being updated?</label>
+        <locationX>402</locationX>
+        <locationY>755</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>First_Task</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>varFirstTask</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Action_Plan_to_In_Progress</targetReference>
+            </connector>
+            <label>First Task</label>
+        </rules>
+        <rules>
+            <name>X2nd_or_3rd_Taks</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>varSecondTask</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>varThirdTask</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Task_Owner</targetReference>
+            </connector>
+            <label>2nd or 3rd Taks</label>
+        </rules>
+        <rules>
+            <name>X4th_Last_Task</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>varFourthTask</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Close_the_Case</targetReference>
+            </connector>
+            <label>4th (Last) Task</label>
+        </rules>
+    </decisions>
+    <description>This flow will trigger when very first task from the Acton Plan is complete to make updates to the following fields on the Action Plan: Actual Start Date, Actual End Date, Status, Assigned To field on Task and Action Plan Items field on Case</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Calculate actual end date to update  End Date field on Action plan</description>
+        <name>varActualEndDate</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()+ 7</expression>
+    </formulas>
+    <formulas>
+        <description>Every time Failed Instalment task is completed Action Plan Item field should be recalculated to add 1 more to the existing total</description>
+        <name>varCalculateTotalItemsCompleted</name>
+        <dataType>Number</dataType>
+        <expression>{!Get_Related_Case.Action_Plan_Items__c} + 1</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Task (Failed &amp; Non Auto Renewals) - Update Action Plan &amp; Task {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Task (Failed &amp; Non Auto Renewals) - Update Action Plan &amp; Task</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Find related Action Plan and make field updates</description>
+        <name>Get_Action_Plan</name>
+        <label>Get Action Plan</label>
+        <locationX>996</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Did_we_find_Action_Plan</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>TargetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ActionPlan</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get the case this failed instalment task is related to</description>
+        <name>Get_Related_Case</name>
+        <label>Get Related Case</label>
+        <locationX>710</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Did_we_find_the_Case</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>If we&#39;re executing last task to cancel policy, close the case at the same time</description>
+        <name>Close_the_Case</name>
+        <label>Close the Case</label>
+        <locationX>490</locationX>
+        <locationY>863</locationY>
+        <connector>
+            <targetReference>Update_Action_Plan_to_Completed</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Related_Case.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Lapsed_Reason__c</field>
+            <value>
+                <stringValue>No Contact</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Lapsed</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>When all tasks have been completed, update Action Plan Status and Actual End date fields</description>
+        <name>Update_Action_Plan_to_Completed</name>
+        <label>Update Action Plan to Completed</label>
+        <locationX>490</locationX>
+        <locationY>971</locationY>
+        <connector>
+            <targetReference>Update_Task_Owner</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Action_Plan.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>ActionPlanState</field>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ActualEndDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ActionPlan</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update action plan Status and Actual Start date fields</description>
+        <name>Update_Action_Plan_to_In_Progress</name>
+        <label>Update Action Plan to In Progress</label>
+        <locationX>50</locationX>
+        <locationY>863</locationY>
+        <connector>
+            <targetReference>Update_Task_Owner</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Action_Plan.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>ActionPlanState</field>
+            <value>
+                <stringValue>In Progress</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ActualStartDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ActionPlan</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update total number of tasks completed for this case</description>
+        <name>Update_Case</name>
+        <label>Update Case</label>
+        <locationX>402</locationX>
+        <locationY>1271</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Related_Case.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Action_Plan_Items__c</field>
+            <value>
+                <elementReference>varCalculateTotalItemsCompleted</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>If not updated already, assigned Task ownership to the user closing the task</description>
+        <name>Update_Task_Owner</name>
+        <label>Update Task Owner</label>
+        <locationX>402</locationX>
+        <locationY>1163</locationY>
+        <connector>
+            <targetReference>Update_Case</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OwnerId</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>870</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Action_Plan</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>1 AND (2 OR 3 OR 4 OR 5)</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>1st Call Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>2nd Call Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>3rd Call Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>4th Call Attempt</stringValue>
+            </value>
+        </filters>
+        <object>Task</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

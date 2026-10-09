@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SupportCategory__c</fullName>
+    <description>This field indicates the type of personal circumstance as outlined by the FCA</description>
+    <label>Support Category</label>
+    <required>true</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Accessibility</fullName>
+                <default>false</default>
+                <label>Capability</label>
+            </value>
+            <value>
+                <fullName>Financial</fullName>
+                <default>false</default>
+                <label>Resilience</label>
+            </value>
+            <value>
+                <fullName>Health</fullName>
+                <default>false</default>
+                <label>Health</label>
+            </value>
+            <value>
+                <fullName>Life Event</fullName>
+                <default>false</default>
+                <label>Life Event</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

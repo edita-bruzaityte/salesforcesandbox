@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p><span style="font-size:12pt"><span style="font-family:Aptos,sans-serif"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;,serif">Thanks for your email.</span></span></span><br />
+<br />
+<span style="font-size:12pt"><span style="font-family:Aptos,sans-serif"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;,serif">To provide a quote for Professional Indemnity, please answer the following:</span></span></span></p>
+
+<ul>
+	<li style="margin-left:8px"><span style="font-size:12pt"><span style="tab-stops:list .5in"><span style="font-family:Aptos,sans-serif"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;,serif">How much Professional Indemnity cover do you require, we offer limits of £100,000, £250,000, £500,000, or £1,000,000?</span></span></span></span></li>
+	<li style="margin-left:8px"><span style="font-size:12pt"><span style="tab-stops:list .5in"><span style="font-family:Aptos,sans-serif"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;,serif">Do you currently have Professional Indemnity in force? If so, what is the inception date?</span></span></span></span></li>
+	<li style="margin-left:8px"><span style="font-size:12pt"><span style="tab-stops:list .5in"><span style="font-family:Aptos,sans-serif"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;,serif">Does the party hold relevant qualifications, and have they been working in their relevant field for the period specified?</span></span></span></span></li>
+	<li style="margin-left:8px"><span style="font-size:12pt"><span style="tab-stops:list .5in"><span style="font-family:Aptos,sans-serif"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;,serif">Do you undertake design work such as computer hardware or software design, or any structural design including calculations?</span></span></span></span></li>
+	<li style="margin-left:8px"><span style="font-size:12pt"><span style="tab-stops:list .5in"><span style="font-family:Aptos,sans-serif"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;,serif">Do you undertake property management?</span></span></span></span></li>
+	<li style="margin-left:8px"><span style="font-size:12pt"><span style="tab-stops:list .5in"><span style="font-family:Aptos,sans-serif"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;,serif">Do you give any taxation advice?</span></span></span></span></li>
+	<li style="margin-left:8px"><span style="font-size:12pt"><span style="tab-stops:list .5in"><span style="font-family:Aptos,sans-serif"><span lang="EN-GB" style="font-family:&quot;Times New Roman&quot;,serif">Do one or more Partners, Principals, Directors, or Employees have at least 5 years’ experience in the relevant industry?</span></span></span></span></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Guide Wire</fullName>
+        <default>false</default>
+        <label>Guide Wire</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Instanda Self Service</fullName>
+        <default>false</default>
+        <label>Instanda Self Service</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Refer a Friend</fullName>
+        <default>false</default>
+        <label>Refer a Friend</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Portal</fullName>
+        <default>false</default>
+        <label>Portal</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Monthly Review meeting</fullName>
+        <default>false</default>
+        <label>Monthly Review meeting</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Targeted Prospect</fullName>
+        <default>false</default>
+        <label>Targeted Prospect</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Broker inquiry</fullName>
+        <default>false</default>
+        <label>Broker inquiry</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Meta</fullName>
+        <default>false</default>
+        <label>Meta</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Admiral Business</fullName>
+        <default>false</default>
+        <label>Admiral Business</label>
+    </standardValue>
+</StandardValueSet>

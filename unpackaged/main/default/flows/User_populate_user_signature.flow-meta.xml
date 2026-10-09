@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Automatically populate user signature when new user record is added to Salesforce</description>
+    <environments>Default</environments>
+    <interviewLabel>User - populate user signature {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>User - populate user signature</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Automatically populate signature when new user is added to SF</description>
+        <name>Update_Users_Signatue</name>
+        <label>Update Users Signatue</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <inputAssignments>
+            <field>Signature</field>
+            <value>
+                <elementReference>varSignatureTemplate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Users_Signatue</targetReference>
+        </connector>
+        <object>User</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>varSignatureTemplate</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Have a great day,&lt;/p&gt;&lt;p&gt;Admiral Business team&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://admiralorgid2021.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Jpeg&amp;amp;versionId=068Py000003BaBJ&amp;amp;operationContext=DELIVERY&amp;amp;contentId=05TPy000004IejS&amp;amp;page=0&amp;amp;d=/a/Py0000005L8f/LO2Vre62ylp2eddja2y8pBOFOJKy6giATLBvmxitxwM&amp;amp;oid=00DPt00000EIpyT&amp;amp;dpt=null&amp;amp;viewId=&quot;&gt;&lt;/p&gt;&lt;p&gt;If you&#39;re interested in how we treat your information please view our privacy policy &amp;amp; cookies policy.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Admiral Business is a trading name of Able Insurance Services Limited (Reg no 02890075) and is located at Ty Admiral, David Street, Cardiff, CF10 2EH. Able Insurance Services Limited is authorised and regulated by the Financial Conduct Authority (FCA registration Number 311649).&lt;/p&gt;</text>
+    </textTemplates>
+</Flow>

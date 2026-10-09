@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <description>Key Contact - the main person you interact with, often influential in decision making process.
+Decision Maker - the person with final authority to approve or reject the deal.
+Influencer - someone who doesnt make the final decision, but had significant sway over it.
+Champion - an internal advocate who pushes for your solution within the company,
+Accounts - go to contact in Account department; Claims - go to contact in Claims department</description>
+    <inlineHelpText>Key Contact - the main person you interact with, often influential in decision making process.
+Decision Maker - the person with final authority to approve or reject the deal.
+Influencer - someone who doesnt make the final decision, but had significant sway over it.
+Champion - an internal advocate who pushes for your solution within the company,
+Accounts - go to contact in Account department; Claims - go to contact in Claims department</inlineHelpText>
+    <label>Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Key Contact</fullName>
+                <default>false</default>
+                <label>Key Contact</label>
+            </value>
+            <value>
+                <fullName>Decision Maker</fullName>
+                <default>false</default>
+                <label>Decision Maker</label>
+            </value>
+            <value>
+                <fullName>Influencer</fullName>
+                <default>false</default>
+                <label>Influencer</label>
+            </value>
+            <value>
+                <fullName>Champion</fullName>
+                <default>false</default>
+                <label>Champion</label>
+            </value>
+            <value>
+                <fullName>Accounts</fullName>
+                <default>false</default>
+                <label>Accounts</label>
+            </value>
+            <value>
+                <fullName>Claims</fullName>
+                <default>false</default>
+                <label>Claims</label>
+            </value>
+            <value>
+                <fullName>Day-to-Day Contact</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Day-to-Day Contact</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

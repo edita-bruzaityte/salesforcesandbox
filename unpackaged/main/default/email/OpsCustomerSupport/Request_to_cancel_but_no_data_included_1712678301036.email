@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi&nbsp;{{{Case.Contact_First_Name__c}}},</p>
+
+<p>We’re sorry you’re looking to cancel, in order to proceed with your cancellation can you please provide us with the below information:</p>
+
+<ul>
+	<li>First line of your address and your postcode&nbsp;</li>
+	<li>Since this policy started, have you had any claims, losses, or incidents&nbsp;for this type of insurance whether you’ve claimed or not?</li>
+</ul>
+
+<p>We are interested to know the reason you would like to cancel your policy. Please could you respond to this email with a brief reason, and we'll take care of the cancellation process for you and send documents to confirm this.</p>
+
+<p>Thank you for being a valued customer.</p>
+</body>
+</html>

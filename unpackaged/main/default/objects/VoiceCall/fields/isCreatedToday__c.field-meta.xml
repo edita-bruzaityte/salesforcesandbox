@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>isCreatedToday__c</fullName>
+    <description>Checking if record create date is today - to be used in scheduled flow</description>
+    <formula>DATEVALUE(CreatedDate)=  TODAY()</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>isCreatedToday</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}}</p>
+
+<p>Thanks for choosing Admiral Business. We have attached helpful URL links relating to our policies and additional products for you to view. You can also view these on our website <a href="http://www.admiralbusiness.com/">www.admiralbusiness.com</a>.</p>
+
+<p><strong>Public Liability Cover</strong></p>
+
+<ul>
+	<li><a href="https://https://documents.admiralbusiness.com/public_liability_combined_policy_wording.pdf?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=22361624789&amp;utm_term={querystring}&amp;gad_source=1&amp;gclid=EAIaIQobChMIr6uptc2sjAMV6ZJQBh1VIxQXEAAYASAAEgKq_vD_BwE"><b>Public Liability Policy Wording:</b></a></li>
+	<li><a href="https://documents.admiralbusiness.com/public_liability_combined_policy_summary.pdf?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=22361624789&amp;utm_term={querystring}&amp;gad_source=1&amp;gclid=EAIaIQobChMIr6uptc2sjAMV6ZJQBh1VIxQXEAAYASAAEgKq_vD_BwE"><b>Public Liability Policy Summary:</b></a></li>
+</ul>
+<strong>Tools Cover</strong>
+
+<p>&nbsp;</p>
+
+<ul>
+	<li><a href="https://cdn.sanity.io/files/vsoowbln/production/da50f850eac66caa43030d8ea4084f188afbf449.pdf"><b>Tool’s Policy Wording Purchased Before September 2024:</b></a></li>
+	<li><a href="https://cdn.sanity.io/files/vsoowbln/production/5704a941f621731b825ad6006abe5b8e77bed2f7.pdf"><b>Tool’s Policy Wording Purchased After September 2024:</b></a></li>
+	<li><a href="https://cdn.sanity.io/files/vsoowbln/production/e2aa0a226eae1baccdce718029aebd4969114963.pdf"><b>Tool’s Policy Summary Purchased Before September 2024:</b></a></li>
+	<li><a href="https://cdn.sanity.io/files/vsoowbln/production/de8bb4c096868ec8af0a56040a06eaa544a48a49.pdf"><b>Tool’s Policy Summary Purchased After September 2024:</b></a></li>
+</ul>
+
+<p><b>Goods in Transit Cover</b><br />
+&nbsp;</p>
+
+<ul>
+	<li><a href="https://cdn.sanity.io/files/vsoowbln/production/02d6f0dec79c9ec8113e290fc12600cd33eee502.pdf"><b>Goods In Transit Policy Wording</b></a></li>
+	<li><a href="https://cdn.sanity.io/files/vsoowbln/production/63c3604c4ffcc141526f0c6828650ed0941a9cb9.pdf"><b>Goods In Transit Policy Summary</b></a></li>
+</ul>
+
+<p><b>Professional Indemnity Cover</b></p>
+
+<ul>
+	<li><a href="https://cdn.sanity.io/files/vsoowbln/production/e39bc37199dbbc79c25cee4393b67f9e83e7e67e.pdf"><b>Professional Indemnity Policy Wording:</b></a></li>
+	<li><a href="https://cdn.sanity.io/files/vsoowbln/production/0d9296d394071b44b66266ed94719e39a6fb2f3c.pdf"><b>Professional Indemnity Policy Summary:</b></a></li>
+</ul>
+&nbsp;
+
+<p><b>Legal Expenses Cover</b></p>
+
+<ul>
+	<li><a href="https://www.admiralbusiness.com/legal-expenses?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=22361624789&amp;utm_term=%7Bquerystring%7D&amp;gad_source=1&amp;gclid=EAIaIQobChMIr6uptc2sjAMV6ZJQBh1VIxQXEAAYASAAEgKq_vD_BwE">Legal expenses insurance - Admiral Business</a>&nbsp;</li>
+	<li><a href="https://cdn.sanity.io/files/vsoowbln/production/80f1ca3e521f0c794e0d63984828174dbae83076.pdf"><b>Legal Expenses Wording</b></a></li>
+	<li><a href="https://cdn.sanity.io/files/vsoowbln/production/80f1ca3e521f0c794e0d63984828174dbae83076.pdf"><b>Legal Expenses Summary</b></a></li>
+</ul>
+</body>
+</html>

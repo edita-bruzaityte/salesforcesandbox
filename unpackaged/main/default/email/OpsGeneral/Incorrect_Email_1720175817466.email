@@ -1,0 +1,8 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">Hi {{{Case.Contact_First_Name__c}}},<br />
+<br />
+We apologise for the inconvenience you have experienced with viewing your documents. We noticed that the email address entered was incorrect, this has now been corrected and we have resent your documents to you.</body>
+</html>

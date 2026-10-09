@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Use the collected list of user emails to send below email notification about new lead</description>
+        <name>Send_Email_to_Queue_Members</name>
+        <label>Send Email to Queue Members</label>
+        <locationX>50</locationX>
+        <locationY>1355</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddressesArray</name>
+            <value>
+                <elementReference>varEmailCollection</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <stringValue>noreply@admiralbusiness.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>varSubjectLine</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>varEmailTemplate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Collect user emails</description>
+        <name>Assign_Email_Collection</name>
+        <label>Assign Email Collection</label>
+        <locationX>138</locationX>
+        <locationY>1163</locationY>
+        <assignmentItems>
+            <assignToReference>varEmailCollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Users.Email</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Users</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Collect a list of queue members into collection</description>
+        <name>Assign_Queue_Members</name>
+        <label>Assign Queue Members</label>
+        <locationX>270</locationX>
+        <locationY>647</locationY>
+        <assignmentItems>
+            <assignToReference>varCollectionUserOrGroup</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_Queue_Members.UserOrGroupId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Queue_Members</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_if_Queue_members_found</name>
+        <label>Check if Queue members found</label>
+        <locationX>380</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Queue_Members</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Queue_Members</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_Queue_Members</targetReference>
+            </connector>
+            <label>Found Queue Members</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_if_users_found</name>
+        <label>Check if users found</label>
+        <locationX>182</locationX>
+        <locationY>947</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Users_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_User_Ids</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_Users</targetReference>
+            </connector>
+            <label>Users found</label>
+        </rules>
+    </decisions>
+    <description>Retired on 17th July, 2025 and replaced with Case (Mini Fleet) - Internal and External Notifcations flow
+ 
+Minifleet record type cases are pushed in from Broker Portal via Rest API, which doesnt allow triggering notifications over api. So for this reason, custom solution is required where this flow comes in - we&#39;ll ensure Minifleet Queries queue members are notified about new case as soon as its assigned to the queue.</description>
+    <environments>Default</environments>
+    <interviewLabel>Case (Mini Fleet) - Email notification to MF Queue members {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case (Mini Fleet) - Email notification to MF Queue members</label>
+    <loops>
+        <description>Loop though all queue members under collection retrieved in Get Queue Members</description>
+        <name>Loop_Queue_Members</name>
+        <label>Loop Queue Members</label>
+        <locationX>182</locationX>
+        <locationY>539</locationY>
+        <collectionReference>Get_Queue_Members</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_Queue_Members</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Get_User_Ids</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <description>Loop through the collection of users and store them into separate collection</description>
+        <name>Loop_Users</name>
+        <label>Loop Users</label>
+        <locationX>50</locationX>
+        <locationY>1055</locationY>
+        <collectionReference>Get_User_Ids</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_Email_Collection</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Send_Email_to_Queue_Members</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get all members of the queue</description>
+        <name>Get_Queue_Members</name>
+        <label>Get Queue Members</label>
+        <locationX>380</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Queue_members_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>GroupId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Owner:Group.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>GroupMember</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Collect user ids</description>
+        <name>Get_User_Ids</name>
+        <label>Get User Ids</label>
+        <locationX>182</locationX>
+        <locationY>839</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_users_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>varCollectionUserOrGroup</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>User</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>254</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Queue_Members</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>012Py000000zjWTIAY</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <textTemplates>
+        <description>Email notification template going out to queue members to notify about new case created.</description>
+        <name>varEmailTemplate</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;*** NEW CASE ASSIGNMENT NOTIFICATION ***&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;New case has been assigned to the {!$Record.Owner:Group.Name} with the below details:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;Broker: {!$Record.Account.Name}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;Reason: {!$Record.Reason}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;Quote Reference: {!$Record.Quote_Reference__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;Number of Vehicles: {!$Record.Number_of_Vehicles__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;Policy Inception Date: {!$Record.Policy_Inception_Date__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;Target Premium: {!$Record.Target_Premium__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;Document ID: {!$Record.Document_ID__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;Payload: {!$Record.Payload__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;Claims Experience 1: {!$Record.Claims_Experience_1__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px; background-color: rgb(255, 255, 255);&quot;&gt;Claims Experience 2: {!$Record.Claims_Experience_2__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px; background-color: rgb(255, 255, 255);&quot;&gt;Claims Experience 3: {!$Record.Claims_Experience_3__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px; background-color: rgb(255, 255, 255);&quot;&gt;Claims Experience 4: {!$Record.Claims_Experience_4__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px; background-color: rgb(255, 255, 255);&quot;&gt;Claims Experience 5: {!$Record.Claims_Experience_5__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;Fleet Presentation 1: {!$Record.Fleet_Presentation_1__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px; background-color: rgb(255, 255, 255);&quot;&gt;Fleet Presentation 2: {!$Record.Fleet_Presentation_2__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;Supporting Materials 1: {!$Record.Supporting_Materials_1__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px; background-color: rgb(255, 255, 255);&quot;&gt;Supporting Materials 2: {!$Record.Supporting_Materials_2__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px; background-color: rgb(255, 255, 255);&quot;&gt;Vehicle Schedule: {!$Record.Vehicle_Schedule__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px; background-color: rgb(255, 255, 255);&quot;&gt;Trailer/Special Types: {!$Record.Trailer_Special_Types__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px; background-color: rgb(255, 255, 255);&quot;&gt;Named Driver 1: {!$Record.Named_Driver_1__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px; background-color: rgb(255, 255, 255);&quot;&gt;Named Driver 2: {!$Record.Named_Driver_2__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px; background-color: rgb(255, 255, 255);&quot;&gt;Named Driver 3: {!$Record.Named_Driver_3__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px; background-color: rgb(255, 255, 255);&quot;&gt;Named Driver 4: {!$Record.Named_Driver_4__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px; background-color: rgb(255, 255, 255);&quot;&gt;Named Driver 5: {!$Record.Named_Driver_5__c}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 11px; background-color: rgb(255, 255, 255);&quot;&gt;Named Driver 6: {!$Record.Named_Driver_6__c}&lt;/span&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Email subject line</description>
+        <name>varSubjectLine</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>New case has been assigned to {!$Record.Owner:Group.Name}</text>
+    </textTemplates>
+    <variables>
+        <name>varCollectionUserOrGroup</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Collect user emails</description>
+        <name>varEmailCollection</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

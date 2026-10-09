@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Home</fullName>
+        <default>false</default>
+        <label>Home</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Auto</fullName>
+        <default>false</default>
+        <label>Auto</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Life</fullName>
+        <default>false</default>
+        <label>Life</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Annuity</fullName>
+        <default>false</default>
+        <label>Annuity</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Commercial Auto</fullName>
+        <default>false</default>
+        <label>Commercial Auto</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Commercial Property</fullName>
+        <default>false</default>
+        <label>Commercial Property</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Workers&#39; Compensation</fullName>
+        <default>false</default>
+        <label>Workers&#39; Compensation</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Tools</fullName>
+        <default>false</default>
+        <label>Tools</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Liability</fullName>
+        <default>false</default>
+        <label>Liability</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Haulage</fullName>
+        <default>false</default>
+        <label>Haulage</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Professional Indemnity</fullName>
+        <default>false</default>
+        <label>Professional Indemnity</label>
+    </standardValue>
+    <standardValue>
+        <fullName>AB Liability</fullName>
+        <default>false</default>
+        <label>AB Liability</label>
+    </standardValue>
+</StandardValueSet>

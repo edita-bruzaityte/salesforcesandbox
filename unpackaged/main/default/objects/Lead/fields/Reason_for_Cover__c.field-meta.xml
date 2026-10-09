@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Reason_for_Cover__c</fullName>
+    <description>This field is capturing data coming from website. The following question was introduced to the journey, to try and understand why people are getting particular cover.
+Question - Which option best describes your cover needs right now?</description>
+    <inlineHelpText>Answer to the QTB question &#39;Which option best describes your cover needs right now?&#39;</inlineHelpText>
+    <label>Reason for Cover</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ongoing cover for my business</fullName>
+                <default>false</default>
+                <label>Ongoing cover for my business</label>
+            </value>
+            <value>
+                <fullName>Cover for a specific job or contract</fullName>
+                <default>false</default>
+                <label>Cover for a specific job or contract</label>
+            </value>
+            <value>
+                <fullName>Short-term cover during a busy period</fullName>
+                <default>false</default>
+                <label>Short-term cover during a busy period</label>
+            </value>
+            <value>
+                <fullName>I&#39;m not sure yet, I&#39;m just getting started</fullName>
+                <default>false</default>
+                <label>I&#39;m not sure yet, I&#39;m just getting started</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

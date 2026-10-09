@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Confirmed</fullName>
+        <default>true</default>
+        <label>Confirmed</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Renewed</fullName>
+        <default>false</default>
+        <label>Renewed</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Replaced</fullName>
+        <default>false</default>
+        <label>Replaced</label>
+    </standardValue>
+    <standardValue>
+        <fullName>In The Renewal Cycle</fullName>
+        <default>false</default>
+        <label>In The Renewal Cycle</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Lapsed</fullName>
+        <default>false</default>
+        <label>Lapsed</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Cancelled</fullName>
+        <default>false</default>
+        <label>Cancelled</label>
+    </standardValue>
+</StandardValueSet>

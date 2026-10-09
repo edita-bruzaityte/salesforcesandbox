@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p>We have tried to contact you several times to cancel your policy but have been unsuccessful getting the information required to do this.Just to let you know we need the following information to action this for you:</p>
+
+<ul>
+	<li>First line of your address</li>
+	<li>Postcode</li>
+	<li>Your date of birth</li>
+</ul>
+
+<p><b>Once we get your reply, we’ll deal with it straight away for you. However, if we don't hear back from</b><br />
+<b>you, the policy will stay active and will not be cancelled.</b></p>
+
+<p>You can call us on 0203 808 7099 or reply to this email. Our service team are available from 9:00 to 18:00 Monday to Friday (excluding bank holidays).&nbsp;</p>
+</body>
+</html>

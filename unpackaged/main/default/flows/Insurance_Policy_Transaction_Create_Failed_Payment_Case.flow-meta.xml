@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <description>Locking the type of the action plan into this variable</description>
+        <name>varActionPlanType</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Service</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>Storing Service Business Hours Id</description>
+        <name>varServiceBusinessHours</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>01m4K000000ophV</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Check if the variable has anything in it.</description>
+        <name>Check_if_Action_Plan_Template_was_found</name>
+        <label>Check if Action Plan Template was found</label>
+        <locationX>182</locationX>
+        <locationY>971</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Action_Plan_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Action_Plan_Template</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Action_Plan</targetReference>
+            </connector>
+            <label>Action Plan Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if flow found Failed Instalments case queue</description>
+        <name>Check_if_Failed_Instalments_Queue_was_found</name>
+        <label>Check if Failed Instalments Queue was found</label>
+        <locationX>380</locationX>
+        <locationY>755</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Queue</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Failed_Instalments_Queue</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Failed_Payment_Case</targetReference>
+            </connector>
+            <label>Found Queue</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if flow found Failed Payments case record type</description>
+        <name>Check_if_Record_Type_was_found</name>
+        <label>Check if Record Type was found</label>
+        <locationX>611</locationX>
+        <locationY>647</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Record_Type</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Failed_Payment_Record_Type</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_if_Failed_Instalments_Queue_was_found</targetReference>
+            </connector>
+            <label>Found Record Type</label>
+        </rules>
+    </decisions>
+    <description>This flow will create Failed Payment record type case every time when instalment transaction fails for each Insurance Policy</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Formula to calculate the end date</description>
+        <name>varEndDate</name>
+        <dataType>Date</dataType>
+        <expression>TODAY() + 7</expression>
+    </formulas>
+    <formulas>
+        <name>varToday</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
+    <interviewLabel>Insurance Policy Transaction - Create Failed Payment Case {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Insurance Policy Transaction - Create Failed Payment Case</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Create Action Plan using Failed Instalment Action Plan template</description>
+        <name>Create_Action_Plan</name>
+        <label>Create Action Plan</label>
+        <locationX>50</locationX>
+        <locationY>1079</locationY>
+        <inputAssignments>
+            <field>ActionPlanTemplateVersionId</field>
+            <value>
+                <elementReference>Get_Action_Plan_Template.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ActionPlanType</field>
+            <value>
+                <stringValue>Industries</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>EndDate</field>
+            <value>
+                <elementReference>varEndDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>IsUsingHolidayHours</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>varActionPlanName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>StartDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>TargetId</field>
+            <value>
+                <elementReference>newCaseId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ActionPlan</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <description>Create failed payment case and assign it to Failed Instalments queue</description>
+        <name>Create_Failed_Payment_Case</name>
+        <label>Create Failed Payment Case</label>
+        <locationX>182</locationX>
+        <locationY>863</locationY>
+        <assignRecordIdToReference>newCaseId</assignRecordIdToReference>
+        <connector>
+            <targetReference>Check_if_Action_Plan_Template_was_found</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>$Record.InsurancePolicy.NameInsured.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>$Record.InsurancePolicy.Insured_Contact__r.recordId__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Insurance_Policy_Transaction__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Insurance_Policy__c</field>
+            <value>
+                <elementReference>$Record.InsurancePolicy.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Origin</field>
+            <value>
+                <stringValue>Automated Process</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Get_Failed_Instalments_Queue.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Priority</field>
+            <value>
+                <stringValue>High</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_Failed_Payment_Record_Type.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <stringValue>Failed Instalment</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <stringValue>Failed Monthly Instalment</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordCreates>
+    <recordLookups>
+        <description>Get Failed Instalments action plan template so it can be used to create Action Plan at the time of case creation</description>
+        <name>Get_Action_Plan_Template</name>
+        <label>Get Action Plan Template</label>
+        <locationX>611</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Record_Type_was_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Final</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Failed Instalment Management (Feb 2025)</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ActionPlanTemplateVersion</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get Failed Installments queue to use as default case owner</description>
+        <name>Get_Failed_Instalments_Queue</name>
+        <label>Get Failed Instalments Queue</label>
+        <locationX>611</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Action_Plan_Template</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Failed_Instalments</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get Failed Payment Record Type to assign to a new case</description>
+        <name>Get_Failed_Payment_Record_Type</name>
+        <label>Get Failed Payment Record Type</label>
+        <locationX>611</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Failed_Instalments_Queue</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Failed_Instalments</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Case</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>485</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Failed_Payment_Record_Type</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Payment has been rejected</stringValue>
+            </value>
+        </filters>
+        <object>InsurancePolicyTransaction</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Template to standardise naming convention</description>
+        <name>varActionPlanName</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>{!$Record.Name} for {!$Record.InsurancePolicy.Name} follow up plan</text>
+    </textTemplates>
+    <variables>
+        <description>Id for just created Failed Instalment case</description>
+        <name>newCaseId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

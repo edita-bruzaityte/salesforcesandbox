@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Case_Sub_Reason__c</fullName>
+    <description>This will be a dependent field on the Case reason, to record sub-reason for the case</description>
+    <label>Case Sub-Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cancellation - Deceased</fullName>
+                <default>false</default>
+                <label>Cancellation - Deceased</label>
+            </value>
+            <value>
+                <fullName>Get a new quote</fullName>
+                <default>false</default>
+                <label>Get a new quote</label>
+            </value>
+            <value>
+                <fullName>Accept a quote</fullName>
+                <default>false</default>
+                <label>Accept a quote</label>
+            </value>
+            <value>
+                <fullName>Amend an existing quote</fullName>
+                <default>false</default>
+                <label>Amend an existing quote</label>
+            </value>
+            <value>
+                <fullName>Renew my policy</fullName>
+                <default>false</default>
+                <label>Renew my policy</label>
+            </value>
+            <value>
+                <fullName>Discuss my renewal</fullName>
+                <default>false</default>
+                <label>Discuss my renewal</label>
+            </value>
+            <value>
+                <fullName>Stop my renewal</fullName>
+                <default>false</default>
+                <label>Stop my renewal</label>
+            </value>
+            <value>
+                <fullName>Make a change to my policy</fullName>
+                <default>false</default>
+                <label>Make a change to my policy</label>
+            </value>
+            <value>
+                <fullName>Update my personal details</fullName>
+                <default>false</default>
+                <label>Update my personal details</label>
+            </value>
+            <value>
+                <fullName>Change my contact details</fullName>
+                <default>false</default>
+                <label>Change my contact details</label>
+            </value>
+            <value>
+                <fullName>Update my payment details</fullName>
+                <default>false</default>
+                <label>Update my payment details</label>
+            </value>
+            <value>
+                <fullName>Cancel my policy</fullName>
+                <default>false</default>
+                <label>Cancel my policy</label>
+            </value>
+            <value>
+                <fullName>Query in relation to cancellation</fullName>
+                <default>false</default>
+                <label>Query in relation to cancellation</label>
+            </value>
+            <value>
+                <fullName>Coverage question</fullName>
+                <default>false</default>
+                <label>Coverage question</label>
+            </value>
+            <value>
+                <fullName>Request new policy documents</fullName>
+                <default>false</default>
+                <label>Request new policy documents</label>
+            </value>
+            <value>
+                <fullName>Set up online account</fullName>
+                <default>false</default>
+                <label>Set up online account</label>
+            </value>
+            <value>
+                <fullName>Request a call back</fullName>
+                <default>false</default>
+                <label>Request a call back</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>1</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>1</label>
+            </value>
+            <value>
+                <fullName>Accept and pay for the policy</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Accept and pay for the policy</label>
+            </value>
+            <value>
+                <fullName>Accept and pay for the renewal</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Accept and pay for the renewal</label>
+            </value>
+            <value>
+                <fullName>Additional of Cover</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Additional of Cover</label>
+            </value>
+            <value>
+                <fullName>Amazon Flex/Uber Eats</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Amazon Flex/Uber Eats</label>
+            </value>
+            <value>
+                <fullName>Bounce Back Email (AWS)</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Bounce Back Email (AWS)</label>
+            </value>
+            <value>
+                <fullName>Cancellation - Amazon Flex/Uber eats</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cancellation - Amazon Flex/Uber eats</label>
+            </value>
+            <value>
+                <fullName>Cancellation - Cost</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cancellation - Cost</label>
+            </value>
+            <value>
+                <fullName>Cancellation - Failed Payment</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cancellation - Failed Payment</label>
+            </value>
+            <value>
+                <fullName>Cancellation - Hire and Reward</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cancellation - Hire and Reward</label>
+            </value>
+            <value>
+                <fullName>Cancellation - Ill-Health</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cancellation - Ill-Health</label>
+            </value>
+            <value>
+                <fullName>Cancellation - Receipts</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cancellation - Receipts</label>
+            </value>
+            <value>
+                <fullName>Cancellation - Registration not shown</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cancellation - Registration not shown</label>
+            </value>
+            <value>
+                <fullName>Cancellation - Retired</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cancellation - Retired</label>
+            </value>
+            <value>
+                <fullName>Cancellation - Sale of Vehicle</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cancellation - Sale of Vehicle</label>
+            </value>
+            <value>
+                <fullName>Cancellation- Employed</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cancellation- Employed</label>
+            </value>
+            <value>
+                <fullName>Cancellation- No reason provided</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cancellation- No reason provided</label>
+            </value>
+            <value>
+                <fullName>Change the address</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Change the address</label>
+            </value>
+            <value>
+                <fullName>Change the level of cover</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Change the level of cover</label>
+            </value>
+            <value>
+                <fullName>Change the payment details</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Change the payment details</label>
+            </value>
+            <value>
+                <fullName>Change the vehicle details</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Change the vehicle details</label>
+            </value>
+            <value>
+                <fullName>Changes to GIT Registration</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Changes to GIT Registration</label>
+            </value>
+            <value>
+                <fullName>Changing Trading Name</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Changing Trading Name</label>
+            </value>
+            <value>
+                <fullName>Cost of Cover</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cost of Cover</label>
+            </value>
+            <value>
+                <fullName>Cover taken elsewhere</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cover taken elsewhere</label>
+            </value>
+            <value>
+                <fullName>Deceased</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Deceased</label>
+            </value>
+            <value>
+                <fullName>Document Queries</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Document Queries</label>
+            </value>
+            <value>
+                <fullName>Document Request</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Document Request</label>
+            </value>
+            <value>
+                <fullName>Duplicate policy</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Duplicate policy</label>
+            </value>
+            <value>
+                <fullName>Errors</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Errors</label>
+            </value>
+            <value>
+                <fullName>General</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>General</label>
+            </value>
+            <value>
+                <fullName>Hire and Reward</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Hire and Reward</label>
+            </value>
+            <value>
+                <fullName>Ill-Health</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Ill-Health</label>
+            </value>
+            <value>
+                <fullName>Lapse the Policy - Cost</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Lapse the Policy - Cost</label>
+            </value>
+            <value>
+                <fullName>Lapse the Policy - Ill-Health</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Lapse the Policy - Ill-Health</label>
+            </value>
+            <value>
+                <fullName>Lapse the policy</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Lapse the policy</label>
+            </value>
+            <value>
+                <fullName>Lapse the policy - Deceased</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Lapse the policy - Deceased</label>
+            </value>
+            <value>
+                <fullName>Lapse the policy - Employed</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Lapse the policy - Employed</label>
+            </value>
+            <value>
+                <fullName>Lapse the policy - No reason provided</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Lapse the policy - No reason provided</label>
+            </value>
+            <value>
+                <fullName>Lapse the policy - Retired</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Lapse the policy - Retired</label>
+            </value>
+            <value>
+                <fullName>Lapse the policy - Sale of Vehicle</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Lapse the policy - Sale of Vehicle</label>
+            </value>
+            <value>
+                <fullName>Make Changes - Misc</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Make Changes - Misc</label>
+            </value>
+            <value>
+                <fullName>Make changes to the quote</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Make changes to the quote</label>
+            </value>
+            <value>
+                <fullName>Make changes to the renewal</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Make changes to the renewal</label>
+            </value>
+            <value>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Marketing</label>
+            </value>
+            <value>
+                <fullName>Misc</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Misc</label>
+            </value>
+            <value>
+                <fullName>Needed Hire &amp; Reward</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Needed Hire &amp; Reward</label>
+            </value>
+            <value>
+                <fullName>No Phone – Email Only</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>No Phone – Email Only</label>
+            </value>
+            <value>
+                <fullName>No longer in employment</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>No longer in employment</label>
+            </value>
+            <value>
+                <fullName>No longer trading</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>No longer trading</label>
+            </value>
+            <value>
+                <fullName>Non-Payment</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Non-Payment</label>
+            </value>
+            <value>
+                <fullName>Out of Office Response</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Out of Office Response</label>
+            </value>
+            <value>
+                <fullName>Outstanding balance Query</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Outstanding balance Query</label>
+            </value>
+            <value>
+                <fullName>Pay outstanding amount</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pay outstanding amount</label>
+            </value>
+            <value>
+                <fullName>Policy not taken up</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Policy not taken up</label>
+            </value>
+            <value>
+                <fullName>Redirect to Admiral Group</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Redirect to Admiral Group</label>
+            </value>
+            <value>
+                <fullName>Redirect to claims</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Redirect to claims</label>
+            </value>
+            <value>
+                <fullName>Refund Query</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Refund Query</label>
+            </value>
+            <value>
+                <fullName>Requote after cancellation</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Requote after cancellation</label>
+            </value>
+            <value>
+                <fullName>Retired</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Retired</label>
+            </value>
+            <value>
+                <fullName>Sale of vehicle</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Sale of vehicle</label>
+            </value>
+            <value>
+                <fullName>Tools sold</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Tools sold</label>
+            </value>
+            <value>
+                <fullName>Unable to Cover</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Unable to Cover</label>
+            </value>
+            <value>
+                <fullName>Unable to access Documents</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Unable to access Documents</label>
+            </value>
+            <value>
+                <fullName>Unable to get a quote</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Unable to get a quote</label>
+            </value>
+            <value>
+                <fullName>Unable to log in</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Unable to log in</label>
+            </value>
+            <value>
+                <fullName>Unable to make changes</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Unable to make changes</label>
+            </value>
+            <value>
+                <fullName>Unable to provide Proof of Purchase</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Unable to provide Proof of Purchase</label>
+            </value>
+            <value>
+                <fullName>Underwriting Referral</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Underwriting Referral</label>
+            </value>
+            <value>
+                <fullName>Unhappy with Service</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Unhappy with Service</label>
+            </value>
+            <value>
+                <fullName>Unhappy with the renewal price</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Unhappy with the renewal price</label>
+            </value>
+            <value>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Unknown</label>
+            </value>
+            <value>
+                <fullName>Update number of employees</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Update number of employees</label>
+            </value>
+            <value>
+                <fullName>Work Experience Request</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Work Experience Request</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

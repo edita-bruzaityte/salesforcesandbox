@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Did we find matching record?</description>
+        <name>Check_if_record_was_found</name>
+        <label>Check if record was found</label>
+        <locationX>490</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Check_for_Duplicate</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_the_status_on_matching_lead</targetReference>
+            </connector>
+            <label>Yes found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check the Lead Outcome to determine the nexts steps with the lead</description>
+        <name>Check_Lead_Outcome</name>
+        <label>Check Lead Outcome</label>
+        <locationX>402</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <targetReference>Mark_Incoming_Lead_as_Dupe_Close2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Voicemail_Quoted_Not_Ready_No_Contact</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Check_for_Duplicate.Lead_Outcome_Retired__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Voicemail left</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_for_Duplicate.Lead_Outcome_Retired__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>No contact made</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_for_Duplicate.Lead_Outcome_Retired__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Quoted</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_for_Duplicate.Lead_Outcome_Retired__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Not ready to purchase</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Repeat_Visit_Record2</targetReference>
+            </connector>
+            <label>Voicemail, Quoted, Not Ready &amp; No Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check lead status</description>
+        <name>Check_the_status_on_matching_lead</name>
+        <label>Check the status on matching lead</label>
+        <locationX>226</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Check_Lead_Outcome</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>New_or_Nurturing</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>Check_for_Duplicate.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>New</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Check_for_Duplicate.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Nurturing</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Mark_Incoming_Lead_as_Dupe_Close</targetReference>
+            </connector>
+            <label>New or Nurturing</label>
+        </rules>
+    </decisions>
+    <description>This flow will run every time lead record is created to check if matching record already exists on SF. If found, depending on set of conditions, appropriate actions will be taken</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Stored today&#39;s date</description>
+        <name>varToday</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
+    <formulas>
+        <description>Formula to calculate total number of repeat visits by the prospect</description>
+        <name>varTotalRepeatVisits</name>
+        <dataType>Number</dataType>
+        <expression>{!Check_for_Duplicate.Total_Repeat_Visits__c} + 1</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Lead - Check for Duplicate records {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead - Check for Duplicate records</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Create Repeat Visit record and link both leads</description>
+        <name>Create_Repeat_Visit_Record</name>
+        <label>Create Repeat Visit Record</label>
+        <locationX>50</locationX>
+        <locationY>755</locationY>
+        <connector>
+            <targetReference>Update_Total_Visits</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Original_Visit__c</field>
+            <value>
+                <elementReference>Check_for_Duplicate.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Repeat_Visit_Dupe__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Repeat_Visits__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <description>Create Repeat Visit record and link both leads</description>
+        <name>Create_Repeat_Visit_Record2</name>
+        <label>Create Repeat Visit Record</label>
+        <locationX>402</locationX>
+        <locationY>947</locationY>
+        <connector>
+            <targetReference>Update_Total_Visits</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Original_Visit__c</field>
+            <value>
+                <elementReference>Check_for_Duplicate.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Repeat_Visit_Dupe__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Repeat_Visits__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Run check to see if any record on SF matching the information on the new lead</description>
+        <name>Check_for_Duplicate</name>
+        <label>Check for Duplicate</label>
+        <locationX>490</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_record_was_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>LastName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.LastName</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Email</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Email</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Postcode__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Postcode__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Id</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Duplicate__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Created_Date__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varToday</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>FirstName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.FirstName</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Lead</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Asc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update Duplicate checkbox on incoming lead ans status as Duplicate</description>
+        <name>Mark_Incoming_Lead_as_Dupe_Close</name>
+        <label>Mark Incoming Lead as Dupe &amp; Close</label>
+        <locationX>50</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Create_Repeat_Visit_Record</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Duplicate__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Lead_Outcome_Retired__c</field>
+            <value>
+                <stringValue>Duplicate</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Duplicate</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Duplicate checkbox on incoming lead ans status as Duplicate</description>
+        <name>Mark_Incoming_Lead_as_Dupe_Close2</name>
+        <label>Mark Incoming Lead as Dupe &amp; Close</label>
+        <locationX>490</locationX>
+        <locationY>755</locationY>
+        <connector>
+            <targetReference>Create_Repeat_Visit_Record2</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Duplicate__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Lead_Outcome_Retired__c</field>
+            <value>
+                <stringValue>Duplicate</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Duplicate</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Total Visits field on the Lead</description>
+        <name>Update_Total_Visits</name>
+        <label>Update Total Visits</label>
+        <locationX>226</locationX>
+        <locationY>1139</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Check_for_Duplicate.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Total_Repeat_Visits__c</field>
+            <value>
+                <elementReference>varTotalRepeatVisits</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <start>
+        <locationX>364</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_for_Duplicate</targetReference>
+        </connector>
+        <object>Lead</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

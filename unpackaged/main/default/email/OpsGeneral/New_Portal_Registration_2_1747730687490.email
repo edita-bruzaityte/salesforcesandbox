@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;">Hi {{{Case.Contact_First_Name__c}}},</span><br />
+<br />
+<span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Thank you for your email.<br />
+<br />
+We've launched our new customer portal on 11 March 2025. Whether you were using the old portal or you're a brand new customer, you'll need to register for the new portal to access your details and make limited changes. Please follow the steps below to register:</span></p>
+
+<ul>
+	<li><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Go to&nbsp;<a href="http://www.admiralbusiness.com/">www.admiralbusiness.com</a></span></li>
+	<li><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Click 'My account'</span></li>
+	<li><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Create new account</span></li>
+	<li><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Use the same email</span></li>
+	<li><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Create new password</span></li>
+</ul>
+
+<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">If you run into any issues or have questions, just let us know - we're here to help.</span></p>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Allows user to use Tide email2case</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Partner (Tide) Email2Case Access</label>
+    <emailRoutingAddressAccesses>
+        <enabled>true</enabled>
+        <name>tide-contact@admiralbusiness.com</name>
+    </emailRoutingAddressAccesses>
+</PermissionSet>

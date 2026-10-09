@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_Call_Outcomes</name>
+        <label>Check Call Outcomes</label>
+        <locationX>462</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Is_Call_Answered</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Sellable Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Non_Sellable_Outcome</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.OP_OutboundCallOutcome__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Unacceptable risk</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OP_OutboundCallOutcome__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Accept online</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OP_OutboundCallOutcome__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Doesn&#39;t want quote</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OP_OutboundCallOutcome__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Duplicate quote</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OP_OutboundCallOutcome__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Invalid number</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OP_OutboundCallOutcome__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Not ready to purchase</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OP_OutboundCallOutcome__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>On Cover</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OP_OutboundCallOutcome__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Quoted</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OP_OutboundCallOutcome__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Taken elsewhere</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OP_OutboundCallOutcome__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Number blocked</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OP_OutboundCallOutcome__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>H&amp;R car/van insurance</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OP_OutboundCallOutcome__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Callback arranged</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Lead_Record_2</targetReference>
+            </connector>
+            <label>Non-Sellable Outcome</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Next_Call_Attempt</name>
+        <label>Check Next Call Attempt</label>
+        <locationX>446</locationX>
+        <locationY>755</locationY>
+        <defaultConnector>
+            <targetReference>Update_Lead_Record_4</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Has_Another_Attempt</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>NextCallAttemptFormula</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Business_Hours</targetReference>
+            </connector>
+            <label>Has Another Attempt</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Call_Answered</name>
+        <label>Is Call Answered?</label>
+        <locationX>875</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Update_Lead_Record</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.OP_OutboundCampaignStatus__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Answered</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Lead_Outcome_Condition</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Lead_Outcome_Condition</name>
+        <label>Lead Outcome Condition</label>
+        <locationX>644</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Update_Lead_Record</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>No_Contact</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.OP_OutboundCallOutcome__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Voicemail left</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.OP_OutboundCallOutcome__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>No contact made</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Next_Call_Attempt</targetReference>
+            </connector>
+            <label>No Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Validate_Related_Lead</name>
+        <label>Validate Related Lead</label>
+        <locationX>916</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Lead_is_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RelatedRecordId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>00Q</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Call_Outcomes</targetReference>
+            </connector>
+            <label>Lead is Found</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <description>60.0 or 120.0 - The added minutes to the current datetime.
+1440 - The total number of minutes of the 24 hours.</description>
+        <name>currentDateTimePlusMinutes</name>
+        <dataType>DateTime</dataType>
+        <expression>CASE({!NextCallAttemptFormula}, 
+&quot;2nd Attempt&quot;, NOW() + (60.0 / 1440), 
+&quot;3rd Attempt&quot;, NOW() + (60.0 / 1440), 
+&quot;4th Attempt&quot;, NOW() + (120.0 / 1440), 
+NOW() + (120.0 / 1440))</expression>
+    </formulas>
+    <formulas>
+        <name>NextCallAttemptFormula</name>
+        <dataType>String</dataType>
+        <expression>CASE({!$Record.OP_CallAttempt__c}, 
+&quot;1st Attempt&quot;,  &quot;2nd Attempt&quot;, 
+&quot;2nd Attempt&quot;, &quot;3rd Attempt&quot;,  
+&quot;&quot;)</expression>
+    </formulas>
+    <interviewLabel>Voice Call - Update Lead Call Outcome {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Voice Call - Update Lead Call Outcome</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Lead_Record</name>
+        <label>Update Lead Record</label>
+        <locationX>1106</locationX>
+        <locationY>647</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.RelatedRecordId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Lead_Outcome2__c</field>
+            <value>
+                <elementReference>$Record.OP_OutboundCallOutcome__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Lead_Record_2</name>
+        <label>Update Lead Record 2</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.RelatedRecordId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Lead_Outcome2__c</field>
+            <value>
+                <elementReference>$Record.OP_OutboundCallOutcome__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OP_OutboundCallAttempt__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OP_OutboundCallDate__c</field>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Lead_Record_3</name>
+        <label>Update Lead Record 3</label>
+        <locationX>314</locationX>
+        <locationY>971</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.RelatedRecordId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Lead_Outcome2__c</field>
+            <value>
+                <elementReference>$Record.OP_OutboundCallOutcome__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OP_OutboundCallAttempt__c</field>
+            <value>
+                <elementReference>NextCallAttemptFormula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OP_OutboundCallDate__c</field>
+            <value>
+                <elementReference>Check_Business_Hours.output_DateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Lead_Record_4</name>
+        <label>Update Lead Record 4</label>
+        <locationX>578</locationX>
+        <locationY>863</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.RelatedRecordId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Lead_Outcome2__c</field>
+            <value>
+                <elementReference>$Record.OP_OutboundCallOutcome__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OP_OutboundCallAttempt__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OP_OutboundCallDate__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Closed - Not Converted</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <start>
+        <locationX>790</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Validate_Related_Lead</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OP_OutboundCallOutcome__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>VoiceCall</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Check_Business_Hours</name>
+        <label>Check Business Hours</label>
+        <locationX>314</locationX>
+        <locationY>863</locationY>
+        <connector>
+            <targetReference>Update_Lead_Record_3</targetReference>
+        </connector>
+        <flowName>Lead_Check_Business_Hours</flowName>
+        <inputAssignments>
+            <name>input_DateTime</name>
+            <value>
+                <elementReference>currentDateTimePlusMinutes</elementReference>
+            </value>
+        </inputAssignments>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </subflows>
+</Flow>

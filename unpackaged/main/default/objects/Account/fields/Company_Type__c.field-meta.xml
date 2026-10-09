@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Company_Type__c</fullName>
+    <label>Company Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>I&#39;m self employed</fullName>
+                <default>false</default>
+                <label>I&#39;m self employed</label>
+            </value>
+            <value>
+                <fullName>I trade as a partnership</fullName>
+                <default>false</default>
+                <label>I trade as a partnership</label>
+            </value>
+            <value>
+                <fullName>I trade as a limited company</fullName>
+                <default>false</default>
+                <label>I trade as a limited company</label>
+            </value>
+            <value>
+                <fullName>I&#39;m employed</fullName>
+                <default>false</default>
+                <label>I&#39;m employed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

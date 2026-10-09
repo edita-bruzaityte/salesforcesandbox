@@ -1,0 +1,8 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">Hi&nbsp;{{{Case.Contact_First_Name__c}}}<br />
+<br />
+We can confirm Admiral Business have recorded a Notification of Interest (NOI) under the Contracts work Section of the policy number BRK/00/000000 for the following companies: (INSERT COMPANY NAMES)</body>
+</html>

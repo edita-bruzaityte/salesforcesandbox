@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Repeat_Visit_Dupe__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Lead that we found a matching record on the system already, meaning the customer is running multiple quotes</description>
+    <label>Repeat Visit (Dupe)</label>
+    <referenceTo>Lead</referenceTo>
+    <relationshipLabel>Original Visit</relationshipLabel>
+    <relationshipName>Original_Visit</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

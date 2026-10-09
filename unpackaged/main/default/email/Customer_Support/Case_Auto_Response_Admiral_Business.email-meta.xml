@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Template to be used for Admiral Business case auto-response</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Case - Auto-Response Admiral Business</name>
+    <style>none</style>
+    <subject>Thanks for Contacting Admiral Business</subject>
+    <textOnly>Thank you for contacting Admiral Business!
+
+Rest assured, we&#39;ve received your message, and we&#39;re committed to responding to you as soon as possible during our regular hours.
+
+Our dedicated service team is here to assist you between 9:00 to 18:00, Monday to Friday (excluding bank holidays).
+
+We look forward to connecting with you soon!
+
+Have a great day,
+
+Admiral Business Team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

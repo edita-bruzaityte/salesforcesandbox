@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <email>complaintsmanagementgroup@admiral.com</email>
+    <name>zz_Archived_Complaints Management Group</name>
+    <queueMembers>
+        <users>
+            <user>james.croydon@admiralpioneer.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

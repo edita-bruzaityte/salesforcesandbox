@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Internal notification to queue members when lead is assigned.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>SALES: New assignment notification for Qualified &amp; Unqualified Queues</name>
+    <style>none</style>
+    <subject>New lead has been assigned to {!Lead.OwnerFullName}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- How did the customer first inform us of their personal circumstance --></help>
+        <label><!-- Method of Contact --></label>
+        <name>MethodOfContact__c</name>
+        <picklistValues>
+            <masterLabel>Chatbot</masterLabel>
+            <translation><!-- Chatbot --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Facebook</masterLabel>
+            <translation><!-- Facebook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone</masterLabel>
+            <translation><!-- Phone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Twitter</masterLabel>
+            <translation><!-- Twitter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webform</masterLabel>
+            <translation><!-- Webform --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

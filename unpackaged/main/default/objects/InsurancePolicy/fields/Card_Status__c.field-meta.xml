@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Card_Status__c</fullName>
+    <description>Calculated by data job from couple reports and outcome pushed into SF. Expected values at the time of creating this field are below:
+&#39;Card expired&#39;
+&#39;Valid card on file&#39;
+&#39;Card excluded from reuse &amp; Expired&#39;
+&#39;Card excluded from reuse&#39;
+&#39;No card on file&#39;</description>
+    <externalId>false</externalId>
+    <label>Card Status</label>
+    <length>200</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

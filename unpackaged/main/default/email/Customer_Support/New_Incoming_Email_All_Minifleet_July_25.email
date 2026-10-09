@@ -1,0 +1,3 @@
+Hi - {!Case.OwnerFullName} received an email response for Minifleet case {!Case.CaseNumber}.
+
+Follow the link to access the case now https://admiralorgid2021.lightning.force.com/{!Case.Id}

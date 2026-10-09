@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>rrito@merkleinc.com</contactEmail>
+    <label>AWS Connected App</label>
+    <oauthConfig>
+        <callbackUrl>https://login.salesforce.com
+https://matillion.ap-fow.com/oauth_redirect.html
+https://www.getpostman.com/oauth2/callback</callbackUrl>
+        <consumerKey>3MVG94RxwSHvjCi_ck.B.2PE8E8YZNbsGwhrvh30VdVjoUNt1IeOfsOWZlVreO6T7zXtXwpF6JwLM58.IYPUU</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>Data Sync Integration</permissionSetName>
+    <profileName>General Integration Profile</profileName>
+</ConnectedApp>

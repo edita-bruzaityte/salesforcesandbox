@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Notify all Minifleet Queue members</description>
+        <name>Notify_about_Incoming_Email_Minifleet_All_Users</name>
+        <label>Notify about Incoming Email (Minifleet) - All Users</label>
+        <locationX>440</locationX>
+        <locationY>863</locationY>
+        <actionName>Case.Notify_customer_responded_against_their_case_Minifleet_All_July_25</actionName>
+        <actionType>emailAlert</actionType>
+        <faultConnector>
+            <targetReference>Create_Error_Log</targetReference>
+        </faultConnector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>SObjectRowId</name>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>Case.Notify_customer_responded_against_their_case_Minifleet_All_July_25</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Check record type of the case</description>
+        <name>Check_Record_Type</name>
+        <label>Check Record Type</label>
+        <locationX>704</locationX>
+        <locationY>755</locationY>
+        <defaultConnectorLabel>Everything Else</defaultConnectorLabel>
+        <rules>
+            <name>Minifleet</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Parent.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Minifleet_Record_Type.DeveloperName</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Notify_about_Incoming_Email_Minifleet_All_Users</targetReference>
+            </connector>
+            <label>Minifleet</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if case is being created too</description>
+        <name>If_Case_New</name>
+        <label>If Case New?</label>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
+        <defaultConnector>
+            <targetReference>Status_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>isNew</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>isNewCase</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>isNew</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if incoming email is for a case that has already been closed, if yes, stop the process, as notification will be handled via different flow (Email Message - Re-Open Case &amp; Notify Owner)</description>
+        <name>Status_Check</name>
+        <label>Status Check</label>
+        <locationX>440</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <targetReference>Check_Record_Type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>All Open Statuses</defaultConnectorLabel>
+        <rules>
+            <name>Closed_Status</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Parent.IsClosed</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Closed Status</label>
+        </rules>
+    </decisions>
+    <description>Modified July, 2026 - remove the paths for Ops team related to General Question cases as Omni Channel is being implemented. Going forward, this flow will only be responsible for Minifleet record type cases.
+
+Ths flow will be used to notify case owner about new incoming email from a customer against their case. In instances where case hasnt been assigned to a queue, a group of people will be notified.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Formula to check if case is new</description>
+        <name>isNewCase</name>
+        <dataType>Boolean</dataType>
+        <expression>DATETIMEVALUE({!$Record.CreatedDate}) - {!Get_Case.CreatedDate} &lt;= (1/1440)</expression>
+    </formulas>
+    <interviewLabel>Email Message - Notify Case Owner {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Email Message - Notify Case Owner</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>If any of the elements fail, create an error log record for admin to review and investigate</description>
+        <name>Create_Error_Log</name>
+        <label>Create Error Log</label>
+        <locationX>704</locationX>
+        <locationY>971</locationY>
+        <inputAssignments>
+            <field>Automation_Name__c</field>
+            <value>
+                <stringValue>Email Message - Notify Case Owner   - V5</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Fault_Message__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Record__c</field>
+            <value>
+                <elementReference>$Record.MessageIdentifier</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Running_User__c</field>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Error_Log__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Get case incoming email is related to</description>
+        <name>Get_Case</name>
+        <label>Get Case</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Minifleet_Record_Type</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get minifleet record type as we need to do checks later in the flow</description>
+        <name>Get_Minifleet_Record_Type</name>
+        <label>Get Minifleet Record Type</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>If_Case_New</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Mini_Fleet_Queries</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Case</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Incoming</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ParentId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>EmailMessage</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Body of the email notification to the case owner</description>
+        <name>varEmailBody</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hi {!$Record.Parent.Owner:User.FirstName},&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;This is to let you know, you have a new email for case {!$Record.Parent.CaseNumber}.&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Email subject line for owner notification</description>
+        <name>varEmailSubjectLine</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;New Email for {!$Record.ParentId}&lt;/p&gt;</text>
+    </textTemplates>
+</Flow>

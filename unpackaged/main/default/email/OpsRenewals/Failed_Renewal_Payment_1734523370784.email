@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">.jcpwm-preloader {
+              transform: translateX(0px) !important;
+          }
+	</style>
+</head>
+<body style="height: auto; min-height: auto;">Hi&nbsp;{{{Case.Contact_First_Name__c}}},<br />
+<br />
+Your insurance is due for renewal on {{{Case.Insurance_Policy_Renewal_Date__c}}}but we’ve been unable to take payment for this using the most recent payment details we hold for you.<br />
+<br />
+At Admiral Business, we’re here to protect your business when the worst happens so we don’t want you to be without protection. So, if you would like your cover to continue, please get in touch to arrange payment. If we don’t speak to you before your renewal date, we’ll unfortunately have to cancel your policy and you’ll have no cover from 00:01 Hours on {{{Case.Insurance_Policy_Renewal_Date__c}}}.<br />
+<br />
+We look forward to speaking to you to renew your insurance policy for another year. Remember, if things have changed and you need to update your policy, there will be no fees so just let us know.<br />
+<br />
+Got any questions or need help? Check out the <a href="www.admiralbusiness.com/faqs">FAQ</a>&nbsp;section on our website or give us a call on 020 3808 7099. Our service team are available from 9:00 to 18:00 Monday to Friday (excluding bank holidays). Alternatively, you can reply to this email.<br />
+<br />
+&nbsp;</body>
+</html>

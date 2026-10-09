@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Insured_Contact__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The main contact related to the Name Insured on the Insurance Policy</description>
+    <label>Insured Contact</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Insurance Policies</relationshipLabel>
+    <relationshipName>Insurance_Policies</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <type>Lookup</type>
+</CustomField>

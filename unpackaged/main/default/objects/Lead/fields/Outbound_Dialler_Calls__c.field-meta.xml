@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Outbound_Dialler_Calls__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>This field will be updated by flow that will calculate total number of outbound calls made by the dialler to the relevant lead.
+This is needed because Call Type is automatically updated to Incoming for calls made by the dialler. And this its system field we are unable to modify it.</description>
+    <externalId>false</externalId>
+    <label>Outbound (Dialler) Calls</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

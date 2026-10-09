@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>Case Assignment Rule</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Questions</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.SuppliedEmail</field>
+                <operation>notEqual</operation>
+                <value>info@redirected.com,info@webpatner.com,hello@morevalue.com,info@indexrock.com,hello@socialfly.com,info@conquergenerating.com,info@solutionmarketing.com,info@socialfly.com,info@underratedvalues.com,info@basicroot.com,hello@redirected.com</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Subject</field>
+                <operation>notContain</operation>
+                <value>Bad Google reviews deletion</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Complaints</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Complaints</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.SuppliedEmail</field>
+                <operation>notEqual</operation>
+                <value>info@redirected.com,info@webpatner.com,hello@morevalue.com,info@indexrock.com,hello@socialfly.com,info@conquergenerating.com,info@solutionmarketing.com,info@socialfly.com,info@underratedvalues.com,info@basicroot.com,hello@redirected.com</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Subject</field>
+                <operation>notContain</operation>
+                <value>Bad Google reviews deletion</value>
+            </criteriaItems>
+            <template>Customer_Support/SUPPORT_New_assignment_notification_Complaints_Queue</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Mini_Fleet_Queries</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Mini Fleet Queries</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Status</field>
+                <operation>equals</operation>
+                <value>New</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.OwnerId</field>
+                <operation>equals</operation>
+                <value>Minifleet Integration</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Broker_General_Questions</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.Status</field>
+                <operation>equals</operation>
+                <value>New</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Broker Questions,Partner Queries</value>
+            </criteriaItems>
+            <template>Customer_Support/SUPPORT_New_assignment_notification_Underwriting_Questions_Queue</template>
+        </ruleEntry>
+    </assignmentRule>
+</AssignmentRules>

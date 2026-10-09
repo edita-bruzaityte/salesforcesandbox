@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Closed!</description>
+    <flowDefinition>Task_Update_Renewal_Opportunity_Status_button</flowDefinition>
+    <label>Close Renewal</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>Flow</type>
+</QuickAction>

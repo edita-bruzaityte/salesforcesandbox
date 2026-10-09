@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Callbacks</fullName>
+    <columns>SUBJECT</columns>
+    <columns>WHO_NAME</columns>
+    <columns>Policy_Type__c</columns>
+    <columns>Quoted_Price__c</columns>
+    <columns>Trade__c</columns>
+    <columns>DUE_DATE</columns>
+    <columns>STATUS</columns>
+    <columns>PRIORITY</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>UPDATEDBY_USER.ALIAS</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Task.General</value>
+    </filters>
+    <filters>
+        <field>SUBJECT</field>
+        <operation>equals</operation>
+        <value>Sales Follow Up</value>
+    </filters>
+    <filters>
+        <field>CORE.USERS.FULL_NAME</field>
+        <operation>notEqual</operation>
+        <value>Sales</value>
+    </filters>
+    <filters>
+        <field>IS_REMINDER_SET</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Callbacks Arranged</label>
+</ListView>

@@ -1,0 +1,18 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},<br />
+<br />
+Thanks for getting in touch.</p>
+
+<p>The cost to make this change to your policy is £xx.xx, which includes any applicable Insurance Premium Tax (IPT). Since you pay monthly, we’ll simply add the amount to your remaining monthly payments.</p>
+
+<p>Going forward, your new monthly payment will be £xx.xx.</p>
+
+<p>If you're happy to go ahead, just let us know - we’ll update your payment plan and send over your revised documents.</p>
+
+<p>&nbsp;</p>
+</body>
+</html>

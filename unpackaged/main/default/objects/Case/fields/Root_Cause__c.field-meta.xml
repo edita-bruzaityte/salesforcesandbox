@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Root_Cause__c</fullName>
+    <inlineHelpText>What caused the complaint?</inlineHelpText>
+    <label>Root Cause</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Human error</fullName>
+                <default>false</default>
+                <label>Human error</label>
+            </value>
+            <value>
+                <fullName>System error</fullName>
+                <default>false</default>
+                <label>System error</label>
+            </value>
+            <value>
+                <fullName>Process Error (lack or absence)</fullName>
+                <default>false</default>
+                <label>Process Error (lack or absence)</label>
+            </value>
+            <value>
+                <fullName>Customer Error</fullName>
+                <default>false</default>
+                <label>Customer Error</label>
+            </value>
+            <value>
+                <fullName>Not Upheld</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Not Upheld</label>
+            </value>
+            <value>
+                <fullName>Not Yet Determined</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Not Yet Determined</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

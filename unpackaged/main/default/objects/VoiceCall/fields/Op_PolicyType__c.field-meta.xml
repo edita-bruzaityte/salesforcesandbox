@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Op_PolicyType__c</fullName>
+    <inlineHelpText>The policy type which is carried over from the identified policy.</inlineHelpText>
+    <label>Policy Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Home</fullName>
+                <default>false</default>
+                <label>Home</label>
+            </value>
+            <value>
+                <fullName>Auto</fullName>
+                <default>false</default>
+                <label>Auto</label>
+            </value>
+            <value>
+                <fullName>Life</fullName>
+                <default>false</default>
+                <label>Life</label>
+            </value>
+            <value>
+                <fullName>Annuity</fullName>
+                <default>false</default>
+                <label>Annuity</label>
+            </value>
+            <value>
+                <fullName>Commercial Auto</fullName>
+                <default>false</default>
+                <label>Commercial Auto</label>
+            </value>
+            <value>
+                <fullName>Commercial Property</fullName>
+                <default>false</default>
+                <label>Commercial Property</label>
+            </value>
+            <value>
+                <fullName>Workers&#39; Compensation</fullName>
+                <default>false</default>
+                <label>Workers&#39; Compensation</label>
+            </value>
+            <value>
+                <fullName>Tools</fullName>
+                <default>false</default>
+                <label>Tools</label>
+            </value>
+            <value>
+                <fullName>Liability</fullName>
+                <default>false</default>
+                <label>Liability</label>
+            </value>
+            <value>
+                <fullName>Haulage</fullName>
+                <default>false</default>
+                <label>Haulage</label>
+            </value>
+            <value>
+                <fullName>Professional Indemnity</fullName>
+                <default>false</default>
+                <label>Professional Indemnity</label>
+            </value>
+            <value>
+                <fullName>AB Liability</fullName>
+                <default>false</default>
+                <label>AB Liability</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Outgoing_Emails__c</fullName>
+    <defaultValue>0</defaultValue>
+    <description>This field will be populated by flow which will count total number of outgoing emails for the related case</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Total sent emails</inlineHelpText>
+    <label>Total Outgoing Emails</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Check case origin</description>
+        <name>Case_Origin</name>
+        <label>Case Origin</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Web</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Parent.Origin</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Web</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_case_status</targetReference>
+            </connector>
+            <label>Web</label>
+        </rules>
+        <rules>
+            <name>Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Parent.Origin</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Email</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_if_original_query_submission</targetReference>
+            </connector>
+            <label>Email</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Case_Record_Type</name>
+        <label>Check Case Record Type</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Questions</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Parent.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Questions_Record_Type.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Incoming_or_Outgoing_email</targetReference>
+            </connector>
+            <label>Questions</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if case is closed or on with customer status. If closed, it needs to be re-opened first, count total re-opens and then routed to an agent. Otherwise, just route to an agent.</description>
+        <name>Check_case_status</name>
+        <label>Check case status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Route_re_opened_case</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Closed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Parent.IsClosed</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Re_open_case</targetReference>
+            </connector>
+            <label>Closed</label>
+        </rules>
+        <rules>
+            <name>On_Hold_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Parent.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>On Hold Customer</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_to_In_Progress</targetReference>
+            </connector>
+            <label>On Hold Customer</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if outgoing email is the first email that is auto-response. We shouldnt be closing them as cases are routed to agents so reesponse should be imminent</description>
+        <name>Check_if_auto_response</name>
+        <label>Check if auto-response</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>NotAuto_response</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.FromAddress</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>noreply@admiralbusiness.com</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_holding_queue</targetReference>
+            </connector>
+            <label>Not Auto-response</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Since we&#39;re keeping email2case running silently in the background, we need to check how many incoming emails there were for the case, in case its the first email that is being created via email2case</description>
+        <name>Check_if_original_query_submission</name>
+        <label>Check if original query submission</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Original_submission_exclude</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Parent.Total_Incoming_Emails__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <label>Original submission-exclude</label>
+        </rules>
+        <rules>
+            <name>Customer_reply</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Parent.Total_Incoming_Emails__c</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>1.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_case_status</targetReference>
+            </connector>
+            <label>Customer reply</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if the email is incoming or outgoing</description>
+        <name>Incoming_or_Outgoing_email</name>
+        <label>Incoming or Outgoing email</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Case_Origin</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Outgoing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Incoming</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_if_auto_response</targetReference>
+            </connector>
+            <label>Outgoing</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if we found General Questions Queue</description>
+        <name>Was_Queue_Found</name>
+        <label>Was Queue Found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Queue</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_holding_queue</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Case</targetReference>
+            </connector>
+            <label>Found Queue</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check point if record type was found</description>
+        <name>Was_Record_Type_Found</name>
+        <label>Was Record Type Found</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Questions_Record_Type</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Case_Record_Type</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <description>Flow will has multiple functions and they are different depending on whether email is incoming or outgoing.
+- outgoing - will update case status to with customer &amp; move its ownership to holding queue to free up agents capacity
+- incoming - if related case is already closed, flow will re-open it, calculate the re-opens and route, otherwise will call the routing sub-flow only.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Count how many times has was re-opened by customer&#39;s reply</description>
+        <name>varCountTotalReopens</name>
+        <dataType>Number</dataType>
+        <expression>{!$Record.Parent.Times_re_opened__c} + 1</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Email Message - Update Case &amp; Route (General Questions) {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Email Message - Update Case &amp; Route (General Questions)</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Error_Log_record</name>
+        <label>Create Error Log record</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Automation_Name__c</field>
+            <value>
+                <stringValue>Email Message - Update Case &amp; Route (General Questions)  </stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Fault_Message__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>From_For_EmailMessages__c</field>
+            <value>
+                <elementReference>$Record.FromAddress</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Record_Information__c</field>
+            <value>
+                <elementReference>$Record.TextBody</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Record__c</field>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Error_Log__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Fallback_Queue</name>
+        <label>Get Fallback Queue</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Case_to_Fallback_Queue</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Fallback_Queue</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get Closed General Questions queries queue which becomes the default owner for all replied cases until customer replies</description>
+        <name>Get_holding_queue</name>
+        <label>Get holding queue</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Was_Queue_Found</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Get_Fallback_Queue</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Replied_General_Questions_Queries</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Questions_Record_Type</name>
+        <label>Get Questions Record Type</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Was_Record_Type_Found</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Get_Fallback_Queue</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Case</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Questions</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>To ensure flow doesnt fail, assign the related case to fallback queue alongside the incoming email</description>
+        <name>Assign_Case_to_Fallback_Queue</name>
+        <label>Assign Case to Fallback Queue</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_Error_Log_record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OwnerId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Get_Fallback_Queue.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Re-open case and calculate total re-opens so far</description>
+        <name>Re_open_case</name>
+        <label>Re-open case</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Route_re_opened_case</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Get_Fallback_Queue</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Auto_closed__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Reopened</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Times_re_opened__c</field>
+            <value>
+                <elementReference>varCountTotalReopens</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update case ownership and status</description>
+        <name>Update_Case</name>
+        <label>Update Case</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Get_Fallback_Queue</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Parent.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Get_holding_queue.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>On Hold Customer</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update case status to In Progress</description>
+        <name>Update_to_In_Progress</name>
+        <label>Update to In Progress</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Route_re_opened_case</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Get_Fallback_Queue</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.ParentId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>In Progress</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Questions_Record_Type</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ParentId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>EmailMessage</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <description>Find most available agent to pick up re-opened case</description>
+        <name>Route_re_opened_case</name>
+        <label>Route re-opened case</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <flowName>Case_Route_Cases</flowName>
+        <inputAssignments>
+            <name>recordid</name>
+            <value>
+                <elementReference>$Record.Parent.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

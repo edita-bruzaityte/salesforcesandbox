@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>Insurance Policy Lightning Layout</layout>
+        <sections>
+            <label><!-- Cancellation --></label>
+            <section>Cancellation</section>
+        </sections>
+        <sections>
+            <label><!-- MTA --></label>
+            <section>MTA</section>
+        </sections>
+        <sections>
+            <label><!-- Referral Section --></label>
+            <section>Referral Section</section>
+        </sections>
+        <sections>
+            <label><!-- Renewal --></label>
+            <section>Renewal</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Insurance Policy Lightning Layout v2</layout>
+        <sections>
+            <label><!-- Cancellation --></label>
+            <section>Cancellation</section>
+        </sections>
+        <sections>
+            <label><!-- MTA --></label>
+            <section>MTA</section>
+        </sections>
+        <sections>
+            <label><!-- Referral Section --></label>
+            <section>Referral Section</section>
+        </sections>
+        <sections>
+            <label><!-- Renewal --></label>
+            <section>Renewal</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- New Task --></label>
+        <name>New_Task</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Email --></label>
+        <name>Send_Email2</name>
+    </quickActions>
+</CustomObjectTranslation>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Check if Personal Circumstance is expired and needs to be deleted</description>
+        <name>Check_End_Date</name>
+        <label>Check End Date</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Expired</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.EndDate__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <elementReference>$Flow.CurrentDate</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Delete_Personal_Circumstance</targetReference>
+            </connector>
+            <label>Expired</label>
+        </rules>
+    </decisions>
+    <description>This flow is part of Vulnerable Customer process (Personal Circumstance + Additional Support objects) and will run daily to check for any expired records where End Date is less than today and delete them.</description>
+    <environments>Default</environments>
+    <interviewLabel>Personal Circumstance - Delete Expired Personal Circumstance records {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Personal Circumstance - Delete Expired Personal Circumstance records</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordDeletes>
+        <description>Delete expired Personal Circumstance record</description>
+        <name>Delete_Personal_Circumstance</name>
+        <label>Delete Personal Circumstance</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputReference>$Record</inputReference>
+    </recordDeletes>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_End_Date</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>EndDate__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>PersonalCircumstance__c</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2025-12-02</startDate>
+            <startTime>09:48:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Draft</status>
+</Flow>

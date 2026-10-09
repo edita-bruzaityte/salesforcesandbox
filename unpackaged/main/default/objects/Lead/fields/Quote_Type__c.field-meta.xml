@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quote_Type__c</fullName>
+    <description>Updated by the integration to keep track how far into their online journey each Lead got before we picked them up.</description>
+    <label>Quote Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Partial Quote</fullName>
+                <default>false</default>
+                <label>Partial Quote</label>
+            </value>
+            <value>
+                <fullName>Full Quote</fullName>
+                <default>false</default>
+                <label>Full Quote</label>
+            </value>
+            <value>
+                <fullName>Sold Online</fullName>
+                <default>false</default>
+                <label>Sold Online</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

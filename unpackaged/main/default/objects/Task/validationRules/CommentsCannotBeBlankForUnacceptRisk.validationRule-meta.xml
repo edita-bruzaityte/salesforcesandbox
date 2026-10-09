@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CommentsCannotBeBlankForUnacceptRisk</fullName>
+    <active>true</active>
+    <description>This is to ensure we capture more information when &#39;Unacceptable risk&#39; Call Outcome option is selected</description>
+    <errorConditionFormula>AND(
+
+   ISBLANK(Description),
+   $User.Username  &lt;&gt; &quot;integration@admiral.com&quot;,
+
+  OR(
+      ISPICKVAL( Call_Outcome__c , &quot;Unacceptable risk&quot;),  
+
+      ISPICKVAL( Call_Outcome__c , &quot;Unacceptable risk - transferred&quot;))
+
+)</errorConditionFormula>
+    <errorDisplayField>Description</errorDisplayField>
+    <errorMessage>Please provide more detail for this Call Outcome</errorMessage>
+</ValidationRule>

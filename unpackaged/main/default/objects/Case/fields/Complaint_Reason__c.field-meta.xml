@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Complaint_Reason__c</fullName>
+    <description>Ops team wanted reason field called different on different record types, hence this was created for the Complaint record type.</description>
+    <inlineHelpText>What is the reason for the complaint?</inlineHelpText>
+    <label>Complaint Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>true</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Quote/Sales</fullName>
+                <default>false</default>
+                <label>Quote/Sales</label>
+            </value>
+            <value>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+                <label>Renewal</label>
+            </value>
+            <value>
+                <fullName>Changes to Policy/MTAs</fullName>
+                <default>false</default>
+                <label>Changes to Policy/MTAs</label>
+            </value>
+            <value>
+                <fullName>Cancellation</fullName>
+                <default>false</default>
+                <label>Cancellation</label>
+            </value>
+            <value>
+                <fullName>Payment</fullName>
+                <default>false</default>
+                <label>Payment</label>
+            </value>
+            <value>
+                <fullName>Spam</fullName>
+                <default>false</default>
+                <label>Spam</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Claim</fullName>
+                <default>false</default>
+                <label>Claim</label>
+            </value>
+            <value>
+                <fullName>Changes to my policy</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Changes to my policy</label>
+            </value>
+            <value>
+                <fullName>Quote</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Quote</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

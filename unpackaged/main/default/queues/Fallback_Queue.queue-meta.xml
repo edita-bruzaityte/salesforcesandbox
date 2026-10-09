@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Queue used to assign cases in case of an error in routing</description>
+    <doesIncludeBosses>false</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Cases - Fallback Queue</name>
+    <queueRoutingConfig>Operations_Cases</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

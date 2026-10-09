@@ -1,0 +1,12 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;">Hi </span>{{{Case.Contact_First_Name__c}}}<span style="font-family:Tahoma,Arial,Helvetica,sans-serif;">,</span></p>
+
+<p><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;">Thanks for your email. If you can please provide us with your policy number, post code and date of birth so we can try and locate your policy details. We have tried searching your name and email address but unfortunately been unable to find your details.<br />
+<br />
+Alternatively, You can call us on <a href="tel:02038087099">0203 808 7099</a>, Our service team are available from 9:00 to 18:00 Monday to Friday (excluding bank holidays) or respond to this email.</span></p>
+</body>
+</html>

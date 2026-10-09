@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ClaimItem_Lightning_Compact_Layout</fullName>
+    <fields>ClaimId</fields>
+    <fields>Name</fields>
+    <fields>Brand__c</fields>
+    <fields>Year__c</fields>
+    <fields>Price__c</fields>
+    <fields>Quantity__c</fields>
+    <fields>Claim_Item_Value__c</fields>
+    <label>ClaimItem Lightning Compact Layout</label>
+</CompactLayout>

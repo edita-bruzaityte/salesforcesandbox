@@ -1,0 +1,25 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p>Based on your email, we think you trying to raise a complaint to Admiral Vehicle or Admiral Home insurance.&nbsp; Unfortunately you contacted Admiral Business and we specialise in commercial business insurance and because of this, we use separate systems from Admiral Vehicle and Home insurance. Due to our separate systems, unfortunately we are not able to see your policy or details and are therefore unable to help you with this complaint, but don’t worry, we are able to redirect your email to the correct team.</p>
+
+<p>We have forwarded your email on to the relevant department and they will contact you directly.&nbsp; We have provided the correct contact details below should you wish to contact the correct team directly.</p>
+
+<p><b>Contact Details for Admiral Vehicle and Home Insurance</b></p>
+
+<p><b>Telephone Number:</b></p>
+
+<p>0333 222 6715</p>
+
+<p><b>Email:</b><br />
+<a href="mailto:customerservices@admiral.com">customerservices@admiral.com</a></p>
+
+<p><a href="mailto:Renewals@admiral.com">Renewals@admiral.com</a></p>
+
+<p><a href="mailto:Customerassurance@admiral.com">Customerassurance@admiral.com</a></p>
+</body>
+</html>

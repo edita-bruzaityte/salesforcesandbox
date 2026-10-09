@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>2nd Card Attempt task should be due 5 days after case was created</description>
+        <name>Check_Due_Date_in_5_Days</name>
+        <label>Check Due Date in 5 Days</label>
+        <locationX>182</locationX>
+        <locationY>863</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>More_than_5_Days</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ActivityDate</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>varDueDate5Days</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Task_due_date</targetReference>
+            </connector>
+            <label>More than 5 Days</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Call attempt task should be due 6 days after case was created</description>
+        <name>Check_Due_Date_in_6_Days</name>
+        <label>Check Due Date in 6 Days</label>
+        <locationX>710</locationX>
+        <locationY>863</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>More_than_6_Days</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ActivityDate</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>varDueDate6Days</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Task_Due_Date3</targetReference>
+            </connector>
+            <label>More than 6 Days</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Process Policy Cancellation task should be due 7 days after case was created</description>
+        <name>Check_Due_Date_in_7_Days</name>
+        <label>Check Due Date in 7 Days</label>
+        <locationX>1238</locationX>
+        <locationY>863</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>More_than_7_Days</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ActivityDate</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>varDueDate7Days</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Task_Due_Date2</targetReference>
+            </connector>
+            <label>More than 7 Days</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This process relates to Failed Instalment action plan. In cases, where the task is closed after the due date, the following tasks due date will be adjusted by the same number of days, which should not be allowed. Regardless when 1st Card Attempt task is closed, 2nd Card Attempt task should be due 5 days from related case create date. Same with 2nd Card Attempt - regardless when it is closed, Process Policy cancellation task should be due on the 8th day after related case was created.</description>
+        <name>Check_if_correct_due_date_assigned</name>
+        <label>Check if correct due date assigned</label>
+        <locationX>908</locationX>
+        <locationY>755</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>X2nd_Card_Attempt</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>2nd Card Attempt</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Due_Date_in_5_Days</targetReference>
+            </connector>
+            <label>2nd Card Attempt</label>
+        </rules>
+        <rules>
+            <name>Call_Attempt</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Call Attempt</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Due_Date_in_6_Days</targetReference>
+            </connector>
+            <label>Call Attempt</label>
+        </rules>
+        <rules>
+            <name>Process_Policy_Cancellation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Process Policy Cancellation</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Due_Date_in_7_Days</targetReference>
+            </connector>
+            <label>Process Policy Cancellation</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if record type was found.</description>
+        <name>Did_we_find_record_type</name>
+        <label>Did we find record type?</label>
+        <locationX>1403</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_record_type</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Failed_Instalment_Record_Type</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Record_Type</targetReference>
+            </connector>
+            <label>Found record type</label>
+        </rules>
+    </decisions>
+    <description>Flow will update task record type to Failed Instalment when its created. 
+
+31st March 2025 - this flow also handles &#39;Due Dates&#39; is previous task was completed after the due date.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Due date in 5 days from Case create date</description>
+        <name>varDueDate5Days</name>
+        <dataType>Date</dataType>
+        <expression>{!Get_Related_Case.CreatedDate} + 5</expression>
+    </formulas>
+    <formulas>
+        <name>varDueDate6Days</name>
+        <dataType>Date</dataType>
+        <expression>{!Get_Related_Case.CreatedDate} + 6</expression>
+    </formulas>
+    <formulas>
+        <description>Due date in 7 days from Case create date</description>
+        <name>varDueDate7Days</name>
+        <dataType>Date</dataType>
+        <expression>{!Get_Related_Case.CreatedDate} + 7</expression>
+    </formulas>
+    <interviewLabel>Task - Update Task Record Type {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Task - Update Task Record Type</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get Failed Instalment record type from task object</description>
+        <name>Get_Failed_Instalment_Record_Type</name>
+        <label>Get Failed Instalment Record Type</label>
+        <locationX>1403</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Related_Case</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Failed_Instalment</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Task</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get case details</description>
+        <name>Get_Related_Case</name>
+        <label>Get Related Case</label>
+        <locationX>1403</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Did_we_find_record_type</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Case</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update record type to Failed Instalment</description>
+        <name>Update_Record_Type</name>
+        <label>Update Record Type</label>
+        <locationX>908</locationX>
+        <locationY>647</locationY>
+        <connector>
+            <targetReference>Check_if_correct_due_date_assigned</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId__c</field>
+            <value>
+                <elementReference>Get_Related_Case.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_Failed_Instalment_Record_Type.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhoId</field>
+            <value>
+                <elementReference>Get_Related_Case.ContactId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update due date field to case created date + 5</description>
+        <name>Update_Task_due_date</name>
+        <label>Update Task due date</label>
+        <locationX>50</locationX>
+        <locationY>971</locationY>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value>
+                <elementReference>varDueDate5Days</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update due date on the task to case create date + 7</description>
+        <name>Update_Task_Due_Date2</name>
+        <label>Update Task Due Date</label>
+        <locationX>1106</locationX>
+        <locationY>971</locationY>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value>
+                <elementReference>varDueDate7Days</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update due date on the task to case create date + 6</description>
+        <name>Update_Task_Due_Date3</name>
+        <label>Update Task Due Date</label>
+        <locationX>578</locationX>
+        <locationY>971</locationY>
+        <inputAssignments>
+            <field>ActivityDate</field>
+            <value>
+                <elementReference>varDueDate6Days</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>1277</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Failed_Instalment_Record_Type</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>1st Card Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>2nd Card Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Process Policy Cancellation</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call Attempt</stringValue>
+            </value>
+        </filters>
+        <object>Task</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

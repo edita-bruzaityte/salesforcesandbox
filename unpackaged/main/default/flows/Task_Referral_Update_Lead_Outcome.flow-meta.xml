@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Triggers only under very specific conditions to update Lead Outcome field on the related Lead.</description>
+    <environments>Default</environments>
+    <interviewLabel>Task (Referral) - Update Lead Outcome {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Task (Referral) - Update Lead Outcome</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Find a list of Callback Arrangement and Log a Call tasks related to the list and identify the latest</description>
+        <name>Get_latest_task</name>
+        <label>Get latest task</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_Call_Outcome_on_the_Lead</targetReference>
+        </connector>
+        <filterLogic>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8)</filterLogic>
+        <filters>
+            <field>WhoId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhoId</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 1</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 2</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 3</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 4</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 5</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 6</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Callback Arrangement</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Task</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update &#39;Lead Outcome&#39; field on the Lead with Call Outcome field information from the Task</description>
+        <name>Update_Call_Outcome_on_the_Lead</name>
+        <label>Update Call Outcome on the Lead</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhoId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Lead_Outcome_Retired__c</field>
+            <value>
+                <elementReference>Get_latest_task.Call_Outcome__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_latest_task</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Callback Arrangement</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>WhoId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Task</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>varTotalTasks</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+</Flow>

@@ -1,0 +1,18 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p>We’re sorry you’re looking to cancel.</p>
+
+<p>This request has now been actioned for you and your cancellation documents will be with you shortly.</p>
+
+<p>We'd be delighted to have you back as a customer and you can resume cover at any time.</p>
+
+<p>As a reminder, our policies follow a subscription model, which means there are no administration fees, and you only pay for the months you use. We don’t charge any cancellation fees or interest for paying in instalments.</p>
+
+<p>Thank you again for being a valued customer.</p>
+</body>
+</html>

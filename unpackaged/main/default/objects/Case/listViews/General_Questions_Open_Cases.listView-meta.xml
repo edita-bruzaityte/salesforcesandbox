@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>General_Questions_Open_Cases</fullName>
+    <columns>CASES.CASE_NUMBER</columns>
+    <columns>NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>CASES.SUBJECT</columns>
+    <columns>CASES.STATUS</columns>
+    <columns>CASES.ORIGIN</columns>
+    <columns>CASES.PRIORITY</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>CASES.CREATED_DATE</columns>
+    <columns>CASES.LAST_UPDATE_DATE_ONLY</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CASES.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Case.Questions</value>
+    </filters>
+    <filters>
+        <field>CASES.CLOSED</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>CASES.EMAIL</field>
+        <operation>notEqual</operation>
+        <value>info@webpatner.com,hello@morevalue.com,info@indexrock.com,hello@socialfly.com,info@conquergenerating.com,info@solutionmarketing.com,info@redirected.com,info@marketingoont.com,info@socialfly.com,info@underratedvalues.com,info@basicroot.com</value>
+    </filters>
+    <filters>
+        <field>CASES.SUBJECT</field>
+        <operation>notContain</operation>
+        <value>Bad Google reviews deletion</value>
+    </filters>
+    <filters>
+        <field>CASES.EMAIL</field>
+        <operation>notEqual</operation>
+        <value>hello@redirected.com</value>
+    </filters>
+    <label>General Questions - Open Cases</label>
+    <sharedTo>
+        <roleAndSubordinatesInternal>Sales_Manager</roleAndSubordinatesInternal>
+    </sharedTo>
+</ListView>

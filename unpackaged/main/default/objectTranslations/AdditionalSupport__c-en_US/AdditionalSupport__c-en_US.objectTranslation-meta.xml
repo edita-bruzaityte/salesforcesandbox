@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Additional Support</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Additional Support</value>
+    </caseValues>
+    
+    
+    <layouts>
+        <layout>Additional Support Layout</layout>
+        <sections>
+            <label><!-- Audit --></label>
+            <section>Audit</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Required Support Details --></label>
+            <section>Required Support Details</section>
+        </sections>
+    </layouts>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

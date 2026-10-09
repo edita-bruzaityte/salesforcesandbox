@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Survey_Type__c</fullName>
+    <label>Survey Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>NPS_Transactional_Post_Purchase</fullName>
+                <default>false</default>
+                <label>NPS - Transactional - Post Purchase</label>
+            </value>
+            <value>
+                <fullName>Cancellations</fullName>
+                <default>false</default>
+                <label>Cancellations</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

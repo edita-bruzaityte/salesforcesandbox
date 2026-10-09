@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EmailSuccessfullySent__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This is to ensure we can track and trace back failed payment collection email has been sent. This is one - off - accounts team failed to submit a file for instalment collection in for January 2025.</description>
+    <label>EmailSuccessfullySent</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

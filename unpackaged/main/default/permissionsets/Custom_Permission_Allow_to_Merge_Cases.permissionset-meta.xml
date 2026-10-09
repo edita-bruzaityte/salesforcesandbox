@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Use this to provide users ability to merge cases</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Custom Permission - Allow to Merge Cases</label>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Allow_Merge_Cases</name>
+    </customPermissions>
+</PermissionSet>

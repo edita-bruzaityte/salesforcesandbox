@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OP_SyncToAWS__c</fullName>
+    <formula>DATEVALUE(OP_OutboundCallDate__c) = TODAY() &amp;&amp;
+HOUR(TIMEVALUE(OP_OutboundCallDate__c)) = HOUR(TIMEVALUE(NOW())) &amp;&amp;
+MINUTE(TIMEVALUE(OP_OutboundCallDate__c)) = MINUTE(TIMEVALUE(NOW()))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Sync to AWS</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

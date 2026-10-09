@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><img alt="AdmiralBusiness_logo-CMYK" src="" style="max-width: 688.77px; width: 294.75px; height: 89px;" title="AdmiralBusiness_logo-CMYK" />
+<div style="font-family: Poppins, sans-serif; width: 960px;">
+<p style="text-align: right;">Policy Number: {{{Case.Insurance_Policy_Number__c}}}</p>
+
+<p style="text-align: right;"><b>Date:<font color="#e74c3c">&nbsp;</font>{{{Case.Today_s_Date__c}}}</b></p>
+<br />
+<br />
+<br />
+<span style="color:#024eff;"><span style="font-size: 24px;"><b>We are still reviewing your complaint.</b></span></span><br />
+<br />
+<br />
+Hello&nbsp; {{{Recipient.FirstName}}},<br />
+<br />
+<b>Complaint Reference:&nbsp;</b> {{{Case.CaseNumber}}}<br />
+<br />
+Thank you for your patience, further to our previous <span style="color:#e6007e;">email</span> on <span style="color:#e6007e;"><b>XX/XX/XXXX</b></span>, I’m still investigating your complaint.<br />
+<br />
+This is due to <span style="color:#e6007e;">[insert the reason for a delay]</span>. Apologies for this delay and thank you for your patience.<br />
+<br />
+At Able insurance, we must comply with the regulations set by the <b> Financial Conduct Authority.</b> These regulations state that we have to provide a written response within eight weeks of receiving a complaint.<br />
+<br />
+As the eight-week period for your complaint has expired, you are entitled to contact the <b>Financial Ombudsman Service </b>if you wish to do so. However, I hope you will allow me to continue with our investigations in order to resolve this matter for you. <span style="color:#024eff;"> <b>We aim to provide you with our final response as soon as possible.</b></span><br />
+<br />
+You have the right to refer your complaint to the Financial Ombudsman Service, free of charge – but you must do so within <b>six months</b> of the date of our final response.<br />
+<br />
+If you do not refer your complaint in time, the Ombudsman will not have our permission to consider your complaint and so will only be able to do so in very limited circumstances. For example, if the Ombudsman believes that the delay was as a result of exceptional circumstances.<br />
+<br />
+<br />
+Here is the link to <b> ‘Your Complaint and the Ombudsman’ </b> <a href="http://www.financial-om-budsman.org.uk/publications/consumer-leaflet.html"><u>http://www.financial-om-budsman.org.uk/publications/consumer-leaflet.html</u></a><br />
+<br />
+If you have any further questions or queries please give us a call <span style="color:#024eff;"><u>0203 808 7099</u></span> or e-mail us at <span style="color:#024eff;">complaints@admiralbusiness.com&nbsp;</span><br />
+<br />
+<br />
+Thank you for your patience,<br />
+{{{Sender.Name}}}<br />
+<br />
+{{{Sender.Title}}}</div>
+</body>
+</html>

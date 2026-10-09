@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Update_Renewal_Opportunities</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Provide agents with access to update renewal insurance policy record type opportunities</description>
+        <label>Update Renewal Opportunities</label>
+        <sharedTo>
+            <group>All_Agents_Supervisors</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Renewal Insurance Policy</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>View_All_B2B_Opportunities</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Provides members if the public group read access to B2B opportunities</description>
+        <label>View All B2B Opportunities</label>
+        <sharedTo>
+            <group>Broker_Sales_Read_Only</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>New Business (B2B)</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>View_All_New_Insurance_Policy_Opportunities</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Provide users access to the new insurance policy record type opportunities</description>
+        <label>View All New Insurance Policy Opportunities</label>
+        <sharedTo>
+            <group>Broker_Sales_Team</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>New Insurance Policy</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>View_Edit_All_B2B_Opportunities</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Allows members of Broker Sales team to access member opportunities. Applies to B2B record type only.</description>
+        <label>View/Edit All B2B Opportunities</label>
+        <sharedTo>
+            <group>Broker_Sales_Team</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>New Business (B2B)</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>View_Edit_Opportunities</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Allow minifleet team to view and edit New Insurance Policy record type opportunities</description>
+        <label>View &amp; Edit Opportunities</label>
+        <sharedTo>
+            <group>Minifleet_Team</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>New Insurance Policy</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

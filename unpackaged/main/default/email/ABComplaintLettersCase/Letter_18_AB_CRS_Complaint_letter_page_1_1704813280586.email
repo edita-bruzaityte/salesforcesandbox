@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><img alt="AdmiralBusiness_logo-CMYK" src="" style="max-width: 688.77px; width: 240px; height: 72.8542px;" title="AdmiralBusiness_logo-CMYK" />
+<div style="font-family: Poppins, sans-serif; width: 960px;">&nbsp;
+<div style="width:960px"><br />
+<span style="font-family:Poppins, sans-serif"><span style="float:right">Policy Number:&nbsp;{{{Case.Insurance_Policy_Number__c}}}</span>{{{Recipient.Name}}}<br />
+{{{Recipient.Address__c}}}</span><br />
+<br />
+<br />
+&nbsp;</div>
+
+<div style="width:960px; text-align:right"><b>Date:<font color="#e74c3c">&nbsp;</font><span style="color:#e6007e;">{{{Case.Today_s_Date__c}}}</span></b></div>
+
+<p><br />
+<br />
+<br />
+<br />
+<span style="color:#024eff;"><span style="font-size: 24px;"><b>Final feedback about your complaint.</b></span></span><br />
+<br />
+<br />
+Hello&nbsp; {{{Case.Contact_First_Name__c}}},<br />
+<br />
+<b>Complaint Reference:&nbsp;</b> {{{Case.CaseNumber}}}<br />
+<br />
+<br />
+<br />
+<br />
+<span style="font-size:12pt"><span style="font-family:Calibri,sans-serif"><b><u><span style="color:black">Frontline Complaint – Admiral Business CRS Letter</span></u></b></span></span><br />
+<span style="font-size:12pt"><span style="font-family:Calibri,sans-serif">&nbsp;</span></span><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">Thank you for taking the time to contact us on&nbsp;<b>&lt;Date&gt;</b>&nbsp;I was sorry to hear you were unhappy with our service. We value our customer feedback and treat any concerns seriously.</span></span></span></span><br />
+<br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">During our recent communication I explained I would treat your concerns as a complaint, and you would receive confirmation of this in writing.</span></span></span></span><br />
+<br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">You confirmed I had addressed all your concerns, and we now consider your complaint to be resolved.</span></span></span></span><br />
+<br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><b><span style="color:#252525">&lt;if redress awarded use following paragraph&gt;</span></b></span></span></span><br />
+<br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">In recognition of our error, I am awarding the following '<b><i>compensation/have arranged to write off the following amount/s or will refund the following amount:</i></b><i>&nbsp;<b>&lt;describe as appropriate&gt;</b></i></span></span></span></span><br />
+<br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">•<b>&nbsp;&lt;insert compensation/write off/refund amount and what it is for &gt;</b>&nbsp;• &lt;insert compensation/write off/refund amount and what it is for &gt;</span></span></span></span><br />
+<br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><b><span style="color:#252525">(Also include time frames for payments)</span></b></span></span></span><br />
+<br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">If you require any further assistance, please contact us on <b>0203 808 7099</b> or e-mail us at </span><span style="color:black"><a href="mailto:complaints@toolboxbyadmiral.com" style="color:#0563c1; text-decoration:underline">complaints@admiralbusiness.com</a>.</span></span></span></span></p>
+
+<p><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">You have the right to refer your complaint to the Financial Ombudsman Service, free of charge – but you must do so within six months of the date of this letter.</span></span></span></span></p>
+
+<p><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">If you do not refer your complaint in time, the Ombudsman will not have our permission to consider your complaint and so will only be able to do so in very limited circumstances. For example, if the Ombudsman believes that the delay was because of exceptional circumstances.</span></span></span></span></p>
+
+<p><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">You can find further details of how to make a complaint to the Ombudsman at the following web address:&nbsp;</span><span style="color:black"><a href="http://www.financial-ombudsman.org.uk" style="color:#0563c1; text-decoration:underline">www.financial-ombudsman.org.uk</a>.</span></span></span></span></p>
+
+<p><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">Yours sincerely</span></span></span></span><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><b><span style="color:#252525">(Name) (Job Title)</span></b></span></span></span></p>
+</div>
+</body>
+</html>

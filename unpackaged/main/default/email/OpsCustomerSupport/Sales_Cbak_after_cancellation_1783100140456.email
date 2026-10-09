@@ -1,0 +1,15 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><span style="font-family:Times New Roman,Times New Roman,Times,serif;"><span style="font-size:12pt">Hi {{{Case.Contact_First_Name__c}}},</span><br />
+<br />
+<span style="font-size:12pt">Thank you for your email.</span><br />
+<br />
+<span style="font-size:12pt">As your policy has now been cancelled and is unable to be reinstated, we will arrange for a member of our team to contact you to discuss getting you back on cover.</span><br />
+<br />
+<span style="font-size:12pt">As we operate on a subscription basis, the cancellation of your policy will not affect your credit rating.</span><br />
+<br />
+<span style="font-size:12pt">Alternatively, you can obtain an instant quote online via www.admiralbusiness.com.</span></span><br />
+&nbsp;</body>
+</html>

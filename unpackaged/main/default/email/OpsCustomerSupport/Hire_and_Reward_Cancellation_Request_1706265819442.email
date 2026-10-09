@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p>Your policy with us is designed for Goods in Transit, providing coverage for the goods you transport for hire and reward. It's important to note that we don't offer coverage for hire and reward for your vehicle itself, as this aspect is typically provided by your motor insurance company.</p>
+
+<p>If this isn't the coverage you needed, please reach out to us by calling 02038087099. Our service team are available from 9:00 to 18:00 Monday to Friday (excluding bank holidays).&nbsp;</p>
+
+<p>&nbsp;</p>
+</body>
+</html>

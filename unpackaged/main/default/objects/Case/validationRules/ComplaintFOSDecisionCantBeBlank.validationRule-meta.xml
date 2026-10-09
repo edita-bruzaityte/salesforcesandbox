@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ComplaintFOSDecisionCantBeBlank</fullName>
+    <active>true</active>
+    <description>Validation rule to ensure FOS description is populated if FOS Escalated = &#39;true&#39; before its being closed</description>
+    <errorConditionFormula>AND(
+
+     FOS_Escalation__c = true,
+     ISPICKVAL(FOS_decision__c, &quot;&quot; ) 
+
+
+)</errorConditionFormula>
+    <errorDisplayField>FOS_decision__c</errorDisplayField>
+    <errorMessage>FOS Decision cannot be blank</errorMessage>
+</ValidationRule>

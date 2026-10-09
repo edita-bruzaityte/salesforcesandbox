@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Legal_Expenses__c</fullName>
+    <description>Legal Expenses Limit of Indemnity
+CDL fields: work out from both OPTIONAL_EXTRA_CODE &amp;
+OPTIONALEXTRASTATUS_CODE</description>
+    <inlineHelpText>Legal Expenses Limit of Indemnity</inlineHelpText>
+    <label>Legal Expenses</label>
+    <precision>16</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>true</trackHistory>
+    <type>Currency</type>
+</CustomField>

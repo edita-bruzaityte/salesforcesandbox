@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Modify_Question_Complaint_Cases</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Allows users to work with Question and Complaint record type cases</description>
+        <label>Modify Question &amp; Complaint Cases</label>
+        <sharedTo>
+            <group>All_Agents_Supervisors</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Complaints,Questions</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>View_All_Question_Complaints_Failed_Instalments_Renewals</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>Provide visibility to all users to question, complain, failed instalment and failed renewal record types</description>
+        <label>View All Question, Complaints, Failed Instalments &amp; Renewals</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Sales_Manager</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Complaints,Questions,Failed Renewals,Failed Instalments</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Work_with_Broker_Query_Cases</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Provide access to work with Broker Query Cases</description>
+        <label>Work with Broker Query Cases</label>
+        <sharedTo>
+            <group>Broker_Team</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Broker Questions,Partner Queries</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Share_Minifleet_Cases_w_Minifleet_team</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Allow public group members work with each others cases for minifleet</description>
+        <label>Share Minifleet Cases w Minifleet team *</label>
+        <sharedTo>
+            <group>Minifleet_Team</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Minifleet_Team</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FailedRenewalCaseCreated__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Marked to true by flow, when Failed Payment record type case is created.</description>
+    <label>FailedRenewalCaseCreated</label>
+    <trackHistory>true</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

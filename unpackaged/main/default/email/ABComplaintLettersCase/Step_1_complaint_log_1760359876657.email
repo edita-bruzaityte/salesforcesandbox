@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p>&nbsp;</p>
+
+<p>Thank you for your response and for outlining the concerns you wish to raise.</p>
+
+<p>We are now logging your concerns as a formal complaint and will begin our investigation into the points you have provided details below. We’ll do our best to resolve this as quickly as possible, but please note that a full review may take up to three working days.</p>
+
+<p>Your Complaint Points:</p>
+
+<ol>
+	<li>Point 1</li>
+	<li>Point 2</li>
+	<li>Point 3</li>
+</ol>
+
+<p>Please email us immediately if we have missed any of your points from your previous email, to avoid delays in your investigation.</p>
+
+<p>You will receive written confirmation of the outcome via email <b>within eight weeks</b>, in line with our complaints handling process. If you are dissatisfied with our final response, or if you do not receive a final response within eight weeks, you may refer your complaint to the Financial Ombudsman Service. We will provide details of how to do this in our hold letter should your complaint take more than 3 days to resolve.</p>
+
+<p>We appreciate your patience while we carry out our investigation and will keep you updated on our progress.</p>
+
+<p>If you have any further information you would like to share in the meantime, please don’t hesitate to get in touch.</p>
+</body>
+</html>

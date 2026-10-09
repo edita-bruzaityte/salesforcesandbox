@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PolicyNumberCantBeBlankIfSold</fullName>
+    <active>true</active>
+    <description>This rule will ensure Insurance Policy Number field is populated if case is being marked as sold</description>
+    <errorConditionFormula>AND(
+
+     RecordType.DeveloperName = &quot;Mini_Fleet_Queries&quot;,
+
+     ISBLANK(Insurance_Policy_Number2__c),
+
+     ISPICKVAL(Status, &#39;Closed - Sold&#39;)  
+
+
+
+)</errorConditionFormula>
+    <errorDisplayField>Insurance_Policy_Number2__c</errorDisplayField>
+    <errorMessage>Please add Insurance Policy Number</errorMessage>
+</ValidationRule>

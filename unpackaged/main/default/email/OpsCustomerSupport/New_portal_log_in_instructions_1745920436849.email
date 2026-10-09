@@ -1,0 +1,18 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p><span style="font-family:Arial,Helvetica,sans-serif;">Hi&nbsp;</span>{{{Case.Contact_First_Name__c}}},</p>
+
+<p><span style="font-family:Arial,Helvetica,sans-serif;">Thanks for your email. We launched a new portal on 11.03.25, which means if you were registered on the old portal or you are a brand new customer, you will have to register to our new customer portal to view your details and make limited changes. Please follow these steps to register to your new portal.</span></p>
+
+<ul>
+	<li><span style="font-family:Arial,Helvetica,sans-serif;">Go to <a href="http://www.admiralbusiness.com/">www.admiralbusiness.com</a> website</span></li>
+	<li><span style="font-family:Arial,Helvetica,sans-serif;">click ‘My account’</span></li>
+	<li><span style="font-family:Arial,Helvetica,sans-serif;">Create new account</span></li>
+	<li><span style="font-family:Arial,Helvetica,sans-serif;">Use the same email address you set the policy up on</span></li>
+	<li><span style="font-family:Arial,Helvetica,sans-serif;">Create a new password</span></li>
+</ul>
+</body>
+</html>

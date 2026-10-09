@@ -1,0 +1,109 @@
+<html><head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><div style="font-family: Poppins, sans-serif; width: 960px;"><img alt="ToolboxByAdmiral_printLogo-04" src="https://admiralorgid2021--c.documentforce.com/file-asset-public/ToolboxByAdmiral_printLogo04?oid=00D4K0000064IQx" style="max-width: 1188.55px; width: 306.992px; height: 53.9974px;" title="ToolboxByAdmiral_printLogo-04" /></div>
+
+<div style="font-family: Poppins, sans-serif; width: 960px; text-align: right;">Policy Number: {{{Case.Insurance_Policy_Number__c}}}<br />
+<br />
+<b>Date:<font color="#e74c3c">&nbsp;</font>{{{Case.Today_s_Date__c}}}</b></div>
+
+<div style="font-family: Poppins, sans-serif; width: 960px;"><br />
+<br />
+<br />
+<span style="color:#024eff;"><span style="font-size: 24px;"><b>Final feedback about your complaint.</b></span></span><br />
+<br />
+Hello&nbsp; {{{Recipient.FirstName}}},<br />
+<br />
+<b>Complaint Reference:</b>&nbsp; {{{Case.CaseNumber}}}<br />
+<br />
+<span style="color:#e6007e;">**Not spoken to the customer **</span><br />
+The Financial Ombudsman Service advises me you registered a complaint. They have asked me as a Customer Assurance Executive for Toolbox by Admiral to look into your concerns.<br />
+<br />
+We take all complaints seriously and would like to thank you for bringing this to our attention. I have completed my investigation into the matter for you, and I am now able to formally respond to you.<br />
+<br />
+<span style="color:#e6007e;">** Spoken to Customer **</span><br />
+Thank you for taking the time to speak to me on <span style="color:#e6007e;">&lt;Insert date last spoken with customer&gt;</span>.<br />
+<br />
+As I mentioned, I have recently been informed by the Financial Ombudsman Service that you have registered a complaint. They asked me, as a Customer Assurance Executive/Claims Complaint Executive for Toolbox by Admiral, to investigate your concerns.<br />
+<br />
+We take all complaints seriously and would like to thank you for bringing this matter to our attention.<br />
+<br />
+<b>Your Complaint</b><br />
+<br />
+I understand you are dissatisfied because of the following reasons:<br />
+<span style="color:#e6007e;">•&nbsp; &nbsp; &nbsp;&lt;complaint point 1&gt;<br />
+•&nbsp;</span> &nbsp; &nbsp; <span style="color:#e6007e;">&lt;complaint point 2&gt;<br />
+&lt;insert more complaint points as required&gt;<br />
+(if only 1 point this should be summarised and not bullet pointed)<br />
+&lt;Insert any other commentary as required e.g. vulnerability, specific circumstances&gt;</span><br />
+If my understanding of your complaint is incorrect, please let me know.<br />
+<br />
+<br />
+<b>Summary – Upheld</b><br />
+<br />
+Based on my investigation, I agree with your concerns in relation to <span style="color:#e6007e;">(names complaint points).........</span><br />
+<br />
+I would like to take the time to apologize for any inconvenience this may have caused.<br />
+<br />
+Please refer to my investigation where this will be explained in further detail.<br />
+<br />
+To correct matters I have arranged <span style="color:#e6007e;">..............X Y &amp; Z.....................................................</span><br />
+<br />
+<br />
+In recognition of our error, I am awarding the following compensation / have arranged to write off the following amount / or will refund the following amount:<br />
+<br />
+<span style="color:#e6007e;">•&nbsp; &nbsp; &nbsp;&lt;insert compensation/write off/refund amount and what it is for &gt;<br />
+•&nbsp;&nbsp; &nbsp; &lt;insert compensation/write off/refund amount and what it is for &gt;</span><br />
+<br />
+(Also include time frames for payments)<br />
+<br />
+<br />
+Refer to CHs if unsure if 8% interest is given – use para below, and ending para re HMRC<br />
+<br />
+In addition to this, simple interest of <b>8% per annum has been included within this amount.</b> This is to compensate you for not having access to this money from date payment taken to date payment returned. I have added interest to <span style="color:#e6007e;">&lt;insert the parts of redress that interest is being added to&gt;</span>, and the total interest payable to you is &lt; <span style="color:#9b59b6;"> <b>&pound;xx.xx</b></span>&gt;.<br />
+<br />
+We are required by law to report the interest part of the offer to HM Revenue &amp; Customs (HMRC). Please review the section at the end of the letter titled <b>‘Our obligation to HMRC’</b> for more information on this, and how it may affect you.<br />
+<br />
+<br />
+<b>Summary – Not Upheld</b><br />
+<br />
+Based on my investigation I can see no errors in the handling of your policy. I understand this will not be the response you were hoping for. Please refer to my investigation where this will be explained in further detail.<br />
+<br />
+If offering a goodwill gesture or policy amendment:<br />
+However, in the interest of bringing this complaint to a close I have arranged to:<br />
+<span style="color:#e6007e;">•&nbsp; &nbsp; &lt;write off/refund amount/Gesture of goodwill and what it is for &gt;<br />
+•&nbsp; &nbsp; &lt;write off/refund amount/Gesture of goodwill and what it is for &gt;</span><br />
+<br />
+<span style="color:#e6007e;">(Also include time frames for payments)</span><br />
+<br />
+<b>Investigation</b><br />
+<br />
+I have investigated <span style="color:#e6007e;">........x...y....&amp;......z................</span><br />
+I have also considered <span style="color:#e6007e;">.............................................................</span><br />
+I will also <span style="color:#e6007e;">&lt;insert remedial action to be completed&gt;.</span><br />
+<br />
+<span style="color:#e6007e;">(Rejected) (For rejected complaint points it is best to provide an explanation for why we are unable to agree with their concerns) If the complaint is process related (and rejected), to ensure the customer’s expectations are set and to help prevent repeat complaints, we need to make it clear that the process will remain unchanged. )</span><br />
+<br />
+<b>Conclusion</b><br />
+<br />
+This letter represents our final response to your complaint. We would like to thank you for bringing this matter to our attention and <span style="color:#e6007e;">Upheld:</span> for giving us an opportunity to put things right.<br />
+<span style="color:#e6007e;">Rejected:</span> allowing us to explain the reason for our actions.<br />
+<br />
+<br />
+I&nbsp;am sorry you have found it necessary to complain, at Toolbox by Admiral&nbsp;we take customer satisfaction seriously and aim to resolve all complaints fairly. While I hope my response answers your concerns, if you have any further queries or information which you may believe is relevant to this complaint, please contact me via the details at the top of this letter.<br />
+<br />
+You have the right to refer your complaint to the Financial Ombudsman Service, free of charge – but you must do so within six months of the date of this letter.<br />
+<br />
+If you do not refer your complaint in time, the Ombudsman will not have our permission to consider your complaint and so will only be able to do so in very limited circumstances. For example, if the Ombudsman believes that the delay was because of exceptional circum-stances.<br />
+<br />
+<br />
+Here is the link to <b>‘Your Complaint and the Ombudsman’</b>: <span style="color:#024eff;"><u><b>http://www.financial-ombuds man.org.uk/publications/consumer-leaflet.htm</b></u></span><br />
+<br />
+<br />
+You can find out more information about the <b>Financial Ombudsman</b> at: <span style="color:#024eff;"><u><b>http://www.financial-ombudsman.org.uk.</b></u></span><br />
+<br />
+<br />
+<br />
+<span style="color:#e6007e;">{{{Sender.Name}}}<br />
+<br />
+{{{Sender.Title}}}</span></div></body></html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PremiumCantBeBlank</fullName>
+    <active>true</active>
+    <description>This validation rule is here to ensure Premium field is never blank Mini Fleet Queries record type</description>
+    <errorConditionFormula>AND(
+
+     RecordType.DeveloperName = &quot;Mini_Fleet_Queries&quot;,
+
+     ISBLANK(Premium_Quoted__c),
+
+
+           OR(
+
+           ISPICKVAL(Status, &#39;Closed Declined Quote&#39;), 
+           ISPICKVAL(Status, &#39;Closed - Unable to Cover&#39;),  
+           ISPICKVAL(Status, &#39;Closed - Quoted NTU&#39;), 
+           ISPICKVAL(Status, &#39;Closed - Uncompetitive&#39;),
+           ISPICKVAL(Status, &#39;Closed - Sold&#39;)  
+
+
+
+     )
+
+
+)</errorConditionFormula>
+    <errorDisplayField>Premium_Quoted__c</errorDisplayField>
+    <errorMessage>Please populate Premium Quoted field</errorMessage>
+</ValidationRule>

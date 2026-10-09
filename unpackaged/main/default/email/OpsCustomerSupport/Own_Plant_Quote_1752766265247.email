@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p>Thanks for your email. We're happy to provide a quote via email for this cover. To ensure that the quote is accurate, please reply with your answers to the following two questions below:</p>
+
+<p><b>Own Plant</b>:&nbsp;</p>
+
+<ul>
+	<li>What level of cover do you require? (£10,000, £25,000 or £50,000) &nbsp;</li>
+	<li> What is maximum (actual) value of own plant that you require cover for?  &nbsp;</li>
+</ul>
+
+<p>Once we receive your response, we’ll prepare your quotation.</p>
+
+<p>&nbsp;</p>
+
+<p>Please note, if you decide to proceed, <b>endorsement documents confirming the changes will be sent via your preferred delivery method</b>. Please review these documents carefully.</p>
+</body>
+</html>

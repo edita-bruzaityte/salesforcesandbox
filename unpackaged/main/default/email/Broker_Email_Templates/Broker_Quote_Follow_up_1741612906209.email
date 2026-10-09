@@ -1,0 +1,13 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><span style="font-size:11pt"><span style="font-family:Aptos,sans-serif">Hi&nbsp;{{{Case.SuppliedEmail}}}</span></span><br />
+<span style="font-size:11pt"><span style="font-family:Aptos,sans-serif">&nbsp;</span></span><br />
+<span style="font-size:11pt"><span style="font-family:Aptos,sans-serif">Thanks for the recent quote enquiry.</span></span><br />
+<span style="font-size:11pt"><span style="font-family:Aptos,sans-serif">&nbsp;</span></span><br />
+<span style="font-size:11pt"><span style="font-family:Aptos,sans-serif">We trust the price and cover is suitable for the customer?&nbsp; If pricing is an issue, we may be able to offer a potential discount.</span></span><br />
+<span style="font-size:11pt"><span style="font-family:Aptos,sans-serif">&nbsp;</span></span><br />
+<span style="font-size:11pt"><span style="font-family:Aptos,sans-serif">Please let us know if any further assistance needed by replying to this email and any feedback would be greatly appreciated.</span></span><br />
+&nbsp;</body>
+</html>

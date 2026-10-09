@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lapsed_Policies_within_the_last_7_days</fullName>
+    <columns>Insured_Contact__c</columns>
+    <columns>Quote_Number__c</columns>
+    <columns>Name</columns>
+    <columns>RenewalDate</columns>
+    <columns>PremiumAmount</columns>
+    <columns>PolicyType</columns>
+    <columns>NameInsured</columns>
+    <columns>Cover_Level__c</columns>
+    <columns>Status</columns>
+    <columns>Trade__c</columns>
+    <columns>Net_Premium__c</columns>
+    <columns>Consent_to_Auto_Renew__c</columns>
+    <columns>Auto_Renewal__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status</field>
+        <operation>equals</operation>
+        <value>Lapsed</value>
+    </filters>
+    <filters>
+        <field>Renewal_Date__c</field>
+        <operation>equals</operation>
+        <value>LAST_N_DAYS:7</value>
+    </filters>
+    <label>Lapsed Policies within the last 7 days</label>
+</ListView>

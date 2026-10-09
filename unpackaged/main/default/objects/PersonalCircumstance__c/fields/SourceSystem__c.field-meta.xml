@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SourceSystem__c</fullName>
+    <description>Used to store where the personal circumstance was raised by the customer, e.g. claims/quote/pas/etc</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Use this to store where the customer first tell us about their circumstance e.g. Claims System</inlineHelpText>
+    <label>Source System</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Due_For_Renewal_14_Days__c</fullName>
+    <description>Goal is to flag policies due for renewal in 14 days. As soon as it meets the criteria, the scheduled flow will create a case for the team to follow up with the customer.</description>
+    <formula>AND(
+
+ISPICKVAL( Status , &quot;In The Renewal Cycle&quot;),
+Auto_Renewal__c = FALSE,
+Consent_to_Auto_Renew__c = FALSE,
+(DATEVALUE(RenewalDate) - TODAY())&lt;15,
+(DATEVALUE(RenewalDate) - TODAY())&gt;0
+
+
+
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Renewal due in 14 days or less</inlineHelpText>
+    <label>Due For Renewal 14 Days</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

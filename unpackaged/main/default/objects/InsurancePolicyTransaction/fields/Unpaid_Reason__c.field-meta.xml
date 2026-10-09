@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Unpaid_Reason__c</fullName>
+    <description>Reason this transaction did not go through</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Reason this transaction did not go through</inlineHelpText>
+    <label>Unpaid Reason</label>
+    <length>200</length>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

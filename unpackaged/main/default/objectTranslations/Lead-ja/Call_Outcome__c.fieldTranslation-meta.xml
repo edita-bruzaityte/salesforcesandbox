@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Call Outcome --></label>
+        <name>Call_Outcome__c</name>
+        <picklistValues>
+            <masterLabel>Don&#39;t need anymore</masterLabel>
+            <translation><!-- Don&apos;t need anymore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No answer, left vm</masterLabel>
+            <translation><!-- No answer, left vm --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quoted - bought</masterLabel>
+            <translation><!-- Quoted - bought --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quoted - didn&#39;t buy</masterLabel>
+            <translation><!-- Quoted - didn&apos;t buy --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

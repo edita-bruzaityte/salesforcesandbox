@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Send an email confirmation</description>
+        <name>Send_External_Email_Notification</name>
+        <label>Send External Email Notification</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.SuppliedEmail</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+                <stringValue>OrgWideEmailAddress</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <elementReference>varTideContactOutgoingEmailAddress</elementReference>
+                <inputConfiguratorMode>Resource</inputConfiguratorMode>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>composeEmailContent</name>
+            <value>
+                <stringValue>True</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>varEmailSubjectLine</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>varEmailTemplateBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>useLineBreaks</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>relatedRecordId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>addThreadingTokenToBody</name>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+        <versionString>1.0.1</versionString>
+    </actionCalls>
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <description>Variable storing email address auto-response should be going from - tide-contact@admiralbusiness.com</description>
+        <name>varTideContactOutgoingEmailAddress</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>tide-contact@admiralbusiness.com</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Response should go to the email captured in SUppliedEmail field</description>
+        <name>Check_if_SuppliedEmail_Captured</name>
+        <label>Check if SuppliedEmail Captured</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Email_Provided</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SuppliedEmail</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_External_Email_Notification</targetReference>
+            </connector>
+            <label>Email Provided</label>
+        </rules>
+    </decisions>
+    <description>As of 13.11.2025 this flow is being created to trigger custom auto-response message to one of the first partners (Tide)</description>
+    <environments>Default</environments>
+    <interviewLabel>Case (Partner) - Notifications {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case (Partner) - Notifications</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_if_SuppliedEmail_Captured</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>012Py000001FUwTIAW</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>Stores text for email subject line</description>
+        <name>varEmailSubjectLine</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Thanks for Contacting Admiral Business</text>
+    </textTemplates>
+    <textTemplates>
+        <description>Auto-response email body</description>
+        <name>varEmailTemplateBody</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hi there! &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt; Thank you for getting in touch. Your request has been received and logged under Case {!$Record.CaseNumber}. &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt; Our team will review the details and get back to you as soon as possible. &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt; If you need to reference this case in future correspondence, please include the case number in your subject line or message. &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Have a great day,&lt;/p&gt;&lt;p&gt; &lt;/p&gt;&lt;p&gt; Admiral Business Support Team&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://admiralorgid2021.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Jpeg&amp;amp;versionId=068Py000003BaBJ&amp;amp;operationContext=DELIVERY&amp;amp;contentId=05TPy000004IejS&amp;amp;page=0&amp;amp;d=/a/Py0000005L8f/LO2Vre62ylp2eddja2y8pBOFOJKy6giATLBvmxitxwM&amp;amp;oid=00DPt00000EIpyT&amp;amp;dpt=null&amp;amp;viewId=&quot;&gt;&lt;/p&gt;</text>
+    </textTemplates>
+</Flow>

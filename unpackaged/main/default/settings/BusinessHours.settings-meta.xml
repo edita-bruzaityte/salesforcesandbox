@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessHoursSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <businessHours>
+        <active>true</active>
+        <default>true</default>
+        <fridayEndTime>18:00:00.000Z</fridayEndTime>
+        <fridayStartTime>09:00:00.000Z</fridayStartTime>
+        <mondayEndTime>18:00:00.000Z</mondayEndTime>
+        <mondayStartTime>09:00:00.000Z</mondayStartTime>
+        <name>Default</name>
+        <thursdayEndTime>18:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>09:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Europe/London</timeZoneId>
+        <tuesdayEndTime>18:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>09:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>18:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>09:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>20:00:00.000Z</fridayEndTime>
+        <fridayStartTime>09:00:00.000Z</fridayStartTime>
+        <mondayEndTime>20:00:00.000Z</mondayEndTime>
+        <mondayStartTime>09:00:00.000Z</mondayStartTime>
+        <name>Sales Business Hours</name>
+        <sundayEndTime>17:00:00.000Z</sundayEndTime>
+        <sundayStartTime>13:00:00.000Z</sundayStartTime>
+        <thursdayEndTime>20:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>09:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Europe/London</timeZoneId>
+        <tuesdayEndTime>20:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>09:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>20:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>09:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <holidays>
+        <activityDate>2022-04-15</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>15th Apr 2022</name>
+    </holidays>
+    <holidays>
+        <activityDate>2022-04-18</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>18th Apr 2022</name>
+    </holidays>
+    <holidays>
+        <activityDate>2021-12-25</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>25th Dec 2021</name>
+    </holidays>
+    <holidays>
+        <activityDate>2021-12-26</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>26th Dec 2021</name>
+    </holidays>
+    <holidays>
+        <activityDate>2022-12-26</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>26th Dec 2022</name>
+    </holidays>
+    <holidays>
+        <activityDate>2021-12-27</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>27th Dec 2021</name>
+    </holidays>
+    <holidays>
+        <activityDate>2022-12-27</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>27th Dec 2022</name>
+    </holidays>
+    <holidays>
+        <activityDate>2021-12-28</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>28th Dec 2021</name>
+    </holidays>
+    <holidays>
+        <activityDate>2022-08-29</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>29th Aug 2022</name>
+    </holidays>
+    <holidays>
+        <activityDate>2022-06-02</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>2nd Jun 2022</name>
+    </holidays>
+    <holidays>
+        <activityDate>2022-05-02</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>2nd May 2022</name>
+    </holidays>
+    <holidays>
+        <activityDate>2021-08-30</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>30 Aug 2021</name>
+    </holidays>
+    <holidays>
+        <activityDate>2021-05-31</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>31st May 2021</name>
+    </holidays>
+    <holidays>
+        <activityDate>2022-01-03</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>3rd Jan 2022</name>
+    </holidays>
+    <holidays>
+        <activityDate>2022-06-03</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>3rd June 2022</name>
+    </holidays>
+    <holidays>
+        <activityDate>2021-05-03</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>3rd May 2021</name>
+    </holidays>
+    <holidays>
+        <businessHours>Default</businessHours>
+        <businessHours>Sales Business Hours</businessHours>
+        <isRecurring>true</isRecurring>
+        <name>Boxing Day</name>
+        <recurrenceDayOfMonth>26</recurrenceDayOfMonth>
+        <recurrenceMonthOfYear>December</recurrenceMonthOfYear>
+        <recurrenceStartDate>2024-12-26</recurrenceStartDate>
+        <recurrenceType>RecursYearly</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>Default</businessHours>
+        <businessHours>Sales Business Hours</businessHours>
+        <isRecurring>true</isRecurring>
+        <name>Christmas Day</name>
+        <recurrenceDayOfMonth>25</recurrenceDayOfMonth>
+        <recurrenceMonthOfYear>December</recurrenceMonthOfYear>
+        <recurrenceStartDate>2024-12-25</recurrenceStartDate>
+        <recurrenceType>RecursYearly</recurrenceType>
+    </holidays>
+    <holidays>
+        <activityDate>2026-05-04</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>Early May Bank Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2024-05-06</activityDate>
+        <businessHours>Default</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Early May bank holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2024-04-01</activityDate>
+        <businessHours>Default</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Easter Monday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2026-04-06</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>Easter Monday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2024-03-29</activityDate>
+        <businessHours>Default</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Good Friday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2026-04-03</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>Good Friday</name>
+    </holidays>
+    <holidays>
+        <businessHours>Default</businessHours>
+        <businessHours>Sales Business Hours</businessHours>
+        <isRecurring>true</isRecurring>
+        <name>New Year&#39;s Day</name>
+        <recurrenceDayOfMonth>1</recurrenceDayOfMonth>
+        <recurrenceMonthOfYear>January</recurrenceMonthOfYear>
+        <recurrenceStartDate>2025-01-01</recurrenceStartDate>
+        <recurrenceType>RecursYearly</recurrenceType>
+    </holidays>
+    <holidays>
+        <activityDate>2026-05-25</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>Spring Bank Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2024-05-27</activityDate>
+        <businessHours>Default</businessHours>
+        <businessHours>Sales Business Hours</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Spring bank holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2026-08-31</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>Summer Bank Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2024-08-26</activityDate>
+        <businessHours>Default</businessHours>
+        <businessHours>Sales Business Hours</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Summer bank holiday</name>
+    </holidays>
+</BusinessHoursSettings>

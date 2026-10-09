@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ComplaintContactCantBeBlank</fullName>
+    <active>true</active>
+    <description>Validation rule to ensure Contact field is populated before its being closed</description>
+    <errorConditionFormula>AND(
+ 
+    RecordType.DeveloperName = &#39;Complaints&#39;,
+    
+OR(
+     ISPICKVAL(Status, &#39;Closed - Upheld&#39;),
+     ISPICKVAL(Status, &#39;Closed - Not Upheld&#39;),
+     ISPICKVAL(Status, &#39;Closed - Redirected&#39;)
+   ),
+
+    ISBLANK(ContactId)
+
+)</errorConditionFormula>
+    <errorDisplayField>ContactId</errorDisplayField>
+    <errorMessage>Contact cannot be blank</errorMessage>
+</ValidationRule>

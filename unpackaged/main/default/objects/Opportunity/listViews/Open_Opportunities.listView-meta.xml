@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Open_Opportunities</fullName>
+    <columns>OPPORTUNITY.NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>OPPORTUNITY.STAGE_NAME</columns>
+    <columns>Package_Type__c</columns>
+    <columns>Cover_Level__c</columns>
+    <columns>Call_Back_Arrangement__c</columns>
+    <columns>Referral_Reason__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>OPPORTUNITY.STAGE_NAME</field>
+        <operation>notEqual</operation>
+        <value>Closed Won,Closed Lost</value>
+    </filters>
+    <filters>
+        <field>OPPORTUNITY.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Opportunity.New_Business_B2B</value>
+    </filters>
+    <label>Open Opportunities</label>
+</ListView>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LapseReasonMustBeRecordedWhenLapsed</fullName>
+    <active>true</active>
+    <description>Ask user to provide lapse reason when case is being closed using Lapsed status</description>
+    <errorConditionFormula>AND(
+
+  RecordType.DeveloperName = &#39;Failed_Renewals&#39;,
+  ISPICKVAL(Status, &#39;Lapsed&#39;),
+  ISPICKVAL(Lapsed_Reason__c, &#39;&#39; ),
+  $Profile.Name  =  &#39;Base Profile&#39;
+  
+
+
+
+)</errorConditionFormula>
+    <errorDisplayField>Lapsed_Reason__c</errorDisplayField>
+    <errorMessage>Please provide Lapsed Reason</errorMessage>
+</ValidationRule>

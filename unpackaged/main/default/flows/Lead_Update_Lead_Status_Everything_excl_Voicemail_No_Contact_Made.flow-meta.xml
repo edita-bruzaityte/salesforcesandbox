@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <description>Stores 4 call value</description>
+        <name>var4Calls</name>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>4.0</numberValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Check lead outcome value and end the process if field isnt populated</description>
+        <name>Check_if_Lead_Outcome_isBlank</name>
+        <label>Check if Lead Outcome isBlank</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Check_Lead_Outcome</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>isBlank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Lead_Outcome2__c</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>isBlank</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check what was the lead outcome updated to</description>
+        <name>Check_Lead_Outcome</name>
+        <label>Check Lead Outcome</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Move_Lead_to_Closed_Not_Converted</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Sold</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Lead_Outcome2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Sold</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Move_Lead_to_Converted</targetReference>
+            </connector>
+            <label>Sold</label>
+        </rules>
+        <rules>
+            <name>Callback_Arranged_or_Quoted_Follow_Up</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Lead_Outcome2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Callback arranged</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Lead_Outcome2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Quoted - Follow up</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Callback Arranged or Quoted Follow Up</label>
+        </rules>
+        <rules>
+            <name>Voicemail_or_No_Contact_Made</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Lead_Outcome2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Voicemail left</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Lead_Outcome2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>No contact made</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Voicemail or No Contact Made</label>
+        </rules>
+    </decisions>
+    <description>This flow will check the lead outcome to determine if lead needs to be closed to either closed converted or closed not converted. It handles everything except for the Voicemail left and No Contact Made values. This is handled with Voice Call - Update Lead Status (Voicemail &amp; No Contact Made) flow.</description>
+    <environments>Default</environments>
+    <interviewLabel>Lead - Update Lead Status (Everything excl. Voicemail &amp; No Contact Made) {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead - Update Lead Status (Everything excl. Voicemail &amp; No Contact Made)</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Update lead status to closed - not converted</description>
+        <name>Move_Lead_to_Closed_Not_Converted</name>
+        <label>Move Lead to Closed - Not Converted</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Closed - Not Converted</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update lead status to converted</description>
+        <name>Move_Lead_to_Converted</name>
+        <label>Move Lead to Converted</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Converted</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_if_Lead_Outcome_isBlank</targetReference>
+        </connector>
+        <filterLogic>1 AND (2 OR 3)</filterLogic>
+        <filters>
+            <field>Lead_Outcome2__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Nurturing</stringValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Total record count</description>
+        <name>varTotalVoiceCallRecordCount</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </variables>
+</Flow>

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>61.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Check if flow found record type and stored it in the variable</description>
+        <name>Check_if_Broker_Record_Type_was_found</name>
+        <label>Check if Broker Record Type was found</label>
+        <locationX>611</locationX>
+        <locationY>384</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Broker_Record_Type_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Broker_Record_Type</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_if_Contact_is_blank</targetReference>
+            </connector>
+            <label>Broker Record Type Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if Contact lookup hasnt been populated by the system</description>
+        <name>Check_if_Contact_is_blank</name>
+        <label>Check if Contact is blank</label>
+        <locationX>380</locationX>
+        <locationY>492</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>No_still_blank</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.ContactId</leftValueReference>
+                <operator>IsBlank</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Find_Account</targetReference>
+            </connector>
+            <label>No, still blank</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if matching broker account was found</description>
+        <name>Found_Broker_Account</name>
+        <label>Found Broker Account</label>
+        <locationX>182</locationX>
+        <locationY>708</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Broker_Account_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Find_Account</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_New_Contact</targetReference>
+            </connector>
+            <label>Broker Account Found</label>
+        </rules>
+    </decisions>
+    <description>If Contact hasnt been populated automatically, meaning contact doesnt exist on SF, this flow will find the account matching the same domain, will create new case and update it with newly created contact information.</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Extract email domain</description>
+        <name>varEmailDomain</name>
+        <dataType>String</dataType>
+        <expression>RIGHT({!$Record.SuppliedEmail}, LEN({!$Record.SuppliedEmail}) - FIND(&quot;@&quot;,{!$Record.SuppliedEmail}) + 1)</expression>
+    </formulas>
+    <formulas>
+        <description>Extract first name from SuppliedName field</description>
+        <name>varFirstName</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Record.SuppliedName}, FIND( &quot; &quot;, {!$Record.SuppliedName}) -1 )</expression>
+    </formulas>
+    <formulas>
+        <description>Extract Last Name from the SuppliedName field</description>
+        <name>varLastName</name>
+        <dataType>String</dataType>
+        <expression>RIGHT({!$Record.SuppliedName}, LEN({!$Record.SuppliedName}) - FIND(&quot; &quot;, {!$Record.SuppliedName}))</expression>
+    </formulas>
+    <interviewLabel>Case (Broker) - Create Contact &amp; Update Case {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case (Broker) - Create Contact &amp; Update Case</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Create a new contact record and link it to the account with the same domain</description>
+        <name>Create_New_Contact</name>
+        <label>Create New Contact</label>
+        <locationX>50</locationX>
+        <locationY>816</locationY>
+        <connector>
+            <targetReference>Update_Case</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>Find_Account.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Email</field>
+            <value>
+                <elementReference>$Record.SuppliedEmail</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>FirstName</field>
+            <value>
+                <elementReference>varFirstName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LastName</field>
+            <value>
+                <elementReference>varLastName</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Find account this incoming case belongs to</description>
+        <name>Find_Account</name>
+        <label>Find Account</label>
+        <locationX>182</locationX>
+        <locationY>600</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Found_Broker_Account</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Domain__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varEmailDomain</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Store Broker Record type in the variabel</description>
+        <name>Get_Broker_Record_Type</name>
+        <label>Get Broker Record Type</label>
+        <locationX>611</locationX>
+        <locationY>276</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Broker_Record_Type_was_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Broker Questions</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update case with new Contact information</description>
+        <name>Update_Case</name>
+        <label>Update Case</label>
+        <locationX>50</locationX>
+        <locationY>924</locationY>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>Create_New_Contact</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>72</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>SuppliedEmail</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SuppliedName</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <scheduledPaths>
+            <name>Run_after_1min</name>
+            <connector>
+                <targetReference>Get_Broker_Record_Type</targetReference>
+            </connector>
+            <label>Run after 1min</label>
+            <offsetNumber>1</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

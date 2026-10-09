@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ComplaintReasonCantBeBlank</fullName>
+    <active>true</active>
+    <description>This is to ensure Complaint Reason is populated before it is closed</description>
+    <errorConditionFormula>AND(
+
+RecordType.DeveloperName = &quot;Complaints&quot;,
+
+OR(
+   ISPICKVAL(Status, &#39;Closed - Upheld&#39;),
+   ISPICKVAL(Status, &#39;Closed - Not Upheld&#39;),
+   ISPICKVAL(Status, &#39;Closed - Redirected&#39;)
+
+),
+   ISPICKVAL(Complaint_Reason__c, &quot;&quot;)
+
+
+)</errorConditionFormula>
+    <errorDisplayField>Complaint_Reason__c</errorDisplayField>
+    <errorMessage>Please provide Complaint reason</errorMessage>
+</ValidationRule>

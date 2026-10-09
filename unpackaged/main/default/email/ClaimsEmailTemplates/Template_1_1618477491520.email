@@ -1,0 +1,35 @@
+<html><head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: 0%;">
+<div style="font-family: Poppins, sans-serif; width: 960px;"><img alt="ToolboxByAdmiral_printLogo-04" src="" style="max-width: 1188.55px; width: 306.992px; height: 53.9974px;" title="ToolboxByAdmiral_printLogo-04" />
+<p><span style="float:right;"><span>Policy Number:</span> {{{Case.Insurance_Policy_Number__c}}}</span></p>
+
+<p>&nbsp;</p>
+
+<p style="text-align: right;"><b>Date:<span style="float:right;">{{{Case.Today_s_Date__c}}}</span></b></p>
+
+<p><br />
+<br />
+<span style="color:#024eff;"><b><span style="font-size:24px;">Your settlement offer.</span></b></span><br />
+<br />
+<br />
+Hi {{{Recipient.FirstName}}},<br />
+<br />
+Thank you for providing and confirming that this is the available evidence to support your claim. Based on the evidence provided and following our recent communication, we are pleased to confirm the following aspects of your claim have been agreed and are ready for payment.<br />
+<br />
+The basis of the settlement is detailed below:<br />
+<br />
+Estimated claim amount: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; £ <span style="color: rgb(230, 0, 126);">[Insert estimated claim amount]</span><br />
+Actual claim amount:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;£ <span style="color: rgb(230, 0, 126);">[Insert actual claim amount]</span><br />
+Less Excess:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;£ <span style="color: rgb(230, 0, 126);">[Insert XS amount]</span><br />
+Remaining policy premium: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; £ <span style="color:#e6007e;">[Insert unpaid premium]</span><br />
+<b>Final settlement figure:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</b>£ <span style="color:#e6007e;">[Insert final premium]</span><br />
+<br />
+The final settlement figure will be paid into your bank account within&nbsp;[insert timescale]. This payment is the full and final settlement of your claim. If you have any questions, you can reply to this email where one of the claims team will be happy to help.<br />
+<br />
+Have a great day,<br />
+The <b>Toolbox </b>team</p>
+</div>
+
+</body></html>

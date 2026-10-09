@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Complaints_On_Hold_Internal_28_DaysEmail__c</fullName>
+    <label>Complaints On Hold Internal 28 DaysEmail</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>DateTime</type>
+</CustomField>

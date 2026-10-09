@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The Brand the policy is sold under eg. Toolbox, Admiral Business etc. --></help>
+        <label><!-- Affinity --></label>
+        <name>Affinity__c</name>
+        <picklistValues>
+            <masterLabel>Admiral Business</masterLabel>
+            <translation><!-- Admiral Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thomas Carroll</masterLabel>
+            <translation><!-- Thomas Carroll --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Toolbox by Admiral</masterLabel>
+            <translation><!-- Toolbox by Admiral --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

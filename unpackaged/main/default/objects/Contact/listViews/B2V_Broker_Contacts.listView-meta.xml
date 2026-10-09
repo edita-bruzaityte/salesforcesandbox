@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>B2V_Broker_Contacts</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>CONTACT.EMAIL</columns>
+    <columns>CONTACT.PHONE1</columns>
+    <columns>ACCOUNT.RECORDTYPE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>CONTACT.CREATED_DATE</columns>
+    <columns>Email_Opt_In__c</columns>
+    <columns>CONTACT.LEAD_SOURCE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CONTACT.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Contact.Broker</value>
+    </filters>
+    <label>B2B (Broker) Contacts</label>
+    <sharedTo>
+        <group>Broker_Sales_Team</group>
+        <group>Minifleet_Team</group>
+    </sharedTo>
+</ListView>

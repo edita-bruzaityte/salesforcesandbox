@@ -1,0 +1,59 @@
+<html><head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><div style="font-family: Poppins, sans-serif; width: 960px;"><img alt="ToolboxByAdmiral_printLogo-04" src="https://admiralorgid2021--c.documentforce.com/file-asset-public/ToolboxByAdmiral_printLogo04?oid=00D4K0000064IQx" style="max-width: 1188.55px; width: 306.992px; height: 53.9974px;" title="ToolboxByAdmiral_printLogo-04" />
+<p style="text-align: right;">Policy Number: {{{Case.Insurance_Policy_Number__c}}}<br />
+<br />
+<b>Date:<span style="color:#e6007e;">&nbsp;</span>{{{Case.Today_s_Date__c}}}</b></p>
+<br />
+<br />
+<br />
+<span style="color:#024eff;"><span style="font-size: 24px;"><b>Final feedback about your complaint.</b></span></span><br />
+<br />
+<br />
+Hello&nbsp; {{{Recipient.Name}}},<br />
+<br />
+<b>Complaint Reference:&nbsp;</b> {{{Case.CaseNumber}}}<br />
+<br />
+<br />
+Thank you for taking the time to contact us on <span style="color:#e6007e;">&lt;Date&gt;</span>. I’m sorry to hear you were unhappy with our service. We value our customer feedback and treat any concerns seriously.<br />
+<br />
+During our recent communication I explained I would treat your concerns as a complaint. I advised we were <span style="color:#e6007e;">upholding / unable to uphold</span> your complaint and you would receive confirmation of this in writing.<br />
+<br />
+In our conversation you confirmed I had addressed all your concerns, and we now consider your complaint to be resolved.<br />
+<br />
+<span style="color:#e6007e;">&lt;if redress awarded use following para&gt;</span><br />
+In recognition of our error, I’m awarding the following <span style="color:#e6007e;">compensation / have arranged to write off the following amount/s or will refund the following amount: &lt;describe as appropriate&gt;<br />
+•&nbsp; &nbsp;&lt;insert compensation/write off/refund amount and what it is for &gt;<br />
+•&nbsp; &nbsp;&lt;insert compensation/write off/refund amount and what it is for &gt;<br />
+•&nbsp; &nbsp; (Also include time frames for payments)<br />
+<br />
+Refer to CHs if unsure if 8% interest is given – if yes, use para below, and ending para re HMRC</span><br />
+<br />
+In addition to this, a simple <b>interest of 8% per annum has been included</b> within this amount. This is to compensate you for not having access to this money from <span style="color:#e6007e;">[add date payment]</span> taken to <span style="color:#e6007e;">[add date payment]</span> returned. I have added interest to <span style="color:#e6007e;">&lt;insert the parts of redress that interest is being added to&gt;</span>, and the total interest payable to you is <span style="color:#024eff;"><u><b>&lt;&pound;xx.xx&gt;</b></u><b><u>.</u></b></span> <span style="color:#e6007e;">[insert amount]</span><br />
+<br />
+We are required by law to report the interest part of the offer to HM Revenue &amp; Customs (HMRC). Please review the section at the end of the letter titled <b>‘Our obligation to HMRC’</b> for more information on this, and how it may affect you.<br />
+<br />
+If you have any further questions or queries please give us a call <span style="color:#024eff;"><u>0203 808 7099</u></span> or e-mail us at <span style="color:#024eff;">complaints@toolboxbyadmiral.com</span><br />
+<br />
+<b>You have the right to refer your complaint to the Financial Ombudsman Service, free of charge – but you must do so within six months of the date of this letter.</b><br />
+<br />
+If you do not refer your complaint in time, the Ombudsman will not have our permission to consider your complaint and so will only be able to do so in very limited circumstances. For example, if the Ombudsman believes that the delay was because of exceptional circumstances.<br />
+<br />
+Here is the link to <b>‘Your Complaint and the Ombudsman’:<span style="color:#024eff;"> </span></b> <a href="https://www.financial-ombudsman.org.uk/businesses/resolving-complaint/ordering-leaflet/leaflet"><span style="color:#024eff;"><u><b>https://www.financial-ombudsman.org.uk/businesses/resolving-complaint/ordering-leaflet/leaflet</b></u></span></a><br />
+<br />
+<br />
+<span style="color:#e6007e;">Refer to CHs if unsure if 8% interest is given – if it is not, delete this paragraph</span><br />
+<br />
+<b>Our Obligation to HMRC</b><br />
+<br />
+Please note that in accordance with current UK tax legislation, we are required to deduct basic rate income tax from the simple interest included in this settlement offer. The interest figure quoted above represents the net amount of interest payable to you, after the deduction of income tax.<br />
+<br />
+The interest payable to you is taxable income and is taxable in the tax year in which it is paid to you. It should be included on your self-assessment tax return if you are required to complete one. If you pay tax at higher rates you may have further income tax to pay on the interest received. Conversely, dependent upon your individual tax status, you might be able to reclaim the tax we have deducted from you. You will need to contact HMRC in order to do this. Please contact us if you require a tax certificate in order reclaim the tax element or to pay any further tax due.<br />
+<br />
+<br />
+<br />
+Thank you for your patience,<br />
+{{{Sender.Name}}}<br />
+<br />
+{{{Sender.Title}}}</div></body></html>

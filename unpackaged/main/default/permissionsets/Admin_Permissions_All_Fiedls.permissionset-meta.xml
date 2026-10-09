@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Add all new fields permissions here for easy admin access</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Admin Permissions - All Fiedls</label>
+</PermissionSet>

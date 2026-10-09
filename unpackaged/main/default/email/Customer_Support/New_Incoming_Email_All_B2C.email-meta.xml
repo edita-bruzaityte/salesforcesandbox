@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This will notify a group of people about incoming email against an open case</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>New Incoming Email - All (B2C)</name>
+    <style>none</style>
+    <subject>Customer Responded on Case {!Case.CaseNumber}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

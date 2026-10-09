@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Age2__c</fullName>
+    <description>Calculates the age of the lead if date of brith is provided</description>
+    <externalId>false</externalId>
+    <formula>IF(
+   
+   NOT(ISBLANK(DATEVALUE(Date_of_Birth__c))),
+
+   FLOOR((TODAY() - DATEVALUE( Date_of_Birth__c ))/365),
+
+   0
+
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Age</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

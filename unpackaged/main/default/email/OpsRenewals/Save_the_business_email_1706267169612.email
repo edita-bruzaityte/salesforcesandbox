@@ -1,0 +1,20 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Hi </span>{{{Case.Contact_First_Name__c}}},<span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">&nbsp;</span></p>
+
+<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">We appreciate you reaching out to us with your concerns about your renewal premium, and we want to assure you that your satisfaction is of utmost importance to us.</span></p>
+
+<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Firstly, we'd like to express our gratitude for your continued trust in Admiral Business. Your loyalty is highly valued, and we genuinely appreciate having you as our customer.</span></p>
+
+<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">We understand that the renewal premium has raised questions, and we'd welcome the opportunity to discuss this with you. Our aim is to ensure transparency and provide clarity on the factors influencing the premium. We believe a brief conversation could help address your concerns and potentially find a solution that better aligns with your expectations.</span></p>
+
+<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Could we schedule a convenient time for a quick call to discuss further? Your feedback is essential, and we want to make sure we're meeting your needs while offering competitive and fair pricing.</span></p>
+
+<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Thank you for bringing this matter to our attention. We look forward to the opportunity to discuss and find a resolution that leaves you satisfied.</span></p>
+
+<p>&nbsp;</p>
+</body>
+</html>

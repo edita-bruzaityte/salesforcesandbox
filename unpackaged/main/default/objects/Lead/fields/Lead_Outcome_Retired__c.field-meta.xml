@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Outcome_Retired__c</fullName>
+    <description>Capture the reason Lead is being moved to qualified - controlled via flow using Call a Call Tasks</description>
+    <externalId>false</externalId>
+    <label>Lead Outcome-Retired</label>
+    <length>200</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

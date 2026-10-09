@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FCA_Product_Type__c</fullName>
+    <inlineHelpText>AB product complaint relates to</inlineHelpText>
+    <label>FCA Product Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Tools</fullName>
+                <default>false</default>
+                <label>Tools</label>
+            </value>
+            <value>
+                <fullName>Haulage</fullName>
+                <default>false</default>
+                <label>Haulage</label>
+            </value>
+            <value>
+                <fullName>Public Liability</fullName>
+                <default>false</default>
+                <label>Public Liability</label>
+            </value>
+            <value>
+                <fullName>Professional Indemnity</fullName>
+                <default>false</default>
+                <label>Professional Indemnity</label>
+            </value>
+            <value>
+                <fullName>Taxi</fullName>
+                <default>false</default>
+                <label>Taxi</label>
+            </value>
+            <value>
+                <fullName>Van</fullName>
+                <default>false</default>
+                <label>Van</label>
+            </value>
+            <value>
+                <fullName>Salary Sacrifice</fullName>
+                <default>false</default>
+                <label>Salary Sacrifice</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Check if case hasnt been closed</description>
+        <name>Check_Case_Status</name>
+        <label>Check Case Status</label>
+        <locationX>374</locationX>
+        <locationY>276</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Case_Still_Open</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.IsClosed</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Run_Ownership_Check</targetReference>
+            </connector>
+            <label>Case Still Open</label>
+        </rules>
+    </decisions>
+    <description>Used to trigger another flow 2 hours after case is created.</description>
+    <environments>Default</environments>
+    <interviewLabel>Case - Scheduled Path - Run Ownership Check {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - Scheduled Path - Run Ownership Check</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Run_Ownership_Check</name>
+        <label>Update Run Ownership Check</label>
+        <locationX>242</locationX>
+        <locationY>384</locationY>
+        <inputAssignments>
+            <field>Run_Owner_Check__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <scheduledPaths>
+            <name>X2_Hours_Later</name>
+            <connector>
+                <targetReference>Check_Case_Status</targetReference>
+            </connector>
+            <label>2 Hours Later</label>
+            <maxBatchSize>50</maxBatchSize>
+            <offsetNumber>2</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

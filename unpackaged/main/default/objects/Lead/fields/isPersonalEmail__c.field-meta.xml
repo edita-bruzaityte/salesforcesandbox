@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>isPersonalEmail__c</fullName>
+    <formula>OR(
+   CONTAINS(Email, &quot;@gmail.com&quot;),
+   CONTAINS(Email, &quot;@yahoo.com&quot;),
+   CONTAINS(Email, &quot;@outlook.com&quot;),
+   CONTAINS(Email, &quot;@hotmail.com&quot;),
+   CONTAINS(Email, &quot;@icloud.com&quot;),
+   CONTAINS(Email, &quot;@hotmail.co.uk&quot;),
+   CONTAINS(Email, &quot;@yahoo.co.uk&quot;)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>isPersonalEmail</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

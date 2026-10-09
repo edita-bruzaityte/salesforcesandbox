@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Act as default owner for mini fleet related queries</description>
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>Mini Fleet Queue</name>
+    <queueMembers>
+        <users>
+            <user>ben.shearer@admiralpioneer.com</user>
+            <user>daniel.prince@admiralpioneer.com</user>
+            <user>edita.bruzaityte@admiralpioneer.com</user>
+            <user>edita.bruzaityte@admiralpioneer.com.test</user>
+            <user>edward.hill@admiralpioneer.com</user>
+            <user>james.croydon@admiralpioneer.com</user>
+            <user>jason.agbeko@admiralpioneer.com</user>
+            <user>laura.duffy@admiralpioneer.com</user>
+            <user>marcus.harry@admiralpioneer.com</user>
+            <user>matt.bugler@admiralpioneer.com</user>
+            <user>sree.uppu@admiralpioneer.com</user>
+            <user>stephanie.jarrett@admiralpioneer.com</user>
+            <user>victoria.johnston@admiralpioneer.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

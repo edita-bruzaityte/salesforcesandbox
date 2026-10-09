@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamlSsoConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+    <decryptionCertificate>0P1Py0000000Gnx</decryptionCertificate>
+    <identityLocation>SubjectNameId</identityLocation>
+    <identityMapping>FederationId</identityMapping>
+    <issuer>JumpCloud</issuer>
+    <loginUrl>https://sso.jumpcloud.com/saml2/salesforce-admiralbusiness</loginUrl>
+    <name>JumpCloud</name>
+    <oauthTokenEndpoint>https://admiralorgid2021--devbox.sandbox.my.salesforce.com/services/oauth2/token</oauthTokenEndpoint>
+    <redirectBinding>false</redirectBinding>
+    <requestSignatureMethod>1</requestSignatureMethod>
+    <requestSigningCertId>0P1Py0000000Gnx</requestSigningCertId>
+    <salesforceLoginUrl>https://admiralorgid2021--devbox.sandbox.my.salesforce.com?sc=0LEPy00000001Qj</salesforceLoginUrl>
+    <samlEntityId>https://admiralorgid2021.my.salesforce.com</samlEntityId>
+    <samlVersion>SAML2_0</samlVersion>
+    <useConfigRequestMethod>true</useConfigRequestMethod>
+    <useSameDigestAlgoForSigning>true</useSameDigestAlgoForSigning>
+    <userProvisioning>false</userProvisioning>
+    <validationCert>MIIFhzCCA2+gAwIBAgIVAIZO2pPmFVGnbH8XPCNxLRpetzLnMA0GCSqGSIb3DQEBCwUAMH0xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDTzEQMA4GA1UEBxMHQm91bGRlcjEYMBYGA1UEChMPQWRtaXJhbCBQaW9uZWVyMRkwFwYDVQQLExBKdW1wQ2xvdWRTQU1MSWRQMRowGAYDVQQDExFKdW1wQ2xvdWRTQU1MVXNlcjAeFw0yNTA5MTgwODE2MTlaFw0zMDA5MTgwODE2MTlaMH0xCzAJBgNVBAYTAlVTMQswCQYDVQQIEwJDTzEQMA4GA1UEBxMHQm91bGRlcjEYMBYGA1UEChMPQWRtaXJhbCBQaW9uZWVyMRkwFwYDVQQLExBKdW1wQ2xvdWRTQU1MSWRQMRowGAYDVQQDExFKdW1wQ2xvdWRTQU1MVXNlcjCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAN0WwOI9ClbW8QUfAKcldmU9OOxH/fJGlUKtwZZk1Y0+kYjQ4uOf7S9UNy5T2uSKJnpaojctumuIV/R8Dmz7I+gVbpp9lKCPEdmxx5w6a4lt4f3SImCDeRjwVKl8cjFJgEE8sgG9qjyiWvt5GWFSC1pWvuQScMwU/YD3e/DRKoOHQz6iBDutlI30l4m9llKcHJz7GgfG4EyqwwFYnuSp0drbj2R48anJgfEk6ab8/d0KPaBGCYGbm2OV8/zDz56rpigiyERpYWY6y8HMSdlksl2SkrvJ2IPfqUQ35T7PpYeY3frKXO0Lvf6VwcV3oVyv0MjlpI6C0NTOxGIN4qroDJuyc+mgdPy0XpYEF+tlY8vGFwRtNQFx5d/cV9nnS876hFiTyjRd3a6Tat7yvLDvRjR9DY3iF693QZlMECeU0hv1+ri1QepY1UX+ARmrquxgGoBw/Myxmpp0JOubdO1xZuqdgxdIeCXGkDssL4kRp4ZUGRU5hnJQMLGz7Scik1rU6QAryxnFYZMECrqvJU559NieNNIutV9JRMVoJZwCHNNV1Tw9/1XkMdT7ti7HjcKs92s5aRluJEDft6RpjO81kDu8cUBIKyfYLjTOciG2sYPV0JvOP0OxAkmAHDxy0044A1ZndrLIloEc0ESGhMQziJiTCfe/U0m2fL75c5hi9x+pAgMBAAEwDQYJKoZIhvcNAQELBQADggIBAIWvq6U6xDTf1ayjB/SwKEwclsFXur5RJO4ByfZ6hfC8d+p4I7oWRQ6a1qhPAfHmVjv5Va6+nG8qyUC+Hn4r3yZN0AQ2Lt3AUtOy21LIG7HUG+PFQL+KNYwtySv5lb+hlhApXCz1hUloH8kVZFtW0TNjxOyIt54U/aPLdo+zkHuhNVMATacptUe5zQYIlCZpbjRerkU5aLeqx/scwhGOEmvU3wBokG3t0HFkNk0fjfE8lfl36WncZ4G2JxvdXOs7gxdxwGFOTwfYD+hYafsNzKeaEDWx66ZRUlIGkJZRRlhPTlciEqlgzbg5IUrCPzNGqvZxEGgovlIfGoIluFUvy7vBL43WfwPTzBxAWkLVcuI0zXV/gUmx00W8yoq+PhkmPeeWLT8TG++Ed1EP7gev4AMu7vVrRsMVtpew9Q//aLNQCUZlj6Y7BmqmDl7G1qb4ojA/sIoTYxIHXlEBym0kQQklrwDiYRXOqvWPQwwiAA+T/VJXyRDsMjjEPpzim+20ewIjXu4JF3zz1lMr8oxJe4GNoNk2nob+u2ujzLv+cbMLSxQA1BQkmsEa9cMAotdLUXSuvld3Y2YM+7NrubrlHrZ5a2r6dlThrGxEZFo4F2IYJFPGlojZG0yH+UPqeabpTWHkQseWJlIzxZQETLhln7tGVmUSQrNiqVNr0/M9MbHY</validationCert>
+</SamlSsoConfig>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>📩  Final feedback about your complaint</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Email - 18 - AB -  CRS Complaint letter - page 1.</name>
+    <relatedEntityType>Case</relatedEntityType>
+    <style>none</style>
+    <subject>📩  Final feedback about your complaint</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

@@ -1,0 +1,49 @@
+<html><head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: 0%;">
+<div style="font-family: Poppins, sans-serif; width: 960px;"><img alt="ToolboxByAdmiral_printLogo-04" src="" style="max-width: 1188.55px; width: 306.992px; height: 53.9974px;" title="ToolboxByAdmiral_printLogo-04" />
+<p><span style="float:right;"><span>Policy Number:</span> {{{Case.Insurance_Policy_Number__c}}}</span></p>
+
+<p>&nbsp;</p>
+
+<p style="text-align: right;"><b>Date:{{{Case.Today_s_Date__c}}}</b></p>
+
+<p><br />
+<br />
+<span style="color:#024eff;"><b><span style="font-size:24px;">Your claim has been registered.</span></b></span><br />
+<br />
+<br />
+Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p>Thank you for registering your claim under your Tools &amp; Goods policy.</p>
+
+<p>We are sorry to hear about your loss. We appreciate your Tools &amp; Goods are important and we will work hard to settle your claim as soon as possible.<br />
+<br />
+<b>What happens now?</b><br />
+<br />
+Your claim has been sent to our dedicated Claims team, who will review the details of your online claim form. We will carry out some checks to ensure the information that we hold is accurate and the incident being claimed for is covered under the policy.</p>
+
+<p>If this has not been done so already, we kindly ask that any evidence to support your claim is emailed to us for review. Please note; in some circumstances we may require further evidence to support your claim. If this is the case, we will contact you via email to request additional supporting documentation (e.g. Proof of Ownership) or any additional information that we require to progress the claim. We are only able to settle claims which have been&nbsp;evidenced sufficiently. If we require additional evidence, your claim will be placed on hold.&nbsp;We may settle the claims for evidenced Tools &amp; Goods whilst we wait for the additional evidence for the remaining items.</p>
+
+<p>We understand you may have been limited in the number of items you could add on the customer portal when registering the claim. We apologise for any issues this may have caused. If you have any additional items and evidence you may want to pursue as part of this incident, please respond to this email outlining the details you couldn’t add previously with supporting evidence.</p>
+
+<p><b>Regarding your Settlement</b><br />
+<br />
+Any agreed settlement amount will be subject to the following deductions;</p>
+
+<ul>
+	<li>Excess payment of £100.</li>
+	<li>Any outstanding premium payments.</li>
+	<li>For customers who hold a Classic Policy with us, the relevant deduction depending on the age of the Tools &amp; Goods.</li>
+</ul>
+
+<p>If you need any extra help, check out the <b><a href="https://www.toolboxbyadmiral.com/faq/"><span style="color:#024eff;">FAQ</span></a></b> on our website.</p>
+
+<p>Alternatively, please send your query to&nbsp;<b>contact@toolboxbyadmiral.com</b>&nbsp;where one of our&nbsp;team will be happy to help.<br />
+<br />
+Have a great day,<br />
+The <b>Toolbox </b>team</p>
+</div>
+
+</body></html>

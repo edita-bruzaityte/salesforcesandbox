@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This is to restrict ability to modify fields that become editable as a default as soon as &#39;Edit&#39; permission is added to the permission set
+Created specifically for Claim Manager Permission set under ClaimManagerGroup permission set group</description>
+    <isLicensed>false</isLicensed>
+    <label>Contact - Cannot Edit fields</label>
+</CustomPermission>

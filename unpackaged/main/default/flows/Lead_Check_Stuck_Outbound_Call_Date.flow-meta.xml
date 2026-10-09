@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_Status</name>
+        <label>Check Status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Clear_Outbound_Call_Date</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>New_and_Nurturing</name>
+            <conditionLogic>(1 OR 2) AND 3</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>New</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Nurturing</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Duplicate__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Business_Hours</targetReference>
+            </connector>
+            <label>New and Nurturing</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <description>10.0 - The added minutes to the current datetime.
+1440 - The total number of minutes of the 24 hours.</description>
+        <name>currentDateTimePlus10Minutes</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW() + (10.0 / 1440)</expression>
+    </formulas>
+    <interviewLabel>Lead - Check Stuck Outbound Call Date {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead - Check Stuck Outbound Call Date</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Clear_Outbound_Call_Date</name>
+        <label>Clear Outbound Call Date</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>OP_OutboundCallAttempt__c</field>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OP_OutboundCallDate__c</field>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Outbound_Call_Date</name>
+        <label>Update Outbound Call Date</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>OP_OutboundCallDate__c</field>
+            <value>
+                <elementReference>Check_Business_Hours.output_DateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OP_OutboundCallDate__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>Stuck_Outbound_Call_Date</name>
+            <connector>
+                <targetReference>Check_Status</targetReference>
+            </connector>
+            <label>Stuck Outbound Call Date</label>
+            <offsetNumber>20</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <recordField>OP_OutboundCallDate__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <name>Check_Business_Hours</name>
+        <label>Check Business Hours</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Outbound_Call_Date</targetReference>
+        </connector>
+        <flowName>Lead_Check_Business_Hours</flowName>
+        <inputAssignments>
+            <name>input_DateTime</name>
+            <value>
+                <elementReference>currentDateTimePlus10Minutes</elementReference>
+            </value>
+        </inputAssignments>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </subflows>
+</Flow>

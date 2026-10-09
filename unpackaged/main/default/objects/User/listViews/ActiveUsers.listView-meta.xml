@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ActiveUsers</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>CORE.PROFILE.NAME</columns>
+    <columns>CORE.USERS.SAML_SUBJECT</columns>
+    <columns>CORE.USERS.USERNAME</columns>
+    <columns>CORE.USER_ROLE.NAME</columns>
+    <columns>CORE.USERS.LAST_LOGIN</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CORE.USERS.ACTIVE</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>CORE.USERS.FIRST_NAME</field>
+        <operation>notEqual</operation>
+        <value>Snowflake,Kingfisher</value>
+    </filters>
+    <filters>
+        <field>FULL_NAME</field>
+        <operation>notEqual</operation>
+        <value>Insights Integration,Integration User</value>
+    </filters>
+    <filters>
+        <field>FULL_NAME</field>
+        <operation>notEqual</operation>
+        <value>Integration User,Minifleet Integration</value>
+    </filters>
+    <label>Active Users</label>
+</ListView>

@@ -1,0 +1,10 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p>We wanted to confirm that Admiral Business is aware that (interested party name) has a financial interest in the work being carried out by (customers business name) and is an interested party. We have noted this on your Public Liability Insurance.&nbsp;</p>
+</body>
+</html>

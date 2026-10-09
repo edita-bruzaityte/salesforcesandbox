@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Account_Broker_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Contact_Record_Page_temp</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+    </actionOverrides>
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <description>This is temporary app for users from another Pioneer business to allow support Minifleet launch.
+OWD need to be adjusted to completely separate B2B from B2C and due to the concerns about live data and people being on leave, we&#39;ll use this in the interim.</description>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>true</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Admiral Business</label>
+    <navType>Console</navType>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MiniFleetRecordPage</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Case</pageOrSobjectType>
+        <recordType>Case.Mini_Fleet_Queries</recordType>
+        <type>Flexipage</type>
+        <profile>Base Profile (Agent)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Broker_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Broker</recordType>
+        <type>Flexipage</type>
+        <profile>Base Profile (Agent)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>MiniFleetRecordPage</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Case</pageOrSobjectType>
+        <recordType>Case.Mini_Fleet_Queries</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>ContactBrokerRecordPage</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Broker</recordType>
+        <type>Flexipage</type>
+        <profile>Base Profile (Agent)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>ContactBrokerRecordPage</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Broker</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>ContactBrokerRecordPage</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Contact</pageOrSobjectType>
+        <recordType>Contact.Broker</recordType>
+        <type>Flexipage</type>
+        <profile>B2B Profile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Account_Broker_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Account</pageOrSobjectType>
+        <recordType>Account.Broker</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Case_Record_Page_Broker</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Case</pageOrSobjectType>
+        <recordType>Case.Broker_Questions</recordType>
+        <type>Flexipage</type>
+        <profile>Base Profile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Case_Record_Page_Broker</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Case</pageOrSobjectType>
+        <recordType>Case.Broker_Questions</recordType>
+        <type>Flexipage</type>
+        <profile>B2B Profile</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Case_Record_Page_Broker</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Case</pageOrSobjectType>
+        <recordType>Case.Broker_Questions</recordType>
+        <type>Flexipage</type>
+        <profile>Base Profile (Agent)</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Case_Record_Page_Broker</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Case</pageOrSobjectType>
+        <recordType>Case.Broker_Questions</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>standard-Case</tabs>
+    <tabs>standard-Task</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Admiral_Business_UtilityBar</utilityBar>
+    <workspaceConfig>
+        <mappings>
+            <tab>standard-Account</tab>
+        </mappings>
+        <mappings>
+            <tab>standard-Case</tab>
+        </mappings>
+        <mappings>
+            <tab>standard-Contact</tab>
+        </mappings>
+        <mappings>
+            <tab>standard-Dashboard</tab>
+        </mappings>
+        <mappings>
+            <tab>standard-Task</tab>
+        </mappings>
+    </workspaceConfig>
+</CustomApplication>

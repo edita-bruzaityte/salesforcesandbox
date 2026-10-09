@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p><br />
+Thank you for your email.</p>
+
+<p>Please confirm the following details so we can provide a quote:</p>
+
+<ul>
+	<li>Date of change:</li>
+	<li>Number of staff to add:</li>
+	<li>Are they manual or clerical workers?</li>
+	<li>Are they paid below the PAYE threshold?</li>
+	<li>Are they on payroll or labour-only subcontractors?</li>
+</ul>
+
+<p><b>Please note:</b> We will automatically include £10 million of Employers' Liability cover, which is a legal requirement for all employees. All prices include 12% IPT.</p>
+</body>
+</html>

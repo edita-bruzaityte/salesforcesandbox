@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Limit_of_Indemnity__c</fullName>
+    <inlineHelpText>Cover amount if Additional Product has been selected</inlineHelpText>
+    <label>Limit of Indemnity</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>1K</fullName>
+                <default>false</default>
+                <label>1K</label>
+            </value>
+            <value>
+                <fullName>5K</fullName>
+                <default>false</default>
+                <label>5K</label>
+            </value>
+            <value>
+                <fullName>10K</fullName>
+                <default>false</default>
+                <label>10K</label>
+            </value>
+            <value>
+                <fullName>15K</fullName>
+                <default>false</default>
+                <label>15K</label>
+            </value>
+            <value>
+                <fullName>20K</fullName>
+                <default>false</default>
+                <label>20K</label>
+            </value>
+            <value>
+                <fullName>25K</fullName>
+                <default>false</default>
+                <label>25K</label>
+            </value>
+            <value>
+                <fullName>50K</fullName>
+                <default>false</default>
+                <label>50K</label>
+            </value>
+            <value>
+                <fullName>100K</fullName>
+                <default>false</default>
+                <label>100K</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

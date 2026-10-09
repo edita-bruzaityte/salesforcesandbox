@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Legal Expenses Limit of Indemnity --></help>
+        <label><!-- Legal Expenses --></label>
+        <name>Legal_Expenses__c</name>
+    </CustomFieldTranslation>

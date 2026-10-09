@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Complaint_Open_Age__c</fullName>
+    <description>This is Admin eyes only field, which will help manage Complaint process - this field will be updated on regular intervals to track the age and based on that, internal tasks will be generated. 
+2 flows involved in the process:
+Case - Complaints - 72 hour Email (trigger)
+Case - Complaints - 72 hours Email</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Track open complaint age up until 56 working days.</inlineHelpText>
+    <label>Complaint Open Age</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

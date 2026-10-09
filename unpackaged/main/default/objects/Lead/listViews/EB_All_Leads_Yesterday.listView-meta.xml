@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EB_All_Leads_Yesterday</fullName>
+    <booleanFilter>1 AND 2 AND (3 OR 4) AND 5 AND 6 AND 7</booleanFilter>
+    <columns>FULL_NAME</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>LEAD.PHONE</columns>
+    <columns>Postcode__c</columns>
+    <columns>LEAD.STATUS</columns>
+    <columns>Outbound_Calls__c</columns>
+    <columns>Inbound_Calls__c</columns>
+    <columns>Quoted_Price__c</columns>
+    <columns>LEAD.CREATED_DATE</columns>
+    <columns>Policy_Type__c</columns>
+    <columns>Reason_for_Cover__c</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>Trade__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>LEAD.CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>YESTERDAY</value>
+    </filters>
+    <filters>
+        <field>LEAD.STATUS</field>
+        <operation>equals</operation>
+        <value>New,Nurturing</value>
+    </filters>
+    <filters>
+        <field>Quoted_Price__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>200</value>
+    </filters>
+    <filters>
+        <field>Trade__c</field>
+        <operation>equals</operation>
+        <value>Tree Surgeon</value>
+    </filters>
+    <filters>
+        <field>Outbound_Calls__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Policy_Type__c</field>
+        <operation>equals</operation>
+        <value>AB Liability,Tools</value>
+    </filters>
+    <filters>
+        <field>Outbound_Calls__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>All Leads - Yesterday</label>
+    <sharedTo>
+        <role>Sales_Manager</role>
+        <role>Supervisor</role>
+    </sharedTo>
+</ListView>

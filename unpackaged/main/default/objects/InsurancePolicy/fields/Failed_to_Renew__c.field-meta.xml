@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Failed_to_Renew__c</fullName>
+    <description>This formula looks at multiple fields on the record to determine if policy failed to renew</description>
+    <formula>AND(
+
+    ISPICKVAL( Status , &quot;In The Renewal Cycle&quot;),
+    Auto_Renewal__c = TRUE,
+    Consent_to_Auto_Renew__c = TRUE,
+    (DATEVALUE(RenewalDate) - TODAY())&lt;8,
+    (DATEVALUE(RenewalDate) - TODAY())&gt;0
+
+
+
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>This policy failed to renew</inlineHelpText>
+    <label>Failed to Renew</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

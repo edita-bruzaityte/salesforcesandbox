@@ -1,0 +1,48 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><img alt="AdmiralBusiness_logo-CMYK" src="" style="max-width: 688.77px; width: 267px; height: 80.8542px;" title="AdmiralBusiness_logo-CMYK" />
+<div style="font-family: Poppins, sans-serif; width: 960px;">
+<p style="text-align: right;">Policy Number:&nbsp;{{{Case.Insurance_Policy_Number__c}}}</p>
+
+<p style="text-align: right;"><b>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Date:<font color="#e74c3c">&nbsp;</font>{{{Case.Today_s_Date__c}}}</b></p>
+<br />
+<br />
+<br />
+<span style="color:#024eff;"><span style="font-size: 24px;"><b>We are reviewing your complaint.</b></span></span><br />
+<br />
+<br />
+Hello&nbsp; {{{Recipient.Name}}},<br />
+<br />
+<b>Complaint Reference:&nbsp;</b> {{{Case.CaseNumber}}}<br />
+<br />
+Thank you for your recent <span style="color:#e6007e;">e-mail/ telephone call/ letter/ webchat.</span><br />
+<br />
+I am sorry that you have been unhappy with our service recently. I would like to reassure you that we take all concerns seriously, so are treating this as a complaint.&nbsp;<br />
+<br />
+We will provide an update on progress within four weeks of this letter. Whilst we are required by the Financial Conduct Authority to reply to complaints within eight weeks, we aim to provide you with a full response much sooner.<br />
+<br />
+If you have any questions or queries in the meantime, please contact us on:<br />
+<br />
+<br />
+<span style="color:#024eff;"><u>0203 808 7099</u></span> or e-mail us at <span style="color:#024eff;">complaints@admiralbusiness.com</span><br />
+<br />
+I would like to take this opportunity to provide a copy of our guide to handling your complaint. This can be found on the following page.<br />
+<br />
+Thank you for your patience while we review the matter.<br />
+<br />
+<br />
+{{{Sender.Name}}}<br />
+<br />
+{{{Sender.Title}}}</div>
+
+<div id="" style="left: 8px; top: 8px;">&nbsp;</div>
+
+<div id="" style="left: 8px; top: 8px;">&nbsp;</div>
+
+<div id="" style="left: 8px; top: 8px;">&nbsp;</div>
+
+<div id="" style="left: 8px; top: 8px;">&nbsp;</div>
+</body>
+</html>

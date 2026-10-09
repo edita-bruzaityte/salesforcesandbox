@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Payment Method --></label>
+        <name>Payment_Method__c</name>
+        <picklistValues>
+            <masterLabel>PerMonth</masterLabel>
+            <translation><!-- PerMonth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PerYear</masterLabel>
+            <translation><!-- PerYear --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

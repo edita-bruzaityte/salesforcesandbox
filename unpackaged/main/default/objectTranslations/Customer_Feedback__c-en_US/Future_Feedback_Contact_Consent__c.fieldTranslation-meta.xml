@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- For question - Would you be open to being contacted in the future for feedback? --></help>
+        <label><!-- Future Feedback Contact Consent --></label>
+        <name>Future_Feedback_Contact_Consent__c</name>
+    </CustomFieldTranslation>

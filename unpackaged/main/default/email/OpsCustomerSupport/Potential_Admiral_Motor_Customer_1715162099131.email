@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<table cellpadding="0" cellspacing="0">
+	
+		<tr>
+			<td valign="top">
+			<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Hi </span>{{{Case.Contact_First_Name__c}}}<span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">,</span></p>
+
+			<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Thanks for your email, it sounds like you may be referring to a motor insurance policy that you have with Admiral and not a small business commercial policy. If this is correct, you need to contact Admiral motor direct as we can only deal with commercial business policies at Admiral Business. Unfortunately, we will not be able to help in relation to any motor policies.</span></p>
+
+			<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Please find contact details to Admiral Insurance (motor) below:</span></p>
+
+			<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Telephone:&nbsp;0333 222 6715</span></p>
+
+			<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Emails are below:<br />
+			<a href="mailto:customerservices@admiral.com">customerservices@admiral.com</a>,</span><br />
+			<span style="font-family:Tomaha,Arial,Helvetica,sans-serif;"><a href="mailto:renewals@admiral.com">renewals@admiral.com</a></span></p>
+			</td>
+		</tr>
+	
+</table>
+</body>
+</html>

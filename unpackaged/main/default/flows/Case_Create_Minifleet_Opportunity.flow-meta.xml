@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <description>Stores Minifleet products name</description>
+        <name>varProductName</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>MIni Fleet Insurance</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Check if contact information is being sent</description>
+        <name>Check_if_Contact_provided</name>
+        <label>Check if Contact provided</label>
+        <locationX>858</locationX>
+        <locationY>323</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Contact_Provided</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Contact.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_New_Policy_Record_Type</targetReference>
+            </connector>
+            <label>Contact Provided</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if Pricebook Entry for Minifleet record was found</description>
+        <name>Check_if_Pricebook_Entry_was_found</name>
+        <label>Check if Pricebook Entry was found</label>
+        <locationX>182</locationX>
+        <locationY>971</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Pricebook_Entry</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Price_Book_Entry_for_Minifleet</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Opportunity</targetReference>
+            </connector>
+            <label>Found Pricebook Entry</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_if_Pricebook_was_found</name>
+        <label>Check if Pricebook was found</label>
+        <locationX>380</locationX>
+        <locationY>755</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Pricebook</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Price_Book</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Price_Book_Entry_for_Minifleet</targetReference>
+            </connector>
+            <label>Found Pricebook</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>did we find record type we&#39;re looking for</description>
+        <name>Check_if_record_type_was_found</name>
+        <label>Check if record type was found</label>
+        <locationX>611</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_record_type</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_New_Policy_Record_Type</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Price_Book</targetReference>
+            </connector>
+            <label>Found record type</label>
+        </rules>
+    </decisions>
+    <description>When minifleet case comes in from broker portal to SF, trigger this flow to create an opportunity record so sales can be track using best practices</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Create a formula to generate unique opportunity name</description>
+        <name>varOpportunityName</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Subject} + {!$Record.Account.Name}</expression>
+    </formulas>
+    <interviewLabel>Case - Create Minifleet Opportunity {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - Create Minifleet Opportunity</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <description>Create opportunity using triggering case information</description>
+        <name>Create_Opportunity</name>
+        <label>Create Opportunity</label>
+        <locationX>50</locationX>
+        <locationY>1079</locationY>
+        <assignRecordIdToReference>recordId</assignRecordIdToReference>
+        <connector>
+            <targetReference>Create_Opportunity_Product</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>$Record.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>CloseDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LeadSource</field>
+            <value>
+                <stringValue>Portal</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>varOpportunityName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_New_Policy_Record_Type.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordCreates>
+    <recordCreates>
+        <description>Create opportunity product that can be linked to the opportunity</description>
+        <name>Create_Opportunity_Product</name>
+        <label>Create Opportunity Product</label>
+        <locationX>50</locationX>
+        <locationY>1187</locationY>
+        <connector>
+            <targetReference>Update_Case_with_new_Opportunity_details</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>OpportunityId</field>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Product2Id</field>
+            <value>
+                <elementReference>Price_Book_Entry_for_Minifleet.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Quantity</field>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>UnitPrice</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <object>OpportunityLineItem</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Find record type for new policy</description>
+        <name>Get_New_Policy_Record_Type</name>
+        <label>Get New Policy Record Type</label>
+        <locationX>611</locationX>
+        <locationY>431</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_record_type_was_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>New_Insurance_Policy</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Opportunity</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Find standard price book</description>
+        <name>Get_Price_Book</name>
+        <label>Get Price Book</label>
+        <locationX>380</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Pricebook_was_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsStandard</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Pricebook2</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Find mini fleet product under the standard book</description>
+        <name>Price_Book_Entry_for_Minifleet</name>
+        <label>Price Book Entry for Minifleet</label>
+        <locationX>182</locationX>
+        <locationY>863</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Pricebook_Entry_was_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Pricebook2Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Price_Book.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varProductName</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PricebookEntry</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Once opportunity and opportunity products are created link the id of that opportunity to the case that triggered the case</description>
+        <name>Update_Case_with_new_Opportunity_details</name>
+        <label>Update Case with new Opportunity details</label>
+        <locationX>50</locationX>
+        <locationY>1295</locationY>
+        <inputAssignments>
+            <field>Opportunity__c</field>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>732</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_if_Contact_provided</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>012Py000000zjWTIAY</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <description>Opportunity record id</description>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

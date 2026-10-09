@@ -1,0 +1,10 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Hi </span>{{{Case.Contact_First_Name__c}}},<br />
+<span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">&nbsp;<br />
+Thanks for your email, unfortunately the address you have provided does not match the address on this policy, please confirm the correct address/postcode so we can proceed with cancellation.<br />
+<br />
+Alternatively, please call our service team from 9:00 to 18:00 Monday to Friday (excluding bank holidays) or you can reply to this email.</span></body>
+</html>

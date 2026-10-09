@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Admiral Group</fullName>
+        <default>false</default>
+        <label>Admiral Group</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Cancellation</fullName>
+        <default>false</default>
+        <label>Cancellation</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Changes to my policy</fullName>
+        <default>false</default>
+        <label>Changes to my policy</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Claims</fullName>
+        <default>false</default>
+        <label>Claims</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Customer Account</fullName>
+        <default>false</default>
+        <label>Customer Account</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Document Request/Update</fullName>
+        <default>false</default>
+        <label>Document Request/Update</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>MTA</fullName>
+        <default>false</default>
+        <label>MTA</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Payment</fullName>
+        <default>false</default>
+        <label>Payment</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Policy Acceptance</fullName>
+        <default>false</default>
+        <label>Policy Acceptance</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Price Match</fullName>
+        <default>false</default>
+        <label>Price Match</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Quote</fullName>
+        <default>false</default>
+        <label>Quote</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Renewal</fullName>
+        <default>false</default>
+        <label>Renewal</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Spam</fullName>
+        <default>false</default>
+        <label>Spam</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>System issues</fullName>
+        <default>false</default>
+        <label>System issues</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>Underwriting Query</fullName>
+        <default>false</default>
+        <label>Underwriting Query</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+    <standardValue>
+        <fullName>General Question</fullName>
+        <default>false</default>
+        <label>General Question</label>
+        <cssExposed>false</cssExposed>
+    </standardValue>
+</StandardValueSet>

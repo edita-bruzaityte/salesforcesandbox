@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Original version we went live with - dead links, no image on the other end.This template will be used to invite existing customers to participate in Refer a Friend</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>RAF Invite Template (Archived)</name>
+    <relatedEntityType>Contact</relatedEntityType>
+    <style>none</style>
+    <subject>Fancy a £30 Amazon voucher?</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

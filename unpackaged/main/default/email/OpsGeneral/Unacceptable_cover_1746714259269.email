@@ -1,0 +1,12 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}}</p>
+
+<p>Thanks for your recent enquiry.&nbsp;</p>
+
+<p>Unfortunately, we are unable to provide insurance for the cover you have requested. However, we can recommend Cowen’s Insurance, who may be able to assist you further. Please confirm if you would like us to share your information with them so they can contact you with a quote as soon as possible?</p>
+</body>
+</html>

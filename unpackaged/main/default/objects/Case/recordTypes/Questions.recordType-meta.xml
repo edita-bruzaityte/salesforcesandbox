@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Questions</fullName>
+    <active>true</active>
+    <businessProcess>Questions Management</businessProcess>
+    <compactLayoutAssignment>Case_Lightning_Compact_Layout</compactLayoutAssignment>
+    <description>Questions record type.</description>
+    <label>Questions</label>
+    <picklistValues>
+        <picklist>Additional_Products__c</picklist>
+        <values>
+            <fullName>Gadget Insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Goods in Transit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Legal Expenses</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Motor Legal Protection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>N%2FA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tools</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>CRS_letter_email_issued__c</picklist>
+        <values>
+            <fullName>Email Issued</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Letter</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Case_Sub_Reason__c</picklist>
+        <values>
+            <fullName>Accept a quote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Amend an existing quote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancel my policy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Change my contact details</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coverage question</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Discuss my renewal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Get a new quote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Make a change to my policy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Query in relation to cancellation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renew my policy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Request a call back</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Request new policy documents</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Set up online account</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stop my renewal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Update my payment details</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Update my personal details</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Channel__c</picklist>
+        <values>
+            <fullName>Broker</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Connect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct Offline</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Direct Online</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Complaint_Brand__c</picklist>
+        <values>
+            <fullName>Gladiator</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tool Box by Admiral</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Complaint_Investigation_Outcome__c</picklist>
+        <values>
+            <fullName>Human error</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Process</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>System error</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Complaint_Reason__c</picklist>
+        <values>
+            <fullName>Cancellation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renewal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spam</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Complaint_Trigger__c</picklist>
+        <values>
+            <fullName>Financial Loss</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Material Distress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Material Inconvenience</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Decline_Reason__c</picklist>
+        <values>
+            <fullName>Area</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fleet rated %3C 3 years</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GVW %3E 10T</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hazardous goods</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hazardous locations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NCB%2FNCD rated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Poor claims record</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prestige vehicles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seen elsewhere</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Too keen on price</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trade%2Foccupation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Young%2Finexperienced drivers</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Department__c</picklist>
+        <values>
+            <fullName>Claims</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renewals</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FCA_Cause_Code__c</picklist>
+        <values>
+            <fullName>Advising%2C Selling and arranging</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General%2C Admin%2C Customer Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Information%2C Sums%2C Charges%2C performance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment related</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FCA_Partner__c</picklist>
+        <values>
+            <fullName>Admiral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Manchester</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mclays</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FCA_Product_Type__c</picklist>
+        <values>
+            <fullName>Haulage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public Liability</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tools</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FOS_decision__c</picklist>
+        <values>
+            <fullName>Decision Pending</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not Upheld</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Upheld</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Lapsed_Reason__c</picklist>
+        <values>
+            <fullName>Cost</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Doesn%27t have receipts</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Going to another provider</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No longer trading</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Limit_of_Indemnity__c</picklist>
+        <values>
+            <fullName>100K</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>10K</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>15K</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>1K</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>20K</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>25K</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>50K</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>5K</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Origin</picklist>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason</picklist>
+        <values>
+            <fullName>Admiral Group</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancellation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Changes to my policy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Claims</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Account</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Question</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Payment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Policy Acceptance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renewal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spam</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>System issues</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Root_Cause__c</picklist>
+        <values>
+            <fullName>Customer Error</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Human error</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Process Error %28lack or absence%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>System error</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Question</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

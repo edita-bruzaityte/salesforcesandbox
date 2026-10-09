@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Check incoming case record type</description>
+        <name>Incoming_Case_record_type</name>
+        <label>Incoming Case record type</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>General_Queries</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_General_Questions_Record_Type.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Route_Cases</targetReference>
+            </connector>
+            <label>General Queries</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if record type was found</description>
+        <name>Record_Type_Found</name>
+        <label>Record Type Found</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_record_type</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_General_Questions_Record_Type</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Incoming_Case_record_type</targetReference>
+            </connector>
+            <label>Found record type</label>
+        </rules>
+    </decisions>
+    <description>This flow will check what cases are coming in and call relevant sub-flows to route them to appropriate team</description>
+    <environments>Default</environments>
+    <interviewLabel>Case - Incoming Webform Case Trigger {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - Incoming Webform Case Trigger</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_General_Questions_Record_Type</name>
+        <label>Get General Questions Record Type</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Record_Type_Found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Case</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Questions</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_General_Questions_Record_Type</targetReference>
+        </connector>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <subflows>
+        <description>Run data protection using provided DOB and postcode</description>
+        <name>Data_Protection_Checks</name>
+        <label>Data Protection Checks</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <flowName>Case_Data_Protection_Match_Checks</flowName>
+        <inputAssignments>
+            <name>recordid</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>varDOBMatch</name>
+            <value>
+                <elementReference>$Record.DOB_Match__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>varPostcodeMatch</name>
+            <value>
+                <elementReference>$Record.Postcode_Match__c</elementReference>
+            </value>
+        </inputAssignments>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </subflows>
+    <subflows>
+        <description>Call omnichannel flow to route case to relevant team</description>
+        <name>Route_Cases</name>
+        <label>Route Cases</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Data_Protection_Checks</targetReference>
+        </connector>
+        <flowName>Case_Route_Cases</flowName>
+        <inputAssignments>
+            <name>recordid</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
+</Flow>

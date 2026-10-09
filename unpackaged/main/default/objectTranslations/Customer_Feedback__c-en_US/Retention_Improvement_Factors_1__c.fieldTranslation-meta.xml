@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- For question - Which of these would have made you more likely to keep your cover? --></help>
+        <label><!-- Retention Improvement Factors 1 --></label>
+        <name>Retention_Improvement_Factors_1__c</name>
+    </CustomFieldTranslation>

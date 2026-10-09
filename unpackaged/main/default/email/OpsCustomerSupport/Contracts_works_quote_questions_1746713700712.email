@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}}</p>
+
+<p>Thanks for your email enquiry.</p>
+
+<p>We're happy to provide a quote via email for this cover. To ensure that the quote is accurate, please reply with your answers to the following two questions below:</p>
+
+<ul>
+	<li>What level of cover do you require? (£100,000, £250,000, or £500,000)&nbsp;&nbsp;</li>
+	<li>What is the maximum value of any single contract that you would undertake?&nbsp;&nbsp;</li>
+</ul>
+
+<p>Once we receive your response, we’ll prepare your quotation.</p>
+
+<p>Please note, if you decide to proceed, <b>endorsement documents confirming the changes will be sent via your preferred delivery method</b>. Please review these documents carefully.</p>
+</body>
+</html>

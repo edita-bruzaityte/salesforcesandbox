@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}}<b>,</b></p>
+
+<p>We have made a second attempt to collect your missed payment from the card we have on file; however, this was unsuccessful. As stated in your original missed payment email, your policy is due to be cancelled on the date specified in that notice.</p>
+
+<p>If you wish to keep your policy active, please contact us as soon as possible to make payment.</p>
+
+<p>You can reach us on <b>0203 808 7099</b>, Monday to Friday, between 9:00am and 6:00pm.</p>
+</body>
+</html>

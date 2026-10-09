@@ -1,0 +1,12 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p>&nbsp;</p>
+
+<p>Thanks for your email. We offer Goods in Transit insurance which covers the Food/Goods you are carrying if they are stolen or damaged in a road traffic accident. We do not provide Hire + Reward insurance for your vehicle itself, you would need to contact your motor insurance for this.</p>
+</body>
+</html>

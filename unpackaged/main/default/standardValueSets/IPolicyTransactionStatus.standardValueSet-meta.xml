@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Payment has not been processed</fullName>
+        <default>true</default>
+        <label>Not Due</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Payment has been processed</fullName>
+        <default>false</default>
+        <label>Paid</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Payment has been rejected</fullName>
+        <default>false</default>
+        <label>Rejected</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Payment has been extracted</fullName>
+        <default>false</default>
+        <label>Payment has been extracted</label>
+    </standardValue>
+</StandardValueSet>

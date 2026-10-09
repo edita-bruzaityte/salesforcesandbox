@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Vanolarm Email</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Vanolarm Email</name>
+    <relatedEntityType>InsurancePolicy</relatedEntityType>
+    <style>none</style>
+    <subject>Your Vanolarm Offer</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

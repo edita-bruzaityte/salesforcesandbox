@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Close_Hour__c</fullName>
+    <description>Extracts an hour out of close data/time field to report on the hour of the day Case is closed</description>
+    <externalId>false</externalId>
+    <formula>HOUR(TIMEVALUE(  ClosedDate  ))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Close Hour</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

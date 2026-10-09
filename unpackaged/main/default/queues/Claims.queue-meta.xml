@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <email>claims@admiral.com</email>
+    <name>zz_Archived_Claims</name>
+    <queueMembers>
+        <users>
+            <user>david.stark@admiralpioneer.com</user>
+            <user>david.wiltshire@admiralpioneer.com</user>
+            <user>james.croydon@admiralpioneer.com</user>
+            <user>jordana.jones@admiralpioneer.com</user>
+            <user>leon.ridley@admiralpioneer.com</user>
+            <user>michael.allitt@admiralpioneer.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Task</sobjectType>
+    </queueSobject>
+</Queue>

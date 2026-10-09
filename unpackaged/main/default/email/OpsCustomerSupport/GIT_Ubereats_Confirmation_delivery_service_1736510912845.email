@@ -1,0 +1,10 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p>Thank you for your enquiry. I can confirm that your current Goods in Transit policy with Admiral Business covers food deliveries under the Delivery Service trade.</p>
+</body>
+</html>

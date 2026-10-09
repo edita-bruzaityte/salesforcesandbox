@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>isRelatedToContact__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Updated by flow when Id related record Id starts with 003 (Contact)</description>
+    <label>isRelatedToContact</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

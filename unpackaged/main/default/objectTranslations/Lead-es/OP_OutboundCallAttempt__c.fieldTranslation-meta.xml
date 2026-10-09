@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Outbound Call Attempt --></label>
+        <name>OP_OutboundCallAttempt__c</name>
+        <picklistValues>
+            <masterLabel>1st Attempt</masterLabel>
+            <translation><!-- 1st Attempt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2nd Attempt</masterLabel>
+            <translation><!-- 2nd Attempt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3rd Attempt</masterLabel>
+            <translation><!-- 3rd Attempt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4th Attempt</masterLabel>
+            <translation><!-- 4th Attempt --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

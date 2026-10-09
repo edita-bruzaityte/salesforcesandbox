@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- For question - Did you know there was no charge to cancel your policy? --></help>
+        <label><!-- Knowledge of Free Cancellation --></label>
+        <name>Knowledge_of_Free_Cancellation__c</name>
+    </CustomFieldTranslation>

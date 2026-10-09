@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Count_total_tasks</name>
+        <label>Count total tasks</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>varTotalTasks</assignToReference>
+            <operator>AssignCount</operator>
+            <value>
+                <elementReference>Get_all_related_call_tasks</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_the_most_recent_Call_task</targetReference>
+        </connector>
+    </assignments>
+    <description>This helps to track what happened with each lead that agents moved to Qualified status and why
+
+14th March, 2024 - additional statuses -  trigger on anything Converted and Not Converted too.</description>
+    <environments>Default</environments>
+    <interviewLabel>Lead - {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead - Track Qualified Outcome</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_all_related_call_tasks</name>
+        <label>Get all related call tasks</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Count_total_tasks</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2 OR 3 OR 4 OR 5 OR 6) AND 7</filterLogic>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 1</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 2</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 3</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 4</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 5</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 6</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>WhoId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_the_most_recent_Call_task</name>
+        <label>Get the most recent Call task</label>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2 OR 3 OR 4 OR 5 OR 6) AND 7</filterLogic>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 1</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 2</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 3</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 4</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 5</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 6</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>WhoId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Task</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update why Lead is being moved to qualified and populate total number of calls made</description>
+        <name>Update_Lead</name>
+        <label>Update Lead</label>
+        <locationX>176</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Calls_made__c</field>
+            <value>
+                <elementReference>varTotalTasks</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Lead_Outcome_Retired__c</field>
+            <value>
+                <elementReference>Get_the_most_recent_Call_task.Call_Outcome__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_all_related_call_tasks</targetReference>
+        </connector>
+        <filterFormula>AND(
+NOT({!$User.Username}=&quot;integration@admiral.com&quot;),
+OR(
+ISPICKVAL({!$Record.Status}, &quot;Qualified&quot;),
+ISPICKVAL({!$Record.Status}, &quot;Converted&quot;),
+ISPICKVAL({!$Record.Status}, &quot;Closed - Not Converted&quot;)
+)
+)</filterFormula>
+        <object>Lead</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <name>varTotalTasks</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+</Flow>

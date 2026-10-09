@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><img alt="AdmiralBusiness_logo-CMYK" src="" style="max-width: 688.77px; width: 250px; height: 76px;" title="AdmiralBusiness_logo-CMYK" />
+<div style="font-family: Poppins, sans-serif; width: 960px;">
+<p style="text-align: right;">Policy Number: {{{Case.Insurance_Policy_Number__c}}}<br />
+<br />
+<b>Date:&nbsp;{{{Case.Today_s_Date__c}}}</b></p>
+<br />
+<br />
+<span style="color:#024eff;"><span style="font-size: 24px;"><b>We are reviewing your complaint.</b></span></span><br />
+<br />
+<br />
+Hello&nbsp; {{{Recipient.FirstName}}},<br />
+<br />
+<b>Complaint Reference:&nbsp;</b> {{{Case.CaseNumber}}}<br />
+<br />
+Thank you for your patience, further to our previous <span style="color:#e6007e;">email</span> on <span style="color:#e6007e;"><b> XX/XX/XXXX</b></span>, I’m still investigating&nbsp; your complaint.<br />
+<br />
+This is due to <span style="color:#e6007e;">[insert the reason for a delay]</span>. Apologies for the delay, I’ll get back to you as soon as possible, and at the latest within 8 weeks of the date we received your complaint.<br />
+<br />
+<br />
+If you have any further questions or queries please give us a call:&nbsp; <span style="color:#024eff;"><u>0203 808 7099</u></span> or e-mail us at <span style="color:#024eff;">complaints@admiralbusiness.com&nbsp;&nbsp;</span><br />
+<br />
+<br />
+Thank you for your patience,<br />
+{{{Sender.Name}}}<br />
+<br />
+{{{Sender.Title}}}</div>
+
+<div id="" style="left: 8px; top: 8px;">&nbsp;</div>
+
+<div id="" style="left: 8px; top: 8px;">&nbsp;</div>
+</body>
+</html>

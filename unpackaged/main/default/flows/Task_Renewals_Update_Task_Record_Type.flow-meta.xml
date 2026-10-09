@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Assigned failed renewal value</description>
+        <name>Assign_Failed_Renewal</name>
+        <label>Assign Failed Renewal</label>
+        <locationX>66</locationX>
+        <locationY>708</locationY>
+        <assignmentItems>
+            <assignToReference>varRenewalType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Failed</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Record_Type</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Non_Auto_Renewal</name>
+        <label>Assign Non Auto Renewal</label>
+        <locationX>330</locationX>
+        <locationY>708</locationY>
+        <assignmentItems>
+            <assignToReference>varRenewalType</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Non Auto</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Record_Type</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Checkpoint if opportunity found</description>
+        <name>Check_if_Opp_was_found</name>
+        <label>Check if Opp was found</label>
+        <locationX>550</locationX>
+        <locationY>492</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Opp</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Related_Opportunity</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Renewal_Type</targetReference>
+            </connector>
+            <label>Found Opp</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check whether its failed renewal or non auto</description>
+        <name>Check_Renewal_Type</name>
+        <label>Check Renewal Type</label>
+        <locationX>330</locationX>
+        <locationY>600</locationY>
+        <defaultConnector>
+            <targetReference>Update_Record_Type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Failed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Related_Opportunity.Renewal_Type2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Failed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Failed_Renewal</targetReference>
+            </connector>
+            <label>Failed</label>
+        </rules>
+        <rules>
+            <name>Non_Auto</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Related_Opportunity.Renewal_Type2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Non Auto</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Non_Auto_Renewal</targetReference>
+            </connector>
+            <label>Non Auto</label>
+        </rules>
+    </decisions>
+    <description>Flow will update task record type to Renewals when its created. This flow is part of bigger process for Failed and Non Auto Renewals management.
+
+This flow also handles &#39;Due Dates&#39; if previous task was completed after the due date.</description>
+    <environments>Default</environments>
+    <interviewLabel>Task (Renewals) - Update Task Record Type {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Task (Renewals) - Update Task Record Type</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Get opportunity details</description>
+        <name>Get_Related_Opportunity</name>
+        <label>Get Related Opportunity</label>
+        <locationX>550</locationX>
+        <locationY>384</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Opp_was_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get Renewal record type from task object. This record type is used to manage both - failed and non auto renewal record type tasks</description>
+        <name>Get_Renewal_Record_Type_Task</name>
+        <label>Get Renewal Record Type (Task)</label>
+        <locationX>550</locationX>
+        <locationY>276</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Related_Opportunity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Renewals</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Task</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update record type to Failed Instalment</description>
+        <name>Update_Record_Type</name>
+        <label>Update Record Type</label>
+        <locationX>330</locationX>
+        <locationY>900</locationY>
+        <inputAssignments>
+            <field>AccountId__c</field>
+            <value>
+                <elementReference>Get_Related_Opportunity.AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Phone_Number__c</field>
+            <value>
+                <elementReference>Get_Related_Opportunity.Phone_Number__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_Renewal_Record_Type_Task.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <elementReference>varRenewalType</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>WhoId</field>
+            <value>
+                <elementReference>Get_Related_Opportunity.Customer_Name__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>1st Call Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>2nd Call Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>3rd Call Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>4th Call Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>5th Call Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>6th Call Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>7th Call Attempt</stringValue>
+            </value>
+        </filters>
+        <object>Task</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <scheduledPaths>
+            <name>Wait_for_1_minute</name>
+            <connector>
+                <targetReference>Get_Renewal_Record_Type_Task</targetReference>
+            </connector>
+            <label>Wait for 1 minute</label>
+            <offsetNumber>1</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <recordField>Create_Date_Time__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>varRenewalType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

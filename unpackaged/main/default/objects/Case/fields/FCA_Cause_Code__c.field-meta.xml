@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FCA_Cause_Code__c</fullName>
+    <inlineHelpText>This should be related to the root cause ie human error = Admin</inlineHelpText>
+    <label>FCA Cause Code</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Advising, Selling and arranging</fullName>
+                <default>false</default>
+                <label>Advising, Selling and arranging</label>
+            </value>
+            <value>
+                <fullName>Information, Sums, Charges, performance</fullName>
+                <default>false</default>
+                <label>Information, Sums, Charges, performance</label>
+            </value>
+            <value>
+                <fullName>General, Admin, Customer Service</fullName>
+                <default>false</default>
+                <label>General, Admin, Customer Service</label>
+            </value>
+            <value>
+                <fullName>Payment related</fullName>
+                <default>false</default>
+                <label>Payment related</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

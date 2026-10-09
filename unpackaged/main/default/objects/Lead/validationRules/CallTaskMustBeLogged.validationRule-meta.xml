@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CallTaskMustBeLogged</fullName>
+    <active>false</active>
+    <description>There should always be at least one Log a Call record before lead can be closed. Even in cases when we&#39;re not calling the lead, task must be logged, to record why - i.e. duplicate or trade we dont cover.</description>
+    <errorConditionFormula>AND(
+
+  NOT( 
+
+    OR(  
+ 
+       $User.Username = &quot;integration@admiral.com&quot;,
+       $User.Alias = &#39;autoproc&#39;
+
+        )),
+
+    ISBLANK(Lead_Outcome_Retired__c),
+
+         OR(
+             ISPICKVAL( Status ,&quot;Converted&quot;),
+             ISPICKVAL( Status ,&quot;Closed - Not Converted&quot;) 
+           )
+
+)</errorConditionFormula>
+    <errorMessage>It seems you are either missing Log a Call task or Callback Arrangement hasn&#39;t been closed</errorMessage>
+</ValidationRule>

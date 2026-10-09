@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Failed Renewal Payment</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Failed Renewal Payment</name>
+    <relatedEntityType>Case</relatedEntityType>
+    <style>none</style>
+    <subject>There’s a problem with your renewal</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

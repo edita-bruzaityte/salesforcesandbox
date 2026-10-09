@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Template to be used for case auto-response message to partner queries</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Case - Partner Auto-Response</name>
+    <style>none</style>
+    <subject>Thanks for Contacting Admiral Business</subject>
+    <textOnly>Hi there!
+
+Thank you for getting in touch. Your request has been received and logged under Case {!Case.CaseNumber}.
+
+Our team will review the details and get back to you as soon as possible.
+
+If you need to reference this case in future correspondence, please include the case number in your subject line or message.
+
+Have a great day,
+
+Admiral Business Support Team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

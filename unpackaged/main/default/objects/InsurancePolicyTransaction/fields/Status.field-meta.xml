@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status</fullName>
+    <description>Payment has not been processed - this is a default value for all transaction records created. It will generally mean the Effective Date is in the future, so the payment isnt due yet.
+Payment has been processed - payment has been successfully taken from customer&#39;s account.
+Payment has been rejected - payment attempt failed. Speak to the customer.</description>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+</CustomField>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AllOpenCases</fullName>
+    <columns>CASES.CASE_NUMBER</columns>
+    <columns>CASES.RECORDTYPE</columns>
+    <columns>NAME</columns>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>CASES.SUBJECT</columns>
+    <columns>CASES.STATUS</columns>
+    <columns>CASES.ORIGIN</columns>
+    <columns>Time_in_Queue__c</columns>
+    <columns>CASES.PRIORITY</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>CASES.CREATED_DATE</columns>
+    <columns>CASES.LAST_UPDATE_DATE_ONLY</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CASES.CLOSED</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>CASES.EMAIL</field>
+        <operation>notEqual</operation>
+        <value>info@redirected.com,info@webpatner.com,hello@morevalue.com,info@indexrock.com,hello@socialfly.com,info@conquergenerating.com,info@solutionmarketing.com,info@socialfly.com,info@underratedvalues.com,info@basicroot.com,hello@redirected.com</value>
+    </filters>
+    <filters>
+        <field>CASES.SUBJECT</field>
+        <operation>notContain</operation>
+        <value>Bad Google reviews deletion</value>
+    </filters>
+    <filters>
+        <field>CASES.EMAIL</field>
+        <operation>notEqual</operation>
+        <value>info@fosterdigital.com</value>
+    </filters>
+    <filters>
+        <field>CASES.RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Case.Complaints,Case.Questions</value>
+    </filters>
+    <label>All Open Cases</label>
+    <sharedTo>
+        <roleAndSubordinatesInternal>Sales_Manager</roleAndSubordinatesInternal>
+    </sharedTo>
+</ListView>

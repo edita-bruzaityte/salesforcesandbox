@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Hi </span>{{{Case.Contact_First_Name__c}}}<span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">,</span></p>
+
+<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">We’re sorry you are unable to access your online portal, we have raised this issue with our I.T department and they are looking into this for you. I have resent all your policy documents to your email address so you can access them on the go, the portal will only allow you to view your policy documents and you cannot make any amendments.</span><br />
+<br />
+<span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Need some help? Check out the FAQ section on our website or give us a call on 02038 087099. Our service team are available from 9:00 to 18:00 Monday to Friday (excluding bank holidays). Alternatively, you can reply to this email.</span></p>
+
+<p>&nbsp;</p>
+</body>
+</html>

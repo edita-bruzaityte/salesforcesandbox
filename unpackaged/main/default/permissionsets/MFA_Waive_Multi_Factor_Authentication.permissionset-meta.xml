@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Exclude select users from MFA requirements. Permission created for BreakGlassUser purpose only though. Please be very selective if using for anything else.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>MFA - Waive Multi-Factor Authentication</label>
+    <license>Salesforce</license>
+</PermissionSet>

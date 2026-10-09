@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lapsed_Reason__c</fullName>
+    <description>Why didn&#39;t renew</description>
+    <inlineHelpText>Why didn&#39;t renew</inlineHelpText>
+    <label>Lapsed Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cost</fullName>
+                <default>false</default>
+                <label>Cost</label>
+            </value>
+            <value>
+                <fullName>Doesn&#39;t have receipts</fullName>
+                <default>false</default>
+                <label>Doesn&#39;t have receipts</label>
+            </value>
+            <value>
+                <fullName>Going to another provider</fullName>
+                <default>false</default>
+                <label>Going to another provider</label>
+            </value>
+            <value>
+                <fullName>No longer trading</fullName>
+                <default>false</default>
+                <label>No longer trading</label>
+            </value>
+            <value>
+                <fullName>No Contact</fullName>
+                <default>false</default>
+                <label>No Contact</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

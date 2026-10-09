@@ -1,0 +1,9 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">Hi&nbsp;{{{Case.Contact_First_Name__c}}},<br />
+<br />
+Thanks for your email. Unfortunately, Admiral Business only deal with commercial business insurance, we do not supply Hire and Reward insurance as this is a type of vehicle usage. You will need to contact your motor vehicle insurer to discuss adding Hire and Reward to your policy.<br />
+&nbsp;</body>
+</html>

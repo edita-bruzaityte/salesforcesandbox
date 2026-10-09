@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Capture the data and time this flow interview was triggered so it can be used in 3 days time as a date time to compare to</description>
+        <name>Date_this_run_was_triggered</name>
+        <label>Date this run was triggered</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varFlowTriggeredDateTime</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.InterviewStartTime</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <description>Check what is current case status - if its still with customer it means they didnt reply yet and if its passed certain number of days, it needs to be closed</description>
+        <name>Check_current_case_status</name>
+        <label>Check current case status</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>No_reply</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>On Hold Customer</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_all_incoming_emails</targetReference>
+            </connector>
+            <label>No reply</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>This check has been implemented here because just checking if the case is still on &#39;with customer&#39; status doesnt guarantee that it has hasnt been replied to for the last 3 days (or anothe number - this will keep changing, so please keep an eye on flow description). Customer may have replied and we potentially got back to them again, meaning the case status would again be updated to &#39;with customer&#39; status. Thats why this check is implemented - it will check if the latest incoming email came in before our most recent reply or after. (before or after the email message that triggered this flow). If we find that latest incoming email is newer than our reply (the email message that triggered the flow) we end the flow as there will be a duplicate scheduled path running the same check from the status update that happened after.</description>
+        <name>Check_if_we_have_received_a_reply_from_customer</name>
+        <label>Check if we have received a reply from customer</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Customer_didn_t_reply</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_all_incoming_emails.CreatedDate</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <elementReference>$Flow.InterviewStartTime</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_the_case</targetReference>
+            </connector>
+            <label>Customer didn&#39;t reply</label>
+        </rules>
+    </decisions>
+    <description>This will be trigger every time case status is updated to with customer, so we can regularly check if response was received and if not, automatically close the case</description>
+    <environments>Default</environments>
+    <interviewLabel>Case - Case auto-closure {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - Case auto-closure</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Error_Log_record</name>
+        <label>Create Error Log record</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Automation_Name__c</field>
+            <value>
+                <stringValue>Case - Case auto-closure</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Fault_Message__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Record__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Error_Log__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <description>Get all incoming emails to check if there was an email received after our reply</description>
+        <name>Get_all_incoming_emails</name>
+        <label>Get all incoming emails</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_we_have_received_a_reply_from_customer</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_Error_Log_record</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ParentId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Incoming</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>EmailMessage</object>
+        <sortField>CreatedDate</sortField>
+        <sortOrder>Desc</sortOrder>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update case status to closed and Auto-closed checkbox flagging automatically closed cases.</description>
+        <name>Update_the_case</name>
+        <label>Update the case</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_Error_Log_record</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Auto_closed__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Closed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Date_this_run_was_triggered</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>On Hold Customer</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <name>Wait_3_days</name>
+            <connector>
+                <targetReference>Check_current_case_status</targetReference>
+            </connector>
+            <label>Wait 3 days</label>
+            <offsetNumber>3</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>When was the flow interview triggered</description>
+        <name>varFlowTriggeredDateTime</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

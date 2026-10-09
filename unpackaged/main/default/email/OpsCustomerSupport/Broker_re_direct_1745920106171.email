@@ -1,0 +1,12 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p>Thanks for your email. This email address is for customer use only, to ensure any broker queries get answered promptly, please contact <a href="mailto:broker-contact@admiralbusiness.com">broker-contact@admiralbusiness.com</a>.</p>
+
+<p>Alternatively, you can contact underwriters via the web chat function, or call the underwriting line on 0203 808 3841.&nbsp;</p>
+</body>
+</html>

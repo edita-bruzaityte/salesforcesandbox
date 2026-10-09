@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Calculate how long it took from the create date/time until lead was reassigned to an agent</description>
+        <name>Calculate_Business_Hours</name>
+        <label>Calculate Business Hours</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <actionName>profFlow_bhDiff__CalculateBusinessHoursDiff</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Assign_values_for_milliseconds_seconds_minutes</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>businessHoursId</name>
+            <value>
+                <elementReference>varBusinessHoursId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>endDate</name>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>startDate</name>
+            <value>
+                <elementReference>$Record.CreatedDate</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>profFlow_bhDiff__CalculateBusinessHoursDiff</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Assign values from Apex Action</description>
+        <name>Assign_values_for_milliseconds_seconds_minutes</name>
+        <label>Assign values for milliseconds, seconds &amp; minutes</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>varTotalMiliseconds</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Calculate_Business_Hours.diffResult</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varTotalSeconds</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Calculate_Business_Hours.diffResultSec</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varTotalMinutes</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Calculate_Business_Hours.diffResultMin</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Time_in_Queue</targetReference>
+        </connector>
+    </assignments>
+    <description>This flow triggers when ownership of Lead changes to an agent for the first time. We do 2 things here:
+1. Track how long Lead was in the Queue before it was assigned to an agent;
+2. Automatically move Lead status from New to Nurturing when assigned to an agent
+
+
+14th May, 2024 - amended with Sales Business Hours (01mPy0000008Oef)</description>
+    <environments>Default</environments>
+    <interviewLabel>Lead - Update Time in Queue &amp; Status {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Lead - Update Time in Queue &amp; Status</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Check if lead hasnt been closed and update status to nurturing.</description>
+        <name>Update_Lead_Status_to_Nurturing</name>
+        <label>Update Lead Status to Nurturing</label>
+        <locationX>176</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Nurturing</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Time_in_Queue</name>
+        <label>Update Time in Queue</label>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
+        <connector>
+            <targetReference>Update_Lead_Status_to_Nurturing</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Time_in_Queue__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Time_in_Queue__c</field>
+            <value>
+                <elementReference>varTotalMinutes</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Calculate_Business_Hours</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OwnerId</field>
+            <operator>StartsWith</operator>
+            <value>
+                <stringValue>005</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Converted</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Closed - Not Converted</stringValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Sales business hours</description>
+        <name>varBusinessHoursId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>01mPy0000008Oef</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>varTotalMiliseconds</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>varTotalMinutes</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <name>varTotalSeconds</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+</Flow>

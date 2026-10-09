@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Renewal due in 14 days or less --></help>
+        <label><!-- Due For Renewal 14 Days --></label>
+        <name>Due_For_Renewal_14_Days__c</name>
+    </CustomFieldTranslation>

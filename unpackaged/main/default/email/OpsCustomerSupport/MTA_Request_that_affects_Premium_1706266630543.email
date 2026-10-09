@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p>There is an additional premium to update this change on your policy, If you would like to discuss or accept this change, please contact us over the phone to complete. The change will not be processed until payment has been taken over the phone.</p>
+
+<p>Our service team are available from 9:00 to 18:00 Monday to Friday (excluding bank holidays)</p>
+
+<p>As a friendly reminder, we don't charge any admin fees for mid-term changes, so feel free to reach out for any future amendments.</p>
+
+<p>If you have any questions or if there's anything else we can assist you with, please don't hesitate to get in touch.</p>
+</body>
+</html>

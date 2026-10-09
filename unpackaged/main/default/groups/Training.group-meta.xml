@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Group xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Add users who need access to training sandbox when its being refreshed</description>
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <name>Training</name>
+</Group>

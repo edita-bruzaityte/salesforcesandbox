@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Unqualified_Leads_Lead</fullName>
+    <columns>Lead_Priority__c</columns>
+    <columns>FULL_NAME</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>LEAD.STATUS</columns>
+    <columns>Trade__c</columns>
+    <columns>Policy_Type__c</columns>
+    <columns>Quoted_Price__c</columns>
+    <columns>LEAD.CREATED_DATE</columns>
+    <columns>LEAD.PHONE</columns>
+    <columns>Quote_Type__c</columns>
+    <columns>Vehicle_Count__c</columns>
+    <columns>Total_Repeat_Visits__c</columns>
+    <filterScope>Queue</filterScope>
+    <filters>
+        <field>Spam__c</field>
+        <operation>notEqual</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>LEAD.CREATED_DATE</field>
+        <operation>equals</operation>
+        <value>LAST_N_DAYS:5</value>
+    </filters>
+    <filters>
+        <field>LEAD.STATUS</field>
+        <operation>equals</operation>
+        <value>New,Nurturing,Partial Quote</value>
+    </filters>
+    <filters>
+        <field>FULL_NAME</field>
+        <operation>notEqual</operation>
+        <value>Test</value>
+    </filters>
+    <filters>
+        <field>LEAD.EMAIL</field>
+        <operation>notContain</operation>
+        <value>@admiralpioneer.com,@admiralbusiness.com,@test.com,@test.co.uk,one.tester,two.tester,three.tester,four.tester,@aa.aa,@aa,@abbeyautoline.co.uk,@consumerintel.com,@rivierainsurance.co.uk,@cowensgroup.co.uk,@comparemyinsurances.com</value>
+    </filters>
+    <filters>
+        <field>LEAD.PHONE</field>
+        <operation>notEqual</operation>
+        <value>,+44 7123 456789,07123 456789,11111 111111</value>
+    </filters>
+    <filters>
+        <field>LEAD.PHONE</field>
+        <operation>notContain</operation>
+        <value>01234</value>
+    </filters>
+    <filters>
+        <field>LEAD.EMAIL</field>
+        <operation>notContain</operation>
+        <value>@comparemyinsurances.com,@cowensgroup.co.uk</value>
+    </filters>
+    <filters>
+        <field>LEAD.EMAIL</field>
+        <operation>notContain</operation>
+        <value>frball.com,@focus-insurance.com,@momentumsolutions.co.uk,@nvip.co.uk,@generationunderwriting.com,lmbinsurance.co.uk</value>
+    </filters>
+    <filters>
+        <field>Lead_Outcome_Retired__c</field>
+        <operation>notContain</operation>
+        <value>Duplicate</value>
+    </filters>
+    <label>Unqualified Leads Queue</label>
+    <queue>Unqualified_Leads</queue>
+    <sharedTo>
+        <allInternalUsers />
+    </sharedTo>
+</ListView>

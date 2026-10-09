@@ -1,0 +1,10 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},&nbsp;</p>
+
+<p>Thanks for getting in touch, we have resent your policy documents via email and these will be with your shortly. If there is anything else we can help with, please don't hesitate to reach out.</p>
+</body>
+</html>

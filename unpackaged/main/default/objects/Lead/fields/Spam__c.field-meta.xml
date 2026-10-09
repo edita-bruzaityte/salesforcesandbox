@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Spam__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This is used as a temporary fix to mark the incoming leads that are spam, so these can be excluded from the agents view. Updated using flow.</description>
+    <label>Spam</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

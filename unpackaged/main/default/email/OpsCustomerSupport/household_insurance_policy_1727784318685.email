@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p>Thanks for your email, it sounds like you may be referring to a household insurance policy that you have with Admiral and not a small business commercial policy.&nbsp;</p>
+
+<p>Please find contact details to Admiral Insurance below:</p>
+
+<p>Telephone:&nbsp;0333 222 6715</p>
+
+<p>Emails are below:<br />
+<br />
+customerservices@admiral.com<br />
+Renewals@admiral.com</p>
+
+<p>&nbsp;</p>
+</body>
+</html>

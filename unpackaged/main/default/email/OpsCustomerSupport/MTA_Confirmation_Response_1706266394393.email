@@ -1,0 +1,12 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;">Hi&nbsp;</span>{{{Case.Contact_First_Name__c}}},</p>
+
+<p><span style="font-family:Tahoma,Arial,Helvetica,sans-serif;">Exciting news! We've successfully updated your policy with the new details you provided. We've issued new documentation that reflects these changes. Just a reminder, we don't charge any admin fees for mid-term changes, so feel free to reach out for any future amendments.<br />
+<br />
+Need some help? Check out the FAQ section on our website or give us a call on 02038 087099. Our service team are available from 9:00 to 18:00 Monday to Friday (excluding bank holidays). Alternatively, you can reply to this email.</span></p>
+</body>
+</html>

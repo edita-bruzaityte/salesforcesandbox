@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Set the log level for which the System.debug() method will be invoked. Valid values are NONE, TRACE, DEBUG, INFO, WARN, ERROR, and FATAL. Any statements with a level equal or higher to the one configured here will be logged. --></help>
+        <label><!-- System Debug Log Level --></label>
+        <name>System_Debug_Log_Level__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Scheduled_for_Cancellation</fullName>
+        <description>Set the Insurance policy status to Scheduled for Cancellation</description>
+        <field>Status</field>
+        <literalValue>Scheduled for Cancellation</literalValue>
+        <name>Scheduled for Cancellation</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Set_Policy_Cancelled_Status</fullName>
+        <description>Set the Insurance policy status to Cancelled</description>
+        <field>Status</field>
+        <literalValue>Canceled</literalValue>
+        <name>Set Policy Cancelled Status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <rules>
+        <fullName>Policy Cancellation</fullName>
+        <active>false</active>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>InsurancePolicy.CancellationDate</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>InsurancePolicy.Cancellation_Created_Date__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <offsetFromField>InsurancePolicy.CancellationDate</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Scheduled_for_Cancellation</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>InsurancePolicy.Cancellation_Created_Date__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Policy Cancellation Process</fullName>
+        <active>false</active>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>InsurancePolicy.Cancellation_Created_Date__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>InsurancePolicy.CancellationDate</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <description>Process to set the status of the Policy to Scheduled for cancellation and Cancelled</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Scheduled_for_Cancellation</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>InsurancePolicy.Cancellation_Created_Date__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Set_Policy_Cancelled_Status</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>InsurancePolicy.CancellationDate</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Hours</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+</Workflow>

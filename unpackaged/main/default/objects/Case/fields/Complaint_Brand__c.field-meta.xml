@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Complaint_Brand__c</fullName>
+    <inlineHelpText>What part of the business complaint is related to - Broker, Partner or Admiral Business direct</inlineHelpText>
+    <label>Complaint Brand</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Gladiator</fullName>
+                <default>false</default>
+                <label>Gladiator</label>
+            </value>
+            <value>
+                <fullName>Tool Box by Admiral</fullName>
+                <default>false</default>
+                <label>Toolbox by Admiral</label>
+            </value>
+            <value>
+                <fullName>Admiral Business</fullName>
+                <default>false</default>
+                <label>Admiral Business</label>
+            </value>
+            <value>
+                <fullName>Broker</fullName>
+                <default>false</default>
+                <label>Broker</label>
+            </value>
+            <value>
+                <fullName>Tide</fullName>
+                <default>false</default>
+                <label>Tide</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Out_of_Hours__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Updated via flow to mark Task records created outside of normal business hours, which are Mon - Fri 9am-8pm &amp; Sun 1pm-5pm</description>
+    <label>Out of Hours</label>
+    <type>Checkbox</type>
+</CustomField>

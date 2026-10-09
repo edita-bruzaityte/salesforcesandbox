@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Tool theft from home</fullName>
+        <default>false</default>
+        <label>Tool theft from home</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Tool theft from vehicle</fullName>
+        <default>false</default>
+        <label>Tool theft from vehicle</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Road traffic accident</fullName>
+        <default>false</default>
+        <label>Road traffic accident</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Fire damage - Van</fullName>
+        <default>false</default>
+        <label>Fire damage - Van</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Fire damage - Home</fullName>
+        <default>false</default>
+        <label>Fire damage - Home</label>
+    </standardValue>
+</StandardValueSet>

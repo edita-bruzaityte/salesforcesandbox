@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">Hi {{{Case.Contact_First_Name__c}}},<br />
+&nbsp;
+<p>Thanks for your email, we’re sorry you have requested to stop the automatic renewal this year. Before proceeding with your request, for data protection can please provide us with:</p>
+
+<ol>
+	<li><b>First line of address</b></li>
+	<li><b>Post code</b></li>
+	<li><b>Date of birth</b></li>
+</ol>
+
+<p>Your loyalty has been appreciated, if you change your mind or your circumstances change, please don’t hesitate to get in touch for a quote.</p>
+</body>
+</html>

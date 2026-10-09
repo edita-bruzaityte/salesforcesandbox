@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>⏰  We still need additional information | 🧾 Please get in touch</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Letter - Claim 07. final chase for additional information or close</name>
+    <relatedEntityType>Case</relatedEntityType>
+    <style>none</style>
+    <subject>⏰  We still need additional information | 🧾 Please get in touch</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

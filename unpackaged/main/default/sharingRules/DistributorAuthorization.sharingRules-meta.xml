@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingOwnerRules>
+        <fullName>Show_All_Distributor_Authorizations_to_Broker_Team</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Show All Distributor Authorizations to Broker Sales Team</description>
+        <label>Show All Distributor Authorizations to Broker Team</label>
+        <sharedTo>
+            <group>Broker_Sales_Team</group>
+        </sharedTo>
+        <sharedFrom>
+            <group>Broker_Sales_Team</group>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

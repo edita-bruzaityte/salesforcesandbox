@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Open_Scheduled_Tasks</fullName>
+    <columns>SUBJECT</columns>
+    <columns>WHO_NAME</columns>
+    <columns>WHAT_NAME</columns>
+    <columns>DUE_DATE</columns>
+    <columns>STATUS</columns>
+    <columns>PRIORITY</columns>
+    <columns>Quote_Reference__c</columns>
+    <columns>IS_REMINDER_SET</columns>
+    <columns>REMINDER_DATE_TIME</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>IS_CLOSED</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>IS_REMINDER_SET</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Task.General</value>
+    </filters>
+    <label>My Open Scheduled Tasks</label>
+</ListView>

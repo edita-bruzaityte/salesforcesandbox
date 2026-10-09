@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Lead_Outcome2__c</fullName>
+    <description>Record what was the final outcome of your call with the potential customer</description>
+    <label>Lead Outcome</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Voicemail left</fullName>
+                <default>false</default>
+                <label>Voicemail left</label>
+            </value>
+            <value>
+                <fullName>No contact made</fullName>
+                <default>false</default>
+                <label>No contact made</label>
+            </value>
+            <value>
+                <fullName>Unacceptable risk</fullName>
+                <default>false</default>
+                <label>Unacceptable risk</label>
+            </value>
+            <value>
+                <fullName>Accept online</fullName>
+                <default>false</default>
+                <label>Accept online</label>
+            </value>
+            <value>
+                <fullName>Callback arranged</fullName>
+                <default>false</default>
+                <label>Callback arranged</label>
+            </value>
+            <value>
+                <fullName>Doesn&#39;t want quote</fullName>
+                <default>false</default>
+                <label>Doesn&#39;t want quote</label>
+            </value>
+            <value>
+                <fullName>Duplicate quote</fullName>
+                <default>false</default>
+                <label>Duplicate quote</label>
+            </value>
+            <value>
+                <fullName>Invalid number</fullName>
+                <default>false</default>
+                <label>Invalid number</label>
+            </value>
+            <value>
+                <fullName>Not ready to purchase</fullName>
+                <default>false</default>
+                <label>Not ready to purchase</label>
+            </value>
+            <value>
+                <fullName>On Cover</fullName>
+                <default>false</default>
+                <label>On Cover</label>
+            </value>
+            <value>
+                <fullName>Sold</fullName>
+                <default>false</default>
+                <label>Sold</label>
+            </value>
+            <value>
+                <fullName>Taken elsewhere</fullName>
+                <default>false</default>
+                <label>Taken elsewhere</label>
+            </value>
+            <value>
+                <fullName>Number blocked</fullName>
+                <default>false</default>
+                <label>Number blocked</label>
+            </value>
+            <value>
+                <fullName>H&amp;R car/van insurance</fullName>
+                <default>false</default>
+                <label>H&amp;R car/van insurance</label>
+            </value>
+            <value>
+                <fullName>Closed by Administrator</fullName>
+                <default>false</default>
+                <label>Closed by Administrator</label>
+            </value>
+            <value>
+                <fullName>Quoted - Follow up</fullName>
+                <default>false</default>
+                <label>Quoted - Follow up</label>
+            </value>
+            <value>
+                <fullName>Quoted - No follow up</fullName>
+                <default>false</default>
+                <label>Quoted - No follow up</label>
+            </value>
+            <value>
+                <fullName>Wrong department - transferred</fullName>
+                <default>false</default>
+                <label>Wrong department - transferred</label>
+            </value>
+            <value>
+                <fullName>Quoted</fullName>
+                <default>false</default>
+                <label>Quoted</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Unable to contact</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Unable to Contact</name>
+    <relatedEntityType>Case</relatedEntityType>
+    <style>none</style>
+    <subject>We&#39;ve recently tried to contact you.</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

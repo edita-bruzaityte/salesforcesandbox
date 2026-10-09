@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <description>5th Call Attempt</description>
+        <name>varFifthTask</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>5th Call Attempt</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>1st Call Attempt</description>
+        <name>varFirstTask</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>1st Call Attempt</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>4th Call Attempt</description>
+        <name>varFourthTask</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>4th Call Attempt</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>2nd Call Attempt</description>
+        <name>varSecondTask</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>2nd Call Attempt</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>7th Call Attempt</description>
+        <name>varSeventhTask</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>7th Call Attempt</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>6th Call Attempt</description>
+        <name>varSixthTask</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>6th Call Attempt</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>3rd Call Attempt</description>
+        <name>varThirdTask</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>3rd Call Attempt</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Check if we found failed renewal record type for cases</description>
+        <name>Check_Failed_Renewal_Record_type_was_found</name>
+        <label>Check Failed Renewal Record type was found</label>
+        <locationX>1733</locationX>
+        <locationY>1955</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Failed_Renewal</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Case_Failed_Renewal_record_type</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Non_Auto_Renewal_Record_type_was_found</targetReference>
+            </connector>
+            <label>Found Failed Renewal</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if we found non auto renewal record type for cases</description>
+        <name>Check_Non_Auto_Renewal_Record_type_was_found</name>
+        <label>Check Non Auto Renewal Record type was found</label>
+        <locationX>1535</locationX>
+        <locationY>2063</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Non_Auto_Renewal</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Case_Non_Auto_Renewal_record_type</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Found Non Auto Renewal</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if opportunity is failed or non auto</description>
+        <name>Check_Renewal_Type</name>
+        <label>Check Renewal Type</label>
+        <locationX>710</locationX>
+        <locationY>863</locationY>
+        <defaultConnector>
+            <targetReference>Update_Task_Owner</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Failed_Renewal_Opp</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Renewal_Opportunity.Renewal_Type2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Failed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Close_Renewal_Opp</targetReference>
+            </connector>
+            <label>Failed Renewal Opp</label>
+        </rules>
+        <rules>
+            <name>Non_Auto_Renewal</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Renewal_Opportunity.Renewal_Type2__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Non Auto</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Task_Owner</targetReference>
+            </connector>
+            <label>Non Auto Renewal</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if Action Plan was found</description>
+        <name>Did_we_find_Action_Plan</name>
+        <label>Did we find Action Plan?</label>
+        <locationX>1392</locationX>
+        <locationY>647</locationY>
+        <defaultConnector>
+            <targetReference>Get_Case_Failed_Renewal_record_type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Action_Plan</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Action_Plan</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Which_Task_is_being_updated</targetReference>
+            </connector>
+            <label>Found Action Plan</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if the opportunity was found</description>
+        <name>Did_we_find_the_Opportunity</name>
+        <label>Did we find the Opportunity?</label>
+        <locationX>1733</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Get_Case_Failed_Renewal_record_type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Opportunity</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Renewal_Opportunity</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Action_Plan</targetReference>
+            </connector>
+            <label>Found Opportunity</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if first task is being updated. Because if yes, we first need to make updates to Action Plan, otherwise, just ownership field</description>
+        <name>Which_Task_is_being_updated</name>
+        <label>Which Task is being updated?</label>
+        <locationX>886</locationX>
+        <locationY>755</locationY>
+        <defaultConnector>
+            <targetReference>Update_Task_Owner</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>First_Task</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>varFirstTask</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Action_Plan_to_In_Progress</targetReference>
+            </connector>
+            <label>First Task</label>
+        </rules>
+        <rules>
+            <name>X2nd_or_3rd_Taks</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>varSecondTask</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>varThirdTask</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Task_Owner</targetReference>
+            </connector>
+            <label>2nd or 3rd Taks</label>
+        </rules>
+        <rules>
+            <name>X4th_Task</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>varFourthTask</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Renewal_Type</targetReference>
+            </connector>
+            <label>4th Task</label>
+        </rules>
+        <rules>
+            <name>X5th_Task</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>varFifthTask</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Task_Owner</targetReference>
+            </connector>
+            <label>5th Task</label>
+        </rules>
+        <rules>
+            <name>X6th_Task</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>varSixthTask</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Task_Owner</targetReference>
+            </connector>
+            <label>6th Task</label>
+        </rules>
+        <rules>
+            <name>X7th_Task</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Subject</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>varSeventhTask</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Close_Renewal_Opp</targetReference>
+            </connector>
+            <label>7th Task</label>
+        </rules>
+    </decisions>
+    <description>This flow will trigger when very first renewal task from the Acton Plan is complete to make updates to the following fields on the Action Plan: Actual Start Date, Actual End Date, Status, Assigned To field on Task and Action Plan Items field on Opportunity</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Calculate actual end date to update  End Date field on Action plan</description>
+        <name>varActualEndDate</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()+ 7</expression>
+    </formulas>
+    <formulas>
+        <description>Every time Failed Instalment task is completed Action Plan Item field should be recalculated to add 1 more to the existing total</description>
+        <name>varCalculateTotalItemsCompleted</name>
+        <dataType>Number</dataType>
+        <expression>{!Get_Renewal_Opportunity.Action_Plan_Items__c} + 1</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Task (Failed &amp; Non Auto Renewals) - Update Action Plan &amp; Tasks {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Task (Failed &amp; Non Auto Renewals) - Update Action Plan &amp; Tasks</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Find related Action Plan and make field updates</description>
+        <name>Get_Action_Plan</name>
+        <label>Get Action Plan</label>
+        <locationX>1392</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Did_we_find_Action_Plan</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>TargetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ActionPlan</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get failed renewal record type for case</description>
+        <name>Get_Case_Failed_Renewal_record_type</name>
+        <label>Get Case Failed Renewal record type</label>
+        <locationX>1733</locationX>
+        <locationY>1739</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Case_Non_Auto_Renewal_record_type</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Case</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Failed_Renewals</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get non auto renewal record type for case</description>
+        <name>Get_Case_Non_Auto_Renewal_record_type</name>
+        <label>Get Case Non Auto Renewal record type</label>
+        <locationX>1733</locationX>
+        <locationY>1847</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_Failed_Renewal_Record_type_was_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Case</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Non_Auto_Renewals</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get the opportunity record this renewal task is related to</description>
+        <name>Get_Renewal_Opportunity</name>
+        <label>Get Renewal Opportunity</label>
+        <locationX>1733</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Did_we_find_the_Opportunity</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.WhatId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>If we&#39;re executing last task for failed renewal opp - close the opp</description>
+        <name>Close_Renewal_Opp</name>
+        <label>Close Renewal Opp</label>
+        <locationX>490</locationX>
+        <locationY>971</locationY>
+        <connector>
+            <targetReference>Update_Action_Plan_to_Completed</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Renewal_Opportunity.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Loss_Reason__c</field>
+            <value>
+                <stringValue>Other</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Closed Lost</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>When all tasks have been completed, update Action Plan Status and Actual End date fields</description>
+        <name>Update_Action_Plan_to_Completed</name>
+        <label>Update Action Plan to Completed</label>
+        <locationX>490</locationX>
+        <locationY>1079</locationY>
+        <connector>
+            <targetReference>Update_Task_Owner</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Action_Plan.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>ActionPlanState</field>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ActualEndDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ActionPlan</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update action plan Status and Actual Start date fields</description>
+        <name>Update_Action_Plan_to_In_Progress</name>
+        <label>Update Action Plan to In Progress</label>
+        <locationX>50</locationX>
+        <locationY>863</locationY>
+        <connector>
+            <targetReference>Update_Task_Owner</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Action_Plan.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>ActionPlanState</field>
+            <value>
+                <stringValue>In Progress</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ActualStartDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ActionPlan</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update total number of tasks completed for this renewal opp</description>
+        <name>Update_Renewal_Opp</name>
+        <label>Update Renewal Opp</label>
+        <locationX>886</locationX>
+        <locationY>1463</locationY>
+        <connector>
+            <targetReference>Get_Case_Failed_Renewal_record_type</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Renewal_Opportunity.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Action_Plan_Items__c</field>
+            <value>
+                <elementReference>varCalculateTotalItemsCompleted</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>If not updated already, assigned Task ownership to the user closing the task</description>
+        <name>Update_Task_Owner</name>
+        <label>Update Task Owner</label>
+        <locationX>886</locationX>
+        <locationY>1355</locationY>
+        <connector>
+            <targetReference>Update_Renewal_Opp</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OwnerId</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>1607</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Renewal_Opportunity</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8)</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>1st Call Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>2nd Call Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>3rd Call Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>4th Call Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>5th Call Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>6th Call Attempt</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>7th Call Attempt</stringValue>
+            </value>
+        </filters>
+        <object>Task</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

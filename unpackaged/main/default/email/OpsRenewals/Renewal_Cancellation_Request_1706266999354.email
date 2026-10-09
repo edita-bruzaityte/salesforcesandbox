@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Firstly, we want to say thank you for your continued support at Admiral Business. Your loyalty is truly valued, and we are grateful to have you as our customer.</span></p>
+
+<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">We've noted your request to stop the renewal process, and we understand the importance of ensuring our services align with your needs. We believe a brief discussion could provide clarity and help us tailor our offerings to better meet your expectations. Losing you as a valued customer is something we want to avoid.</span></p>
+
+<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Could we schedule a convenient time for a quick chat? Your insights are crucial, and we want to ensure you're getting the most out of our services.</span></p>
+
+<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">We hope to hear from you soon.&nbsp;</span></p>
+</body>
+</html>

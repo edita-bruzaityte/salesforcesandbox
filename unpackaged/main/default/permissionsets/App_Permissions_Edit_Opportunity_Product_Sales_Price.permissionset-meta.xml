@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Price access to the user to edit sales price field on the opportunity product records</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>App Permissions - Edit Opportunity Product Sales Price</label>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>EditOppLineItemUnitPrice</name>
+    </userPermissions>
+</PermissionSet>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Refer_a_Friend_Leads</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>LEAD.STATUS</columns>
+    <columns>LEAD.COMPANY</columns>
+    <columns>Trade__c</columns>
+    <columns>Policy_Type__c</columns>
+    <columns>Quoted_Price__c</columns>
+    <columns>Age2__c</columns>
+    <columns>LEAD.CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>LEAD.LEAD_SOURCE</field>
+        <operation>equals</operation>
+        <value>Refer a Friend</value>
+    </filters>
+    <label>Refer a Friend Leads</label>
+</ListView>

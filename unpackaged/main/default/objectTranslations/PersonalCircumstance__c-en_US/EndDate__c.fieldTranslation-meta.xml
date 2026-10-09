@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Use this field to store when the Personal Circumstance ends as it may be in the past or future. Leave it blank where the circumstance is ongoing. --></help>
+        <label><!-- End Date --></label>
+        <name>EndDate__c</name>
+    </CustomFieldTranslation>

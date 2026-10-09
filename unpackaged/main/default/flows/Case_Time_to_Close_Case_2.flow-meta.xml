@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>This Apex action uses default org business hours to calculate how long was complaint case opened for (in business minutes)</description>
+        <name>Calculate_Age_in_Business_Minutes</name>
+        <label>Calculate Age in Business Minutes</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <actionName>profFlow_bhDiff__CalculateBusinessHoursDiff</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Assign_values_for_milliseconds_seconds_minutes_closed</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>businessHoursId</name>
+            <value>
+                <elementReference>varBusinessHoursId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>endDate</name>
+            <value>
+                <elementReference>$Record.ClosedDate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>startDate</name>
+            <value>
+                <elementReference>$Record.CreatedDate</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>profFlow_bhDiff__CalculateBusinessHoursDiff</nameSegment>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Assign values from Apex action</description>
+        <name>Assign_values_for_milliseconds_seconds_minutes_closed</name>
+        <label>Assign values for milliseconds, seconds &amp; minutes (Closed)</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>varTotalMiliseconds</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Calculate_Age_in_Business_Minutes.diffResult</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varTotalSeconds</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Calculate_Age_in_Business_Minutes.diffResultSec</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varTotalMinutes</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Calculate_Age_in_Business_Minutes.diffResultMin</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Populate_Case_Age_filed</targetReference>
+        </connector>
+    </assignments>
+    <description>This is one-off to only trigger particular type of case whilst avoiding affecting others.</description>
+    <environments>Default</environments>
+    <interviewLabel>Case - Time to Close Case 2 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - Time to Close Case 2</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Use minutes from the assign component to populate Age (Business Hours) field</description>
+        <name>Populate_Case_Age_filed</name>
+        <label>Populate Case Age field</label>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>Age1__c</field>
+            <value>
+                <elementReference>varTotalMinutes</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Calculate_Age_in_Business_Minutes</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2) AND 3</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed - Not Upheld</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed - Upheld</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CreatedDate</field>
+            <operator>LessThan</operator>
+            <value>
+                <dateTimeValue>2024-05-01T00:00:00.000Z</dateTimeValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <description>Default business hours for the org as they match Customer Service working hours</description>
+        <name>varBusinessHoursId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>01m4K000000ophV</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Store output from Apex action</description>
+        <name>varTotalMiliseconds</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <description>Stores output from Apex action</description>
+        <name>varTotalMinutes</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+    <variables>
+        <description>Stores output from Apex action</description>
+        <name>varTotalSeconds</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>0</scale>
+    </variables>
+</Flow>

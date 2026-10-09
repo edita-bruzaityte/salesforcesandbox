@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Access to the presence statuses required to work with leads coming from website</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Presence Status - Leads</label>
+    <servicePresenceStatusAccesses>
+        <enabled>true</enabled>
+        <servicePresenceStatus>Available_Leads</servicePresenceStatus>
+    </servicePresenceStatusAccesses>
+</PermissionSet>

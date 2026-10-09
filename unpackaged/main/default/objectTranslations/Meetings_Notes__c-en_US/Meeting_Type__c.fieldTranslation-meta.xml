@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- The purpose of this meeting --></help>
+        <label><!-- Meeting Type --></label>
+        <name>Meeting_Type__c</name>
+        <picklistValues>
+            <masterLabel>Annual Review</masterLabel>
+            <translation><!-- Annual Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bi monthly Review</masterLabel>
+            <translation><!-- Bi monthly Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Half Year Review</masterLabel>
+            <translation><!-- Half Year Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monthly Review</masterLabel>
+            <translation><!-- Monthly Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quarterly Meeting</masterLabel>
+            <translation><!-- Quarterly Meeting --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

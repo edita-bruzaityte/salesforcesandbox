@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Key Contact - the main person you interact with, often influential in decision making process.
+Decision Maker - the person with final authority to approve or reject the deal.
+Influencer - someone who doesnt make the final decision, but had significant sway over it.
+Champion - an internal advocate who pushes for your solution within the company,
+Accounts - go to contact in Account department; Claims - go to contact in Claims department --></help>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Accounts</masterLabel>
+            <translation><!-- Accounts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Champion</masterLabel>
+            <translation><!-- Champion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claims</masterLabel>
+            <translation><!-- Claims --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Decision Maker</masterLabel>
+            <translation><!-- Decision Maker --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Influencer</masterLabel>
+            <translation><!-- Influencer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Key Contact</masterLabel>
+            <translation><!-- Key Contact --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

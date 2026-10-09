@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>isAssignedToAgent__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This will be updated by the flow when case is re-assigned from the queue to an agent for the first time.</description>
+    <label>isAssignedToAgent</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

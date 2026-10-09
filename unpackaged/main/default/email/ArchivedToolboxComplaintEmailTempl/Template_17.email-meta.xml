@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>⏳  We are still reviewing your complaint | Thank you for your patience</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Email - 17 - Pioneer -  56 day hold Complaint letter</name>
+    <relatedEntityType>Case</relatedEntityType>
+    <style>none</style>
+    <subject>⏳  We are still reviewing your complaint | Thank you for your patience</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

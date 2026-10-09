@@ -1,0 +1,92 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<div style="font-family: Poppins, sans-serif; width: 960px;"><img alt="Toolbox_345x125-01" src="https://admiralorgid2021.file.force.com/sfc/servlet.shepherd/version/download/068Py000001fm89?asPdf=false&amp;operationContext=CHATTER" style="max-width: 697.3px; width: 239px; height: 86.625px;" title="Toolbox_345x125-01" /><br />
+&nbsp;
+<div style="width:960px"><br />
+<span style="font-family:Poppins, sans-serif"><span style="float:right">Policy Number:&nbsp;{{{Case.Insurance_Policy_Number__c}}}</span>{{{Recipient.Name}}}<br />
+{{{Recipient.Address__c}}}</span><br />
+<br />
+<br />
+&nbsp;</div>
+
+<div style="width:960px; text-align:right"><b>Date:&nbsp;{{{Case.Today_s_Date__c}}}</b></div>
+
+<p><br />
+<br />
+<span style="color:#024eff;"><span style="font-size: 24px;"><b>Final feedback about your complaint.</b></span></span><br />
+<br />
+Hello&nbsp; {{{Recipient.FirstName}}},<br />
+<br />
+<b>Complaint Reference:</b>&nbsp; {{{Case.CaseNumber}}}<br />
+<br />
+<span style="color:#e6007e;">**Not spoken to the customer **</span><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">Thank you for getting in touch to let us know you are unhappy with the service we have provided.</span></span></span></span><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">We take all complaints seriously and would like to thank you for bringing this to our attention. I have completed my investigation into the matter for you and I am now able to formally respond.</span></span></span></span><br />
+<br />
+<span style="color:#e6007e;">** Spoken to Customer **</span><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">Thank you for taking the time to speak to me on date.</span></span></span></span></p>
+
+<p><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">We take all complaints seriously and would like to thank you for bringing this matter to our attention. I would like to confirm our conversation in writing.</span></span></span></span></p>
+
+<p><span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">Your Complaint&nbsp;</span></span></span></span><span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">I understand you are dissatisfied because of the following reasons:</span></span></span></span></p>
+
+<p>&nbsp;</p>
+
+<ol>
+	<li><span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525"><b>&lt;complaint point 1&gt;</b>&nbsp;</span></span></span></span></li>
+	<li><span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525"><b>&lt;complaint point 2&gt;</b>&nbsp;</span></span></span></span></li>
+	<li><span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525"><b>&lt;insert more complaint points as required&gt;</b></span></span></span></span></li>
+</ol>
+
+<p><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><b><span style="color:#252525">(if only 1 point this should be summarised and not bullet pointed) &lt;Insert any other commentary as required e.g. vulnerability, specific circumstances&gt;</span></b><span style="color:#252525"> If my understanding of your complaint is incorrect, please let me know.</span></span></span></span><br />
+<br />
+<br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><b><span style="color:black">Summary – Upheld</span></b></span></span></span><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">Based on my investigation, I agree with your concerns in relation to <b>(names complaint points)</b> I would like to take the time to apologise for any inconvenience this may have caused. Please refer to my investigation where this will be explained in further detail. To correct matters I have arranged <b>(X, Y &amp;Z) </b>In recognition of our error, I am awarding the following compensation/have arranged to write off the following amount/s or will refund the following amount&nbsp;</span></span></span></span><span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525"><b>&lt;insert compensation/write off/refund amount and what it is for &gt;</b>&nbsp;•<b>&nbsp;&lt;insert compensation/write off/refund amount and what it is for &gt;</b>&nbsp;(Also include time frames for payments)</span></span></span></span><br />
+<br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><b><span style="color:black">Summary – Not Upheld</span></b></span></span></span><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">Based on my investigation I can see no errors in the handling of your claim. I understand this will not be the response you were hoping for. Please refer to my investigation where this will be explained in further detail.</span></span></span></span><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><b><span style="color:#252525">If offering a goodwill gesture or policy amendment: </span></b><i><span style="color:#252525">Italic text</span></i></span></span></span><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">However, in the interest of bringing this complaint to a close I have arranged to:</span></span></span></span><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><b><span style="color:#252525">• &lt;write off/refund amount/Gesture of goodwill and what it is for &gt; • &lt;write off/refund amount/Gesture of goodwill and what it is for &gt;</span></b></span></span></span><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">(Also include time frames and method for payments) Investigation I have investigated (<b>X,Y&amp;Z) </b>I have also considered ............................................................. I will also <b>&lt;insert remedial action to be completed&gt;.</b> </span></span></span></span><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><b><span style="color:red">&gt;&gt;Advisory only, delete the following&gt;&gt;</span></b> <span style="color:#252525">(<b>Rejected)</b> For rejected complaint points it is best to provide an explanation for why we are unable to agree with their concerns. If the complaint is process related (and rejected), to ensure the customer’s expectations are set and to help prevent repeat complaints, we need to make it clear that the process will remain unchanged.</span></span></span></span><br />
+<br />
+<br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><b><span style="color:#252525">Conclusion </span></b></span></span></span><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">This letter represents our final response to your complaint. We would like to thank you for bringing this matter to our attention and <b>(&gt;&gt;If Upheld&gt;&gt;):</b> for giving us an opportunity to put things right. <b>(&gt;&gt;If Rejected&gt;&gt;)</b>: allowing us to explain the reason for our actions. I am sorry you have found it necessary to complain, as at Brand we take customer satisfaction seriously and aim to resolve all complaints fairly. While I hope my response answers your concerns, if you have any further queries or information which you may believe is relevant to this complaint, please contact me via the details included within this letter.</span></span></span></span></p>
+
+<p><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">You have the right to refer your complaint to the Financial Ombudsman Service, free of charge – but you must do so within six months of the date of this letter.</span></span></span></span></p>
+
+<p><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">If you do not refer your complaint in time, the Ombudsman will not have our permission to consider your complaint and so will only be able to do so in very limited circumstances. For example, if the Ombudsman believes that the delay was because of exceptional circumstances.</span></span></span></span></p>
+
+<p><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">Please note that aspects of your complaint may fall outside of their remit (TP only)</span></span></span></span></p>
+
+<p><br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><b><span style="color:#252525">&lt;Delete where appropriate&gt;</span></b><b><span style="color:black"> Post</span></b> <span style="color:#252525">– I have enclosed the leaflet ‘Your Complaint and the Ombudsman’ </span><b><span style="color:black">Email </span></b><span style="color:#252525">– Here is the link to ‘Your Complaint and the Ombudsman’:&nbsp;</span><span style="color:black"><a href="https://gbr01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.financial-ombudsman.org.uk%2Fpublications%2Fconsumer-leaflet.htm&amp;data=05%7C01%7Cvictoria.squibbs%40veygo.com%7Cd51a769c88f34a53026108dbe9a81892%7C5803c697e750498e86be1ee68154cf3f%7C0%7C0%7C638360680402487856%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=lLi3K7lTm5SirLTJdZW764FVCDmHxUXVyBv6r3yr23A%3D&amp;reserved=0" style="color:#0563c1; text-decoration:underline" target="_blank" title="Original URL:
+http://www.financial-ombudsman.org.uk/publications/consumer-leaflet.htm
+
+Click to follow link."><span style="color:#3366bb">http://www.financial-ombudsman.org.uk/publications/consumer-leaflet.htm</span></a></span></span></span></span><br />
+<br />
+<br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">You can find out more information about the Financial Ombudsman at:&nbsp;</span><span style="color:black"><a href="https://gbr01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.financial-ombudsman.org.uk%2F&amp;data=05%7C01%7Cvictoria.squibbs%40veygo.com%7Cd51a769c88f34a53026108dbe9a81892%7C5803c697e750498e86be1ee68154cf3f%7C0%7C0%7C638360680402487856%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=%2FX4kSKHfQaOMCf3Y0NlNodvlPFYuSmoDWuq0hj%2B5H6U%3D&amp;reserved=0" style="color:#0563c1; text-decoration:underline" title="https://gbr01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.financial-ombudsman.org.uk%2F&amp;data=05%7C01%7Cvictoria.squibbs%40veygo.com%7Cd51a769c88f34a53026108dbe9a81892%7C5803c697e750498e86be1ee68154cf3f%7C0%7C0%7C638360680402487856%7CUnknown%7CT"><span style="color:#0563c1">www.financial-ombudsman.org.uk</span></a></span><span style="color:#252525">.</span></span></span></span><br />
+<br />
+<br />
+<span style="font-size:12pt"><span style="background:white"><span style="font-family:Calibri,sans-serif"><span style="color:#252525">Email:</span><span style="color:black"><a href="mailto:complaints@toolboxbyadmiral.com" style="color:#0563c1; text-decoration:underline">complaints@toolboxbyadmiral.com</a></span></span></span></span><br />
+<br />
+<br />
+<br />
+<span style="font-size:12.0pt"><span style="font-family:&quot;Calibri&quot;,sans-serif"><span style="color:#252525">(name)</span></span></span></p>
+
+<p><span style="font-size:12.0pt"><span style="font-family:&quot;Calibri&quot;,sans-serif"><span style="color:#252525">(job title)</span></span></span></p>
+</div>
+</body>
+</html>

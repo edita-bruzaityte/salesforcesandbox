@@ -1,0 +1,43 @@
+<html><head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><div style="font-family: Poppins, sans-serif; width: 960px;"><img alt="ToolboxByAdmiral_printLogo-04" src="https://admiralorgid2021--c.documentforce.com/file-asset-public/ToolboxByAdmiral_printLogo04?oid=00DPt00000EIpyT" style="max-width: 1188.55px; width: 306.992px; height: 53.9974px;" title="ToolboxByAdmiral_printLogo-04" /><br />
+<br />
+&nbsp;
+<p><br />
+<span style="float:right;"><span>Policy Number:</span> {{{Case.Insurance_Policy_Number__c}}}</span>{{{Recipient.Name}}}<br />
+{{{Recipient.Address__c}}}</p>
+
+<p style="text-align: right;"><br />
+<br />
+<b>Date:{{{Case.Today_s_Date__c}}}</b></p>
+<br />
+<br />
+<br />
+<span style="color:#024eff;"><b><span style="font-size:24px;">We need additional information.</span></b></span><br />
+<br />
+<br />
+Hi {{{Recipient.FirstName}}},<br />
+<br />
+We emailed you on <span style="color:#e6007e;">XX/XX/XXXX</span> to request additional information from you so that we may deal with your claim.<br />
+<br />
+According to our records we have not received the additional information needed to progress your claim.<br />
+<br />
+<br />
+The information we require is detailed below:<br />
+<span style="color:#e6007e;">[Insert any and all that apply]<br />
+<br />
+•&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Evidence of ownership for [Insert Items which require proof]<br />
+•&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Evidence of Forced entry into your [Vehicle/ Home]<br />
+•&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Police Crime Reference Number<br />
+•&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Free format option<br />
+•&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Confirm evidence included</span><br />
+<br />
+Please provide the listed information by replying to this email and attaching any supporting documentation.<br />
+<br />
+<br />
+Thanks,<br />
+The <b>Toolbox </b>team
+
+<p>&nbsp;</p>
+</div></body></html>

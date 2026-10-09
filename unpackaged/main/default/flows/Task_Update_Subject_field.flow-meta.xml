@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Update Task subject (standard field) with the value from Subject2 (custom field) value which is placed on the custom Log a Call button on the Lead object</description>
+    <environments>Default</environments>
+    <interviewLabel>Task - Update Subject field {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Task - Update Subject field</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Update Task subject (standard field) with the value from Subject2 (custom field) value which is placed on the custom Log a Call button on the Lead object</description>
+        <name>Update_Task_Subject</name>
+        <label>Update Task Subject</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <elementReference>$Record.Subject2__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Update_Task_Subject</targetReference>
+        </connector>
+        <filterLogic>(1 OR 2 OR 3 OR 4 OR 5 OR 6) AND 7</filterLogic>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 1</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 2</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 3</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 4</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 5</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject2__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Call 6</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Callback Arrangement</stringValue>
+            </value>
+        </filters>
+        <object>Task</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

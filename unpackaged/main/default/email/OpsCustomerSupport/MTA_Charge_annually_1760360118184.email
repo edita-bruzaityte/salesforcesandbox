@@ -1,0 +1,18 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p><b>Hi </b>{{{Case.Contact_First_Name__c}}}<b>,</b><br />
+<br />
+Thanks for getting in touch.</p>
+
+<p><br />
+To make this change to your policy, there’s a one-off charge of £[insert amount], which includes any applicable Insurance Premium Tax (IPT). As your policy has already been paid in full, we can attempt to take this payment using the most recent card we have on file — the one ending in [XXXX].</p>
+
+<p>If you're happy to go ahead with this card, just let us know by replying to this email and we’ll send out your updated documents. Prefer to use a different card or need help with anything? You can call us on 020 3808 7099 — we're always happy to assist.</p>
+
+<p>Thanks again,<br />
+<b>The Admiral Business Team</b></p>
+</body>
+</html>

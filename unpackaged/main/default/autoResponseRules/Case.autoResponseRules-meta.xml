@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AutoResponseRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <autoResponseRule>
+        <fullName>Admiral Business</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Complaints,Questions</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>noreply@admiralbusiness.com</senderEmail>
+            <senderName>Automatic Reply</senderName>
+            <template>Customer_Support/Case_Auto_Response_Admiral_Business</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Broker Questions</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <senderEmail>noreply@admiralbusiness.com</senderEmail>
+            <senderName>Automatic Reply</senderName>
+            <template>Customer_Support/Case_Auto_Response_Admiral_Business_broker</template>
+        </ruleEntry>
+    </autoResponseRule>
+</AutoResponseRules>

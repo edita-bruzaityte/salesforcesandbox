@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Run_Owner_Check__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Updated by scheduled path in the record triggered flow, to trigger another flow which runs a check on Case ownership.</description>
+    <label>Run Owner Check</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

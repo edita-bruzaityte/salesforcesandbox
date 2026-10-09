@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Please provide the name of the Apex class implementing the rflib_LogTimer interface. This class will be dynamically instantiated and used in your Apex code. Please use caution when changing the default value. --></help>
+        <label><!-- Log Timer Class --></label>
+        <name>Log_Timer_Class__c</name>
+    </CustomFieldTranslation>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Insurance_Policies</fullName>
+    <columns>PolicyType</columns>
+    <columns>Name</columns>
+    <columns>NameInsured</columns>
+    <columns>CreatedDate</columns>
+    <columns>Cover_Level__c</columns>
+    <columns>Status</columns>
+    <columns>Trade__c</columns>
+    <columns>Quote_Number__c</columns>
+    <columns>Email_Opt_In__c</columns>
+    <columns>RenewalDate</columns>
+    <columns>PremiumAmount</columns>
+    <columns>Net_Premium__c</columns>
+    <columns>Tool__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All Insurance Policies</label>
+</ListView>

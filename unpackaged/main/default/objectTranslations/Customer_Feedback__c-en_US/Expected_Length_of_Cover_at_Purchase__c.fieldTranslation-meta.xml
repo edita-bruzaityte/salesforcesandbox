@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- For question - When you first bought the policy, how long did you expect to need cover? --></help>
+        <label><!-- Expected Length of Cover at Purchase --></label>
+        <name>Expected_Length_of_Cover_at_Purchase__c</name>
+    </CustomFieldTranslation>

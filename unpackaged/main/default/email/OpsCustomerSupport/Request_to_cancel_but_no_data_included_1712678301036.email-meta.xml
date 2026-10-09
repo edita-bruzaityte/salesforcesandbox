@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Request to cancel but no data included</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Request to cancel but no data included</name>
+    <relatedEntityType>Case</relatedEntityType>
+    <style>none</style>
+    <subject>Cancellation Request</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Access to the presence statuses required to work with cases coming in from webform (as of July, 2026). The range of channels might start growing and expanding once this goes live.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Presence Status - Cases</label>
+    <servicePresenceStatusAccesses>
+        <enabled>true</enabled>
+        <servicePresenceStatus>Available_Cases</servicePresenceStatus>
+    </servicePresenceStatusAccesses>
+</PermissionSet>

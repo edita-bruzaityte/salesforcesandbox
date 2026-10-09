@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- How many times they visited the website today? --></help>
+        <label><!-- Total Repeat Visits --></label>
+        <name>Total_Repeat_Visits__c</name>
+    </CustomFieldTranslation>

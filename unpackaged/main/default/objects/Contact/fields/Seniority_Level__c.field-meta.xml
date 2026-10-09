@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Seniority_Level__c</fullName>
+    <inlineHelpText>The level of role seniority in the bussiness</inlineHelpText>
+    <label>Seniority Level</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CEO</fullName>
+                <default>false</default>
+                <label>CEO</label>
+            </value>
+            <value>
+                <fullName>Director</fullName>
+                <default>false</default>
+                <label>Director</label>
+            </value>
+            <value>
+                <fullName>Manager</fullName>
+                <default>false</default>
+                <label>Manager</label>
+            </value>
+            <value>
+                <fullName>MD</fullName>
+                <default>false</default>
+                <label>MD</label>
+            </value>
+            <value>
+                <fullName>General Staff</fullName>
+                <default>false</default>
+                <label>General Staff</label>
+            </value>
+            <value>
+                <fullName>Senior Leadership</fullName>
+                <default>false</default>
+                <label>Senior Leadership</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

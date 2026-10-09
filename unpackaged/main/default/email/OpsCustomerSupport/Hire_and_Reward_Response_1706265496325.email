@@ -1,0 +1,12 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p>Your policy with us is designed for Goods in Transit, providing coverage for the goods you transport for hire and reward. It's important to note that we don't offer coverage for hire and reward for your vehicle itself, as this aspect is typically provided by your motor insurance company.</p>
+
+<p>If you have any questions or if there's anything else you'd like to discuss, feel free to reach out. We're here to help!</p>
+</body>
+</html>

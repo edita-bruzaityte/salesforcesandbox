@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <description>Store lead record that needs to be updated at the end of the process</description>
+        <name>Set_Lead_to_Update</name>
+        <label>Set Lead to Update</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varLeadToUpdate.Id</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Lead_Record.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Check_Call_Type</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assign new inbound call values</description>
+        <name>Update_Inbound_Calls</name>
+        <label>Update Inbound Calls</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varLeadToUpdate.Inbound_Calls__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>varTotalInboundCalls</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <description>Assign new outbound call values</description>
+        <name>Update_Outbound_Calls</name>
+        <label>Update Outbound Calls</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>varLeadToUpdate.Outbound_Calls__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>varTotalOutboundCalls</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_Lead</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <description>Check whether call in inbound or outbound</description>
+        <name>Check_Call_Type</name>
+        <label>Check Call Type</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Update_Lead</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Inbound_Call</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CallType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Inbound</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Inbound_Calls</targetReference>
+            </connector>
+            <label>Inbound Call</label>
+        </rules>
+        <rules>
+            <name>Outbound_Call</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CallType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Outbound</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Outbound_Calls</targetReference>
+            </connector>
+            <label>Outbound Call</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if lead record was located and returned into the variable</description>
+        <name>Check_if_Lead_found</name>
+        <label>Check if Lead found</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Lead2</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Lead_Record</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Lead_to_Update</targetReference>
+            </connector>
+            <label>Found Lead</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if its inbound call</description>
+        <name>Inbound_Call2</name>
+        <label>Inbound Call?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>isInbound</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CallType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Inbound</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RelatedRecordId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RelatedRecordId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>00Q</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Get_Lead_Record</targetReference>
+            </connector>
+            <label>isInbound</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if its outbound call</description>
+        <name>Outbound_Call2</name>
+        <label>Outbound Call?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>isOutbound</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.CallType</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Outbound</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RelatedRecordId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.RelatedRecordId</leftValueReference>
+                <operator>StartsWith</operator>
+                <rightValue>
+                    <stringValue>00Q</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Lead_Record</targetReference>
+            </connector>
+            <label>isOutbound</label>
+        </rules>
+    </decisions>
+    <description>This flow will calculate the total number of outgoing and incoming calls against each lead</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Formula will help calculate the increases on the total calls</description>
+        <name>varTotalInboundCalls</name>
+        <dataType>Number</dataType>
+        <expression>{!Get_Lead_Record.Inbound_Calls__c} + 1</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <description>Formula will help calculate the increases on the total calls</description>
+        <name>varTotalOutboundCalls</name>
+        <dataType>Number</dataType>
+        <expression>{!Get_Lead_Record.Outbound_Calls__c} + 1</expression>
+        <scale>0</scale>
+    </formulas>
+    <interviewLabel>Voice Call - Count Inbound &amp; Outbound Calls {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Voice Call - Count Inbound &amp; Outbound Calls (Leads)</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Lead_Record</name>
+        <label>Get Lead Record</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Lead_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.RelatedRecordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Lead</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update Outbound &amp; Inbound call fields on the Lead</description>
+        <name>Update_Lead</name>
+        <label>Update Lead</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputReference>varLeadToUpdate</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Outbound_Call2</targetReference>
+        </connector>
+        <object>VoiceCall</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <scheduledPaths>
+            <name>Run_1_min_After</name>
+            <connector>
+                <targetReference>Inbound_Call2</targetReference>
+            </connector>
+            <label>Run 1 min After</label>
+            <offsetNumber>1</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
+            <recordField>CreatedDate</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Stored lead record</description>
+        <name>varLeadToUpdate</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Lead</objectType>
+    </variables>
+</Flow>

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <layouts>
+        <layout>Semi-Qualified Lead Lightning Layout</layout>
+        <sections>
+            <label><!-- History Details --></label>
+            <section>History Details</section>
+        </sections>
+        <sections>
+            <label><!-- Lead Details --></label>
+            <section>Lead Details</section>
+        </sections>
+        <sections>
+            <label><!-- Policy Details --></label>
+            <section>Policy Details</section>
+        </sections>
+        <sections>
+            <label><!-- Profile Section --></label>
+            <section>Profile Section</section>
+        </sections>
+        <sections>
+            <label><!-- Referral Section --></label>
+            <section>Referral Section</section>
+        </sections>
+        <sections>
+            <label><!-- UTM Section --></label>
+            <section>UTM Section</section>
+        </sections>
+        <sections>
+            <label><!-- Vehicle Details --></label>
+            <section>Vehicle Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Semi-Qualified Lead Lightning Layout v2</layout>
+        <sections>
+            <label><!-- History Details --></label>
+            <section>History Details</section>
+        </sections>
+        <sections>
+            <label><!-- Lead Details --></label>
+            <section>Lead Details</section>
+        </sections>
+        <sections>
+            <label><!-- Policy Details --></label>
+            <section>Policy Details</section>
+        </sections>
+        <sections>
+            <label><!-- Profile Section --></label>
+            <section>Profile Section</section>
+        </sections>
+        <sections>
+            <label><!-- Referral Section --></label>
+            <section>Referral Section</section>
+        </sections>
+        <sections>
+            <label><!-- UTM Section --></label>
+            <section>UTM Section</section>
+        </sections>
+        <sections>
+            <label><!-- Vehicle Details --></label>
+            <section>Vehicle Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Unqualified Lead Lightning Layout</layout>
+        <sections>
+            <label><!-- Contact Details --></label>
+            <section>Contact Details</section>
+        </sections>
+        <sections>
+            <label><!-- Opt In --></label>
+            <section>Opt In</section>
+        </sections>
+        <sections>
+            <label><!-- Policy Details --></label>
+            <section>Policy Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Unqualified Lead Lightning Layout v2</layout>
+        <sections>
+            <label><!-- Contact Details --></label>
+            <section>Contact Details</section>
+        </sections>
+        <sections>
+            <label><!-- Opt In --></label>
+            <section>Opt In</section>
+        </sections>
+        <sections>
+            <label><!-- Policy Details --></label>
+            <section>Policy Details</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Create Follow Up Task --></label>
+        <name>Create_Follow_Up_Task</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Email --></label>
+        <name>Email</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Log a Call --></label>
+        <name>Log_a_Call2</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- New Task --></label>
+        <name>Task_lead</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Transfer to Cowens --></label>
+        <name>Transfer_to_Cowens</name>
+    </quickActions>
+    <recordTypes>
+        <description><!-- Qualified lead process. --></description>
+        <label><!-- Qualified --></label>
+        <name>Semi_Qualified</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Unqualified lead process. --></description>
+        <label><!-- Unqualified --></label>
+        <name>Unqualified</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- It seems you are either missing Log a Call task or Callback Arrangement hasn&apos;t been closed --></errorMessage>
+        <name>CallTaskMustBeLogged</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+</CustomObjectTranslation>

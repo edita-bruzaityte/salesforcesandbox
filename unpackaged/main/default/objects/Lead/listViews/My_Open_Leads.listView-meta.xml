@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Open_Leads</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>LEAD.STATUS</columns>
+    <columns>LEAD.COMPANY</columns>
+    <columns>Trade__c</columns>
+    <columns>Policy_Type__c</columns>
+    <columns>Quoted_Price__c</columns>
+    <columns>Age2__c</columns>
+    <columns>LEAD.CREATED_DATE</columns>
+    <columns>Calls_made__c</columns>
+    <columns>Lead_Outcome_Retired__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>LEAD.CREATED_DATE</field>
+        <operation>greaterThan</operation>
+        <value>3/11/2024 12:00 AM</value>
+    </filters>
+    <filters>
+        <field>LEAD.STATUS</field>
+        <operation>notEqual</operation>
+        <value>Qualified,Sale Complete,Converted,Closed - Not Converted</value>
+    </filters>
+    <label>My Open Leads</label>
+</ListView>

@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title></title>
+	<style type="text/css">.jcpwm-preloader {
+              transform: translateX(0px) !important;
+          }
+	</style>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi&nbsp;{{{Case.Contact_First_Name__c}}},<br />
+<br />
+<span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Thanks for contacting us regarding your payment. Rest assured, your payment has been taken from the card we store on file as part of our re-application process and your payments are currently up to date.</span><br />
+<br />
+<span style="font-family:Tahoma,Arial,Helvetica,sans-serif;">Need some help? Check out the FAQ section on our website or give us a call on 02038 087099. Our service team are available from 9:00 to 18:00 Monday to Friday (excluding bank holidays). Alternatively, you can reply to this email.</span></p>
+</body>
+</html>

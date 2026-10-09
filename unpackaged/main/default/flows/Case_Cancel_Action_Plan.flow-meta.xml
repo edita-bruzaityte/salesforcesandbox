@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <name>varFirstTask</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>1st Card Attempt</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <name>varFourthTask</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Process Policy Cancellation</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <name>varSecondTask2</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>2nd Card Attempt</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <name>varThirdTask</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Call Attempt</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Check the record type of the triggering case. It should only proceed further if its record type is Failed Instalment</description>
+        <name>Check_If_Case_is_Failed_Instalment</name>
+        <label>Check If Case is Failed Instalment</label>
+        <locationX>611</locationX>
+        <locationY>539</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Failed_Instalment_Case</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordTypeId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Get_Failed_Instalments_Record_Type.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Action_Plan</targetReference>
+            </connector>
+            <label>Failed Instalment Case</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Did we find Failed Instalment record type?</description>
+        <name>Check_if_Record_Type_as_found</name>
+        <label>Check if Record Type as found</label>
+        <locationX>858</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Record_Type</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Failed_Instalments_Record_Type</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_If_Case_is_Failed_Instalment</targetReference>
+            </connector>
+            <label>Found Record Type</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if Action Plan was found.</description>
+        <name>Did_we_find_Action_Plan</name>
+        <label>Did we find Action Plan?</label>
+        <locationX>380</locationX>
+        <locationY>755</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Action_Plan_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Action_Plan</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Mark_Plan_as_Completed_Early</targetReference>
+            </connector>
+            <label>Action Plan found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if open task was found</description>
+        <name>Did_we_find_an_open_task</name>
+        <label>Did we find an open task?</label>
+        <locationX>182</locationX>
+        <locationY>1079</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Open_Task_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Open_Task</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Close_the_Task</targetReference>
+            </connector>
+            <label>Open Task found</label>
+        </rules>
+    </decisions>
+    <description>This flow will cancel related Action Plan when the case is closed</description>
+    <environments>Default</environments>
+    <interviewLabel>Case - Cancel Action Plan {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - Cancel Action Plan</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Find related Action Plan and make field updates</description>
+        <name>Get_Action_Plan</name>
+        <label>Get Action Plan</label>
+        <locationX>380</locationX>
+        <locationY>647</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Did_we_find_Action_Plan</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>TargetId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>ActionPlan</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get the record type for Failed Instalments for use later in the flow</description>
+        <name>Get_Failed_Instalments_Record_Type</name>
+        <label>Get Failed Instalments Record Type</label>
+        <locationX>858</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Record_Type_as_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Failed_Instalments</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Case</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Find the open task for the next step due as per Action Plan. We&#39;ll need to cancel it since case is being closed.</description>
+        <name>Get_Open_Task</name>
+        <label>Get Open Task</label>
+        <locationX>182</locationX>
+        <locationY>971</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Did_we_find_an_open_task</targetReference>
+        </connector>
+        <filterLogic>1 AND (2 OR 3 OR 4 OR 5) AND 6</filterLogic>
+        <filters>
+            <field>WhatId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varFirstTask</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varSecondTask2</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varThirdTask</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varFourthTask</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Open</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Since we&#39;re closing the case before finshing all the items from the action plan, update what is still open to cancelled</description>
+        <name>Close_the_Task</name>
+        <label>Close the Task</label>
+        <locationX>50</locationX>
+        <locationY>1187</locationY>
+        <connector>
+            <targetReference>Update_Case_Owner</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Open_Task.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Cancelled</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Action Plan status as Completed Early</description>
+        <name>Mark_Plan_as_Completed_Early</name>
+        <label>Mark Plan as Completed Early</label>
+        <locationX>182</locationX>
+        <locationY>863</locationY>
+        <connector>
+            <targetReference>Get_Open_Task</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Action_Plan.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>ActionPlanState</field>
+            <value>
+                <stringValue>Completed Early</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ActualEndDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ActionPlan</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update case owner to the person closing the task</description>
+        <name>Update_Case_Owner</name>
+        <label>Update Case Owner</label>
+        <locationX>50</locationX>
+        <locationY>1295</locationY>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$User.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>732</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Failed_Instalments_Record_Type</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>(1 OR 2) AND 3</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Paid</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Cancelled</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CreatedDate</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <dateTimeValue>2025-03-19T00:00:00.000Z</dateTimeValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>currentItem_Filter_out_Tasks_not_matching_ids_in_collection</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Task</objectType>
+    </variables>
+    <variables>
+        <name>varActionPlanItemId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>varActionPlanItemItemId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>varActionPlanItemStatus</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

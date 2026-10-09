@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CancellationReasonCantBeBlank</fullName>
+    <active>false</active>
+    <description>This is to ensure we capture why customer decided to cancel the policy</description>
+    <errorConditionFormula>AND(
+
+    RecordType.Name = &#39;Questions&#39;,
+    ISPICKVAL(Status, &#39;Closed&#39;),
+    ISPICKVAL(Reason, &#39;Cancellation&#39;),
+    ISBLANK(Cancellation_Reason__c) 
+
+
+
+)</errorConditionFormula>
+    <errorDisplayField>Cancellation_Reason__c</errorDisplayField>
+    <errorMessage>Please provide cancellation reason</errorMessage>
+</ValidationRule>

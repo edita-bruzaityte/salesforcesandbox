@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Decline_Reason__c</fullName>
+    <description>Why quote was declined</description>
+    <inlineHelpText>Why quote was declined</inlineHelpText>
+    <label>Decline Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Too keen on price</fullName>
+                <default>false</default>
+                <label>Too keen on price</label>
+            </value>
+            <value>
+                <fullName>Seen elsewhere</fullName>
+                <default>false</default>
+                <label>Seen elsewhere</label>
+            </value>
+            <value>
+                <fullName>Young/inexperienced drivers</fullName>
+                <default>false</default>
+                <label>Young/inexperienced drivers</label>
+            </value>
+            <value>
+                <fullName>Trade/occupation</fullName>
+                <default>false</default>
+                <label>Trade/occupation</label>
+            </value>
+            <value>
+                <fullName>Fleet rated &lt; 3 years</fullName>
+                <default>false</default>
+                <label>Fleet rated &lt; 3 years</label>
+            </value>
+            <value>
+                <fullName>NCB/NCD rated</fullName>
+                <default>false</default>
+                <label>NCB/NCD rated</label>
+            </value>
+            <value>
+                <fullName>Poor claims record</fullName>
+                <default>false</default>
+                <label>Poor claims record</label>
+            </value>
+            <value>
+                <fullName>Prestige vehicles</fullName>
+                <default>false</default>
+                <label>Prestige vehicles</label>
+            </value>
+            <value>
+                <fullName>GVW &gt; 10T</fullName>
+                <default>false</default>
+                <label>GVW &gt; 10T</label>
+            </value>
+            <value>
+                <fullName>Hazardous goods</fullName>
+                <default>false</default>
+                <label>Hazardous goods</label>
+            </value>
+            <value>
+                <fullName>Hazardous locations</fullName>
+                <default>false</default>
+                <label>Hazardous locations</label>
+            </value>
+            <value>
+                <fullName>Area</fullName>
+                <default>false</default>
+                <label>Area</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

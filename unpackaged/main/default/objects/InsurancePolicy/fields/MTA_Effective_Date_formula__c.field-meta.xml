@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MTA_Effective_Date_formula__c</fullName>
+    <formula>IF(
+    AND(
+        ISPICKVAL($User.TimeZoneSidKey, &#39;Europe/London&#39;),
+        EffectiveDate &gt;= DATETIMEVALUE(TEXT(YEAR(DATEVALUE(EffectiveDate))) &amp; &quot;-03-21 00:00:00&quot;),
+        EffectiveDate &lt; DATETIMEVALUE(TEXT(YEAR(DATEVALUE(EffectiveDate))) &amp; &quot;-10-27 00:00:00&quot;)
+    ), 
+    EffectiveDate - (1/24), 
+    EffectiveDate
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>MTA Effective Date</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>DateTime</type>
+</CustomField>

@@ -1,0 +1,12 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}},</p>
+
+<p>Thank you for your recent contact. We can confirm that the above policy that you have with Admiral Business includes cover for the use of Heat Pumps.</p>
+
+<p>If you need any extra help, check out the <a href="https://www.admiralbusiness.com/faqs"><b>FAQ</b></a> section&nbsp;on our website or give us a call on <b>020 3808 7099</b>. Our service team are available from 9:00 to 18:00 Monday to Friday (excluding bank holidays).</p>
+</body>
+</html>

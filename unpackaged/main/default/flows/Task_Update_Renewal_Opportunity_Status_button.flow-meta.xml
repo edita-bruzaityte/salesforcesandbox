@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <choices>
+        <description>Going to another provider</description>
+        <name>choice1LostToCompetitor</name>
+        <choiceText>Lost to Competitor</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Lost to Competitor</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>Found a job</description>
+        <name>choice2MovingToEmployment</name>
+        <choiceText>Moving into employment</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Moving into employment</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>Price of the policy</description>
+        <name>choice3Price</name>
+        <choiceText>Price</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Price</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>Customer retiring</description>
+        <name>choice4Retiring</name>
+        <choiceText>Retiring</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Retiring</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>choice5UnableToContact</name>
+        <choiceText>Unable to contact</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Unable to contact</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>choice6UnableToOfferCover</name>
+        <choiceText>Unable to offer cover</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Unable to offer cover</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>choice7Other</name>
+        <choiceText>Other</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Other</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>Insurance policy has lapsed</description>
+        <name>Lapsed</name>
+        <choiceText>Lapsed</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Closed Lost</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <description>Insurance Policy has been renewed</description>
+        <name>Renewed</name>
+        <choiceText>Renewed</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Closed Won</stringValue>
+        </value>
+    </choices>
+    <customProperties>
+        <name>ScreenProgressIndicator</name>
+        <value>
+            <stringValue>{&quot;location&quot;:&quot;top&quot;,&quot;type&quot;:&quot;simple&quot;}</stringValue>
+        </value>
+    </customProperties>
+    <decisions>
+        <description>Check if opportunity we&#39;re looking for was found</description>
+        <name>Opportunity_found</name>
+        <label>Opportunity found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Opp</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_related_Opportuntiy</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Renewed_or_Lapsed</targetReference>
+            </connector>
+            <label>Found Opp</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if what was selected by the user</description>
+        <name>Renewed_or_Lapsed</name>
+        <label>Renewed or Lapsed?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>Closed_Lost_Opp</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Renewed_Closed_Won</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CloseRenewalOpp2</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Renewed</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Closed_Won_Opp</targetReference>
+            </connector>
+            <label>Renewed-Closed Won</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if we found the task we&#39;re looking for</description>
+        <name>Task_found</name>
+        <label>Task found?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Task</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Task</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Task_to_Completed</targetReference>
+            </connector>
+            <label>Found Task</label>
+        </rules>
+    </decisions>
+    <description>Created for the button to be stored on Renewal tasks to close renewals (opps) quicker.</description>
+    <dynamicChoiceSets>
+        <description>Show close lost reason in a picklist so user can provide detail on why renewal is lapsing</description>
+        <name>varLapseReasonPicklist1</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
+        <picklistField>Loss_Reason__c</picklistField>
+        <picklistObject>Opportunity</picklistObject>
+    </dynamicChoiceSets>
+    <environments>Default</environments>
+    <interviewLabel>Task - Update Renewal Opportunity Status {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Task - Update Renewal Opportunity Status (button)</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <description>Get the details for related opportunity</description>
+        <name>Get_related_Opportuntiy</name>
+        <label>Get related Opportuntiy</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Opportunity_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Task.WhatId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Opportunity</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Get task details</description>
+        <name>Get_Task</name>
+        <label>Get Task</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Task_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Task</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update renewal stage to closed lost</description>
+        <name>Closed_Lost_Opp</name>
+        <label>Closed Lost Opp</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_related_Opportuntiy.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Loss_Reason__c</field>
+            <value>
+                <elementReference>Lapse_Reason</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <elementReference>CloseRenewalOpp2</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update renewal stage to closed won</description>
+        <name>Closed_Won_Opp</name>
+        <label>Closed Won Opp</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_related_Opportuntiy.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <elementReference>CloseRenewalOpp2</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update tasks status to completed</description>
+        <name>Update_Task_to_Completed</name>
+        <label>Update Task to Completed</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_related_Opportuntiy</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Task.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Task</object>
+    </recordUpdates>
+    <runInMode>SystemModeWithSharing</runInMode>
+    <screens>
+        <name>CloseRenewalOpp</name>
+        <label>Close Renewal Opp</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Get_Task</targetReference>
+        </connector>
+        <fields>
+            <name>CloseRenewalOpp2</name>
+            <choiceReferences>Renewed</choiceReferences>
+            <choiceReferences>Lapsed</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Close Renewal</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Lapse_Reason</name>
+            <choiceReferences>choice1LostToCompetitor</choiceReferences>
+            <choiceReferences>choice2MovingToEmployment</choiceReferences>
+            <choiceReferences>choice3Price</choiceReferences>
+            <choiceReferences>choice4Retiring</choiceReferences>
+            <choiceReferences>choice5UnableToContact</choiceReferences>
+            <choiceReferences>choice6UnableToOfferCover</choiceReferences>
+            <choiceReferences>choice7Other</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Lapse Reason</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>CloseRenewalOpp2</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <elementReference>Lapsed</elementReference>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <nextOrFinishButtonLabel>Save</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>CloseRenewalOpp</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Capture record id</description>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

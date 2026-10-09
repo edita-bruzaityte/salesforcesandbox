@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Case.Contact_First_Name__c}}}</p>
+
+<p>Thanks for your email.</p>
+
+<p>At Admiral Business, we regularly review our rates in line with inflation and claims costs to ensure we provide you with our best price possible. That said, we would be more than happy to discuss your current cover and make sure it suits your needs and offers the best price we can provide.</p>
+
+<p>If you would you like to arrange a call with one of our team to discuss your requirements for the coming year, please reply to this email and a member of the team will be in contact. Alternatively, you can call us on <a href="tel:02038087099">0203 808 7099</a> - we are available from 9am - 8pm Monday to Thursday, 9am - 6pm on Fridays and 1pm - 5pm on Sundays.</p>
+</body>
+</html>

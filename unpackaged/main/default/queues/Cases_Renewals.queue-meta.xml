@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Queue to route renewals related queries incoming from the webform</description>
+    <doesIncludeBosses>false</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Cases - Renewals</name>
+    <queueMembers>
+        <users>
+            <user>anthony.selio@admiralpioneer.com</user>
+            <user>chris.sapwell@admiralpioneer.com</user>
+            <user>jack.harvey@admiralpioneer.com2</user>
+            <user>john.jones@admiralpioneer.com</user>
+            <user>szymon.stanczyk@admiralpioneer.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>Operations_Cases</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Hi </span>{{{Case.Contact_First_Name__c}}}<span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">,</span></p>
+
+<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">Thank you for providing us with the relevant information to proceed with the cancellation of your policy. I’m sorry you’re looking to cancel due to this not being a Hire and Reward policy.</span></p>
+
+<p><span style="font-family:Tomaha,Arial,Helvetica,sans-serif;">We are looking to get some feedback from customers like yourself, to help improve our online journey and to make this process clearer through our website.<br />
+<br />
+We would just like to ask you a few questions regarding your experience and we will send you a £30 Amazon voucher. If you are willing to provide us some feedback over a phone call, please reply to this email with your contact number and best time to contact you between 09:00 and 18:00 and we'll be in touch.&nbsp;</span></p>
+</body>
+</html>

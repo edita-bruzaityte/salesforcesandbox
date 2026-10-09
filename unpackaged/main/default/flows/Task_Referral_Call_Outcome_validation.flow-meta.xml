@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customErrors>
+        <description>Trigger this error message is Callback Arrangement Task is being closed with Call Outcome field blank</description>
+        <name>Trigger_Error_message</name>
+        <label>Trigger Error message</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <customErrorMessages>
+            <errorMessage>Please provide Call Outcome to close the task</errorMessage>
+            <fieldSelection>Call_Outcome__c</fieldSelection>
+            <isFieldError>true</isFieldError>
+        </customErrorMessages>
+    </customErrors>
+    <description>This flow validates Call Outcome field is populated before task can be closed.</description>
+    <environments>Default</environments>
+    <interviewLabel>Task (Referral) - Call Outcome validation {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Task (Referral) - Call Outcome validation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Trigger_Error_message</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IsClosed</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Call_Outcome__c</field>
+            <operator>EqualTo</operator>
+        </filters>
+        <filters>
+            <field>Subject</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Callback Arrangement</stringValue>
+            </value>
+        </filters>
+        <object>Task</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

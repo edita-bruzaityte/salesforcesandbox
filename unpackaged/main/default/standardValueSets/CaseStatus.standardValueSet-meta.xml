@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>New</fullName>
+        <default>true</default>
+        <label>New</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>In Progress</fullName>
+        <default>false</default>
+        <label>In Progress</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting response - internal</fullName>
+        <default>false</default>
+        <label>Awaiting response - internal</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting response - customer</fullName>
+        <default>false</default>
+        <label>Awaiting response - customer</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>On Hold Internal</fullName>
+        <default>false</default>
+        <label>On Hold Internal</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>On Hold Customer</fullName>
+        <default>false</default>
+        <label>On Hold Customer</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Send for Authorization</fullName>
+        <default>false</default>
+        <label>Send for Authorization</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Pending on Payment</fullName>
+        <default>false</default>
+        <label>Pending on Payment</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Escalated</fullName>
+        <default>false</default>
+        <label>Escalated</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Reopened</fullName>
+        <default>false</default>
+        <label>Reopened</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed - Claim Paid</fullName>
+        <default>false</default>
+        <label>Closed - Claim Paid</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed - Claim Rejected</fullName>
+        <default>false</default>
+        <label>Closed - Claim Rejected</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed - No action</fullName>
+        <default>false</default>
+        <label>Closed - No action</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed - Upheld</fullName>
+        <default>false</default>
+        <label>Closed - Upheld</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed - Not Upheld</fullName>
+        <default>false</default>
+        <label>Closed - Not Upheld</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed</fullName>
+        <default>false</default>
+        <label>Closed</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed - Redirected</fullName>
+        <default>false</default>
+        <label>Closed - Redirected</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Merged</fullName>
+        <default>false</default>
+        <label>Merged</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Price</fullName>
+        <default>false</default>
+        <label>Price</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Accepted</fullName>
+        <default>false</default>
+        <label>Accepted</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Declined</fullName>
+        <default>false</default>
+        <label>Declined</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Nurturing</fullName>
+        <default>false</default>
+        <label>Nurturing</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed - Not Converted</fullName>
+        <default>false</default>
+        <label>Closed - Not Converted</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed - Converted</fullName>
+        <default>false</default>
+        <label>Closed - Converted</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>On Hold Broker</fullName>
+        <default>false</default>
+        <label>On Hold Broker</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Quoted</fullName>
+        <default>false</default>
+        <label>Quoted</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed Declined Quote</fullName>
+        <default>false</default>
+        <label>Closed - Declined Quote</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed - Unable to Cover</fullName>
+        <default>false</default>
+        <label>Closed - Unable to Cover</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed - Uncompetitive</fullName>
+        <default>false</default>
+        <label>Closed - Uncompetitive</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed - Quoted NTU</fullName>
+        <default>false</default>
+        <label>Closed - Quoted NTU</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed - Sold</fullName>
+        <default>false</default>
+        <label>Closed - Sold</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Paid</fullName>
+        <default>false</default>
+        <label>Paid</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Cancelled</fullName>
+        <default>false</default>
+        <label>Cancelled</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Renewed</fullName>
+        <default>false</default>
+        <label>Renewed</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Lapsed</fullName>
+        <default>false</default>
+        <label>Lapsed</label>
+        <closed>true</closed>
+    </standardValue>
+</StandardValueSet>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CaseSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAssignRuleCommunity>false</caseAssignRuleCommunity>
+    <caseAutoProcUser>false</caseAutoProcUser>
+    <caseDescAttachments>false</caseDescAttachments>
+    <caseFeedItemSettings>
+        <characterLimit>400</characterLimit>
+        <displayFormat>Default</displayFormat>
+        <feedItemType>EmailMessageEvent</feedItemType>
+    </caseFeedItemSettings>
+    <caseFeedReadUnreadLtng>false</caseFeedReadUnreadLtng>
+    <caseMergeInLightning>true</caseMergeInLightning>
+    <closeCaseThroughStatusChange>false</closeCaseThroughStatusChange>
+    <defaultCaseFeedLayoutOn>false</defaultCaseFeedLayoutOn>
+    <defaultCaseOwner>Automation_Queue</defaultCaseOwner>
+    <defaultCaseOwnerType>Queue</defaultCaseOwnerType>
+    <emailToCase>
+        <enableE2CAttachmentAsFile>false</enableE2CAttachmentAsFile>
+        <enableE2CDeduplicateAttachments>false</enableE2CDeduplicateAttachments>
+        <enableE2CExternalServer>true</enableE2CExternalServer>
+        <enableE2CSourceTracking>true</enableE2CSourceTracking>
+        <enableEmailToCase>true</enableEmailToCase>
+        <enableHtmlEmail>false</enableHtmlEmail>
+        <enableNewToReadTriggers>false</enableNewToReadTriggers>
+        <enableOnDemandEmailToCase>true</enableOnDemandEmailToCase>
+        <enableThreadTokenInBody>false</enableThreadTokenInBody>
+        <enableThreadTokenInSubject>false</enableThreadTokenInSubject>
+        <movingEmailEnabled>false</movingEmailEnabled>
+        <notifyOwnerOnNewCaseEmail>false</notifyOwnerOnNewCaseEmail>
+        <notifySenderE2CError>false</notifySenderE2CError>
+        <overEmailLimitAction>Bounce</overEmailLimitAction>
+        <preQuoteSignature>true</preQuoteSignature>
+        <replyWithNewContentOnly>false</replyWithNewContentOnly>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>contact@admiralbusiness.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            
+            <newEntityRecordType>Case.Questions</newEntityRecordType>
+            <routingName>Admiral Business</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>complaints@admiralbusiness.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            
+            <newEntityRecordType>Case.Complaints</newEntityRecordType>
+            <routingName>Admiral Business Complaints</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>broker-contact@admiralbusiness.com</emailAddress>
+            <isPermsetControlled>true</isPermsetControlled>
+            
+            <newEntityRecordType>Case.Broker_Questions</newEntityRecordType>
+            <routingName>Broker Queries</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <caseOwner>Mini_Fleet_Queries</caseOwner>
+            <caseOwnerType>Queue</caseOwnerType>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>minifleet@admiralbusiness.com</emailAddress>
+            <isPermsetControlled>true</isPermsetControlled>
+            
+            <newEntityRecordType>Case.Mini_Fleet_Queries</newEntityRecordType>
+            <routingName>Minifleet</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>tide-contact@admiralbusiness.com</emailAddress>
+            <isPermsetControlled>true</isPermsetControlled>
+            
+            <newEntityRecordType>Case.Partner_Queries</newEntityRecordType>
+            <routingName>Partner - Tide Queries</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>contact@toolboxbyadmiral.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            
+            <newEntityRecordType>Case.Questions</newEntityRecordType>
+            <routingName>Toolbox by Admiral</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <routingAddresses>
+            <addressType>EmailToCase</addressType>
+            <caseOrigin>Email</caseOrigin>
+            <casePriority>Medium</casePriority>
+            <createTask>false</createTask>
+            <emailAddress>complaints@toolboxbyadmiral.com</emailAddress>
+            <isPermsetControlled>false</isPermsetControlled>
+            
+            <newEntityRecordType>Case.Complaints</newEntityRecordType>
+            <routingName>Toolbox by Admiral</routingName>
+            <saveEmailHeaders>false</saveEmailHeaders>
+        </routingAddresses>
+        <unauthorizedSenderAction>Discard</unauthorizedSenderAction>
+        <useEmailHeadersForThreading>true</useEmailHeadersForThreading>
+    </emailToCase>
+    <enableCaseFeed>true</enableCaseFeed>
+    <enableCaseSwarming>false</enableCaseSwarming>
+    <enableCollapseEmailThread>true</enableCollapseEmailThread>
+    <enableDraftEmails>false</enableDraftEmails>
+    <enableEarlyEscalationRuleTriggers>false</enableEarlyEscalationRuleTriggers>
+    <enableEmailActionDefaultsHandler>false</enableEmailActionDefaultsHandler>
+    <enableEscalateQfiToCaseInternal>false</enableEscalateQfiToCaseInternal>
+    <enableEscalateQfiToCaseNetworks>false</enableEscalateQfiToCaseNetworks>
+    <enableModernSlackSwarming>false</enableModernSlackSwarming>
+    <enableMultiLangSolnSrchCSS>false</enableMultiLangSolnSrchCSS>
+    <enableMultiLangSolnSrchPKB>false</enableMultiLangSolnSrchPKB>
+    <enableMultiLangSolution>false</enableMultiLangSolution>
+    <enableSlackSwarmingPhasedRollout>false</enableSlackSwarmingPhasedRollout>
+    <enableSolutionCategory>false</enableSolutionCategory>
+    <enableSolutionInlineCategory>true</enableSolutionInlineCategory>
+    <enableSolutionShortSummary>true</enableSolutionShortSummary>
+    <enableSuggestedSolutions>true</enableSuggestedSolutions>
+    <enhancedCaseMerge>false</enhancedCaseMerge>
+    <escalateCaseBefore>false</escalateCaseBefore>
+    <hidePublicInCaseComment>false</hidePublicInCaseComment>
+    <keepCaseMergeRecords>true</keepCaseMergeRecords>
+    <keepRecordTypeOnAssignmentRule>true</keepRecordTypeOnAssignmentRule>
+    <notifyContactOnCaseComment>false</notifyContactOnCaseComment>
+    <notifyDefaultCaseOwner>false</notifyDefaultCaseOwner>
+    <notifyOwnerOnCaseComment>false</notifyOwnerOnCaseComment>
+    <notifyOwnerOnCaseOwnerChange>true</notifyOwnerOnCaseOwnerChange>
+    <omniChnlCaseMrgFix>false</omniChnlCaseMrgFix>
+    <rtaCaseComment>false</rtaCaseComment>
+    <rtaCaseDescFieldAccess>false</rtaCaseDescFieldAccess>
+    <showEmailAttachmentsInCaseAttachmentsRL>true</showEmailAttachmentsInCaseAttachmentsRL>
+    <systemUserEmail>salesforce@admiralpioneer.com</systemUserEmail>
+    <useSystemEmailAddress>true</useSystemEmailAddress>
+    <useSystemUserAsDefaultCaseUser>true</useSystemUserAsDefaultCaseUser>
+    <visibleInCssCheckbox>false</visibleInCssCheckbox>
+    <webToCase>
+        <caseOrigin>Web</caseOrigin>
+        <enableWebToCase>true</enableWebToCase>
+    </webToCase>
+</CaseSettings>

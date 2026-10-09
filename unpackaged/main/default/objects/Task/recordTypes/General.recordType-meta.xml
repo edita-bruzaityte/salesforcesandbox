@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>General</fullName>
+    <active>true</active>
+    <description>Record type to be used for tracking day to day tasks</description>
+    <label>General</label>
+    <picklistValues>
+        <picklist>Call_Outcome__c</picklist>
+        <values>
+            <fullName>Accept online</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Callback arranged</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed by Administrator</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Doesnt want quote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Duplicate quote</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>H%26R car%2Fvan insurance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Invalid number</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No contact made</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Not ready to purchase</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Number blocked</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Cover</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quoted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Taken elsewhere</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unacceptable risk</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Voicemail left</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Normal</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status</picklist>
+        <values>
+            <fullName>Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Open</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Subject</picklist>
+        <values>
+            <fullName>Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Letter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Send Quote</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Subject2__c</picklist>
+        <values>
+            <fullName>Call 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call 3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call 4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call 5</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call 6</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Log a Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meeting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reminder</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

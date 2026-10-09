@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Set the log level for which emails are sent in response to a Log Event. Valid values are NONE, INFO, WARN, ERROR, and FATAL. Any statements with a level equal or higher to the one configured here trigger the email notification. --></help>
+        <label><!-- Email Log Level --></label>
+        <name>Email_Log_Level__c</name>
+    </CustomFieldTranslation>

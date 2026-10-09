@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Displays the reason for renewal review --></help>
+        <label><!-- Renewal Review --></label>
+        <name>Renewal_Review__c</name>
+        <picklistValues>
+            <masterLabel>Addacs Advice Received</masterLabel>
+            <translation><!-- Addacs Advice Received --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bankruptcy</masterLabel>
+            <translation><!-- Bankruptcy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCJ&#39;s</masterLabel>
+            <translation><!-- CCJ&apos;s --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Claims Since Last Renewal</masterLabel>
+            <translation><!-- Claims Since Last Renewal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Paid By Cheque Last Year</masterLabel>
+            <translation><!-- Client Paid By Cheque Last Year --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Requested No Auto-Renewal</masterLabel>
+            <translation><!-- Client Requested No Auto-Renewal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>D/D Book Cancelled Mid Term</masterLabel>
+            <translation><!-- D/D Book Cancelled Mid Term --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deceased Policy Holder</masterLabel>
+            <translation><!-- Deceased Policy Holder --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MTA Since Last Renewal</masterLabel>
+            <translation><!-- MTA Since Last Renewal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manual Intervention at Renewal Always Required</masterLabel>
+            <translation><!-- Manual Intervention at Renewal Always Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mid Term Claims/Convictions to be added limited or no details on system</masterLabel>
+            <translation><!-- Mid Term Claims/Convictions to be added limited or no details on system --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Modifications</masterLabel>
+            <translation><!-- Modifications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non Motoring Convictions</masterLabel>
+            <translation><!-- Non Motoring Convictions --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Reference Number with Claim/Conviction</masterLabel>
+            <translation><!-- Other Reference Number with Claim/Conviction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outstanding Balance</masterLabel>
+            <translation><!-- Outstanding Balance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TP Card used once and not to be used again</masterLabel>
+            <translation><!-- TP Card used once and not to be used again --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vehicle Deemed Total Loss (No Change of Vehicle)</masterLabel>
+            <translation><!-- Vehicle Deemed Total Loss (No Change of Vehicle) --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Support_Sub_Category__c</fullName>
+    <description>This sub-category field will provide ability to log more granular details linked to Support Category field</description>
+    <label>Support Sub-Category</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>SupportCategory__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Bankrupt/IVA</fullName>
+                <default>false</default>
+                <label>Bankrupt/IVA</label>
+            </value>
+            <value>
+                <fullName>Debt/Low Income</fullName>
+                <default>false</default>
+                <label>Debt/Low Income</label>
+            </value>
+            <value>
+                <fullName>Emotional Distress</fullName>
+                <default>false</default>
+                <label>Emotional Distress</label>
+            </value>
+            <value>
+                <fullName>Ability to Understand</fullName>
+                <default>false</default>
+                <label>Ability to Understand</label>
+            </value>
+            <value>
+                <fullName>Language Barrier</fullName>
+                <default>false</default>
+                <label>Language Barrier</label>
+            </value>
+            <value>
+                <fullName>Computer Illiterate/Technology</fullName>
+                <default>false</default>
+                <label>Computer Illiterate/Technology</label>
+            </value>
+            <value>
+                <fullName>Lack of Insurance Knowledge/Experience</fullName>
+                <default>false</default>
+                <label>Lack of Insurance Knowledge/Experience</label>
+            </value>
+            <value>
+                <fullName>Family Bereavement</fullName>
+                <default>false</default>
+                <label>Family Bereavement</label>
+            </value>
+            <value>
+                <fullName>Family Illness</fullName>
+                <default>false</default>
+                <label>Family Illness</label>
+            </value>
+            <value>
+                <fullName>Divorce/Separation</fullName>
+                <default>false</default>
+                <label>Divorce/Separation</label>
+            </value>
+            <value>
+                <fullName>Caring Responsibilities</fullName>
+                <default>false</default>
+                <label>Caring Responsibilities</label>
+            </value>
+            <value>
+                <fullName>Major Incident</fullName>
+                <default>false</default>
+                <label>Major Incident</label>
+            </value>
+            <value>
+                <fullName>Jobless/Redundancy</fullName>
+                <default>false</default>
+                <label>Jobless/Redundancy</label>
+            </value>
+            <value>
+                <fullName>Domestic Matters</fullName>
+                <default>false</default>
+                <label>Domestic Matters</label>
+            </value>
+            <value>
+                <fullName>Physical Health</fullName>
+                <default>false</default>
+                <label>Physical Health</label>
+            </value>
+            <value>
+                <fullName>Addiction</fullName>
+                <default>false</default>
+                <label>Addiction</label>
+            </value>
+            <value>
+                <fullName>Disability</fullName>
+                <default>false</default>
+                <label>Disability</label>
+            </value>
+            <value>
+                <fullName>Mental Health</fullName>
+                <default>false</default>
+                <label>Mental Health</label>
+            </value>
+            <value>
+                <fullName>Terminal Illness</fullName>
+                <default>false</default>
+                <label>Terminal Illness</label>
+            </value>
+            <value>
+                <fullName>Surgery/Treatment/Hospital</fullName>
+                <default>false</default>
+                <label>Surgery/Treatment/Hospital</label>
+            </value>
+            <value>
+                <fullName>Blindness</fullName>
+                <default>false</default>
+                <label>Blindness</label>
+            </value>
+            <value>
+                <fullName>Deafness</fullName>
+                <default>false</default>
+                <label>Deafness</label>
+            </value>
+            <value>
+                <fullName>Mental Capacity</fullName>
+                <default>false</default>
+                <label>Mental Capacity</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Accessibility</controllingFieldValue>
+            <valueName>Language Barrier</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Accessibility</controllingFieldValue>
+            <valueName>Computer Illiterate/Technology</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Accessibility</controllingFieldValue>
+            <valueName>Lack of Insurance Knowledge/Experience</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Accessibility</controllingFieldValue>
+            <controllingFieldValue>Financial</controllingFieldValue>
+            <controllingFieldValue>Health</controllingFieldValue>
+            <controllingFieldValue>Life Event</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial</controllingFieldValue>
+            <valueName>Bankrupt/IVA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial</controllingFieldValue>
+            <valueName>Debt/Low Income</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial</controllingFieldValue>
+            <valueName>Emotional Distress</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Financial</controllingFieldValue>
+            <valueName>Ability to Understand</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Health</controllingFieldValue>
+            <valueName>Physical Health</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Health</controllingFieldValue>
+            <valueName>Addiction</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Health</controllingFieldValue>
+            <valueName>Disability</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Health</controllingFieldValue>
+            <valueName>Mental Health</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Health</controllingFieldValue>
+            <valueName>Terminal Illness</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Health</controllingFieldValue>
+            <valueName>Surgery/Treatment/Hospital</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Health</controllingFieldValue>
+            <valueName>Blindness</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Health</controllingFieldValue>
+            <valueName>Deafness</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Health</controllingFieldValue>
+            <valueName>Mental Capacity</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Life Event</controllingFieldValue>
+            <valueName>Family Bereavement</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Life Event</controllingFieldValue>
+            <valueName>Family Illness</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Life Event</controllingFieldValue>
+            <valueName>Divorce/Separation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Life Event</controllingFieldValue>
+            <valueName>Caring Responsibilities</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Life Event</controllingFieldValue>
+            <valueName>Major Incident</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Life Event</controllingFieldValue>
+            <valueName>Jobless/Redundancy</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Life Event</controllingFieldValue>
+            <valueName>Domestic Matters</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

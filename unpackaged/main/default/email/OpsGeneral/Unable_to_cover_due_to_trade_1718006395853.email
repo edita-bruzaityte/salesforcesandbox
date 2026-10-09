@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi&nbsp;{{{Case.Contact_First_Name__c}}},</p>
+
+<p>Thank you for reaching out to Admiral Business and considering us for your insurance needs.</p>
+
+<p>Unfortunately, we currently do not offer insurance policies that cover your specific trades. We apologise for any inconvenience this may cause.</p>
+
+<p>&nbsp;</p>
+</body>
+</html>

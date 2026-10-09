@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <constants>
+        <description>Stores Minifleet products name</description>
+        <name>varProductName</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>MIni Fleet Insurance</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Check if we were able to find Minifleet product in the standard Pricebook</description>
+        <name>Check_if_MInifleet_product_was_found</name>
+        <label>Check if MInifleet product was found</label>
+        <locationX>842</locationX>
+        <locationY>647</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_MInifleet_product</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Minifleet_product</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Related_Opportunity_Product</targetReference>
+            </connector>
+            <label>Found MInifleet product</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check if opportunity product for the related opportunity in the case was found</description>
+        <name>Check_if_Opportunity_Product_was_found</name>
+        <label>Check if Opportunity Product was found</label>
+        <locationX>578</locationX>
+        <locationY>863</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Opportunity_Product_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Related_Opportunity_Product</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Opportunity_Product</targetReference>
+            </connector>
+            <label>Opportunity Product found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_if_Pricebook_was_found</name>
+        <label>Check if Pricebook was found</label>
+        <locationX>1106</locationX>
+        <locationY>431</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Pricebook</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Price_Book</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Minifleet_product</targetReference>
+            </connector>
+            <label>Found Pricebook</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Check is the query resulted in sale and the sale was made to then update opportunity accordingly.</description>
+        <name>Check_the_status_of_the_case</name>
+        <label>Check the status of the case</label>
+        <locationX>314</locationX>
+        <locationY>1079</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>No_Sale_Made</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed Declined Quote</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed - Unable to Cover</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed - Uncompetitive</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed - Quoted NTU</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Opportunity_Closed_Lost</targetReference>
+            </connector>
+            <label>No Sale Made</label>
+        </rules>
+        <rules>
+            <name>Sale_Made</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Closed - Sold</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Opportunity_Closed_Won</targetReference>
+            </connector>
+            <label>Sale Made</label>
+        </rules>
+    </decisions>
+    <description>Flow will trigger when case is closed to update status to closed won/lost and Amount</description>
+    <environments>Default</environments>
+    <interviewLabel>Case - Update Related Minifleet opportunity {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case - Update Related Minifleet opportunity</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>Find the mini fleet product details from the standard price book</description>
+        <name>Get_Minifleet_product</name>
+        <label>Get Minifleet product</label>
+        <locationX>842</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_MInifleet_product_was_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>varProductName</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Pricebook2Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Price_Book.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PricebookEntry</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Find standard price book</description>
+        <name>Get_Price_Book</name>
+        <label>Get Price Book</label>
+        <locationX>1106</locationX>
+        <locationY>323</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Pricebook_was_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IsActive</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsStandard</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Pricebook2</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Find opportunity product for the related opp so the value of opportunity can be adjusted accordingly.</description>
+        <name>Get_Related_Opportunity_Product</name>
+        <label>Get Related Opportunity Product</label>
+        <locationX>578</locationX>
+        <locationY>755</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_Opportunity_Product_was_found</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OpportunityId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Opportunity__r.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Product2Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Minifleet_product.Product2Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>OpportunityLineItem</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Update opportunity status, close date and lost reason</description>
+        <name>Update_Opportunity_Closed_Lost</name>
+        <label>Update Opportunity Closed Lost</label>
+        <locationX>50</locationX>
+        <locationY>1187</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Opportunity__r.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CloseDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Loss_Reason__c</field>
+            <value>
+                <elementReference>$Record.Status</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Closed Lost</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update opportunity status, close date and lost reason</description>
+        <name>Update_Opportunity_Closed_Won</name>
+        <label>Update Opportunity Closed Won</label>
+        <locationX>314</locationX>
+        <locationY>1187</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Opportunity__r.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CloseDate</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>StageName</field>
+            <value>
+                <stringValue>Closed Won</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Opportunity</object>
+    </recordUpdates>
+    <recordUpdates>
+        <description>Update Sales Price so it shows in the opportunity Amount field</description>
+        <name>Update_Opportunity_Product</name>
+        <label>Update Opportunity Product</label>
+        <locationX>314</locationX>
+        <locationY>971</locationY>
+        <connector>
+            <targetReference>Check_the_status_of_the_case</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Related_Opportunity_Product.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>UnitPrice</field>
+            <value>
+                <elementReference>$Record.Premium_Quoted__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>OpportunityLineItem</object>
+    </recordUpdates>
+    <start>
+        <locationX>980</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Price_Book</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>1 AND (2 OR 3 OR 4 OR 5 OR 6)</filterLogic>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>012Py000000zjWTIAY</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed Declined Quote</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed - Unable to Cover</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed - Uncompetitive</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed - Quoted NTU</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Closed - Sold</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

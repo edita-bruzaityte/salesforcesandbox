@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Vehicle_Left_Date_Time__c</fullName>
+    <description>Vehicle Left Date/Time</description>
+    <formula>DATETIMEVALUE(LEFT(Date_Vehicle_Left__c , 10) + &quot; &quot; + LEFT(Time_Vehicle_Left__c, 2)  + &quot;:&quot; +  RIGHT(Time_Vehicle_Left__c, 2) + &quot;:00&quot;)</formula>
+    <label>Vehicle Left Date/Time</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>DateTime</type>
+</CustomField>

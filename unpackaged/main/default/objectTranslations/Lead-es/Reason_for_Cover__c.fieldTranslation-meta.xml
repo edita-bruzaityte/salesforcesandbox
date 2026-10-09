@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Answer to the QTB question &apos;Which option best describes your cover needs right now?&apos; --></help>
+        <label><!-- Reason for Cover --></label>
+        <name>Reason_for_Cover__c</name>
+        <picklistValues>
+            <masterLabel>Cover for a specific job or contract</masterLabel>
+            <translation><!-- Cover for a specific job or contract --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I&#39;m not sure yet, I&#39;m just getting started</masterLabel>
+            <translation><!-- I&apos;m not sure yet, I&apos;m just getting started --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ongoing cover for my business</masterLabel>
+            <translation><!-- Ongoing cover for my business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Short-term cover during a busy period</masterLabel>
+            <translation><!-- Short-term cover during a busy period --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

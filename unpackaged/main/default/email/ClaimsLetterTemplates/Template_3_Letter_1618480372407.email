@@ -1,0 +1,40 @@
+<html><head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><div style="font-family: Poppins, sans-serif; width: 960px;"><img alt="ToolboxByAdmiral_printLogo-04" src="https://admiralorgid2021--c.documentforce.com/file-asset-public/ToolboxByAdmiral_printLogo04?oid=00DPt00000EIpyT" style="max-width: 1188.55px; width: 306.992px; height: 53.9974px;" title="ToolboxByAdmiral_printLogo-04" /><br />
+<br />
+&nbsp;
+<p><br />
+<span style="float:right;"><span>Policy Number:</span> {{{Case.Insurance_Policy_Number__c}}}</span>{{{Recipient.Name}}}<br />
+{{{Recipient.Address__c}}}</p>
+
+<p style="text-align: right;"><br />
+<br />
+<b>Date:{{{Case.Today_s_Date__c}}}</b></p>
+<br />
+<br />
+<br />
+<span style="color:#024eff;"><b><span style="font-size:24px;">Updates about your claim.</span></b></span><br />
+<br />
+<br />
+Hi {{{Recipient.FirstName}}},<br />
+<br />
+We write further to our <span style="color:#e6007e;">Email/ letter/ conversation</span> on <span style="color:#e6007e;">XX/XX/XXXX</span><br />
+<br />
+You advised us that <span style="color:#e6007e;">insert description of loss.</span><br />
+<br />
+Your policy covers you for damage or loss as a direct result of the insured causes listed in your policy documents such as fire, theft or flood. These are subject to the terms, conditions and exclusions which are also listed in your policy documents.<br />
+<br />
+We have considered all the potential areas of cover under the terms of your policy and unfortunately concluded that <span style="color:#e6007e;">enter reason for repudiation here with reference to all applicable exclusions and conditions.</span><br />
+<br />
+It is with regret that we must inform you that we are unable to provide cover or offer financial assistance for this claim under the policy terms and conditions.<br />
+<br />
+We hope that this explanation has helped to clarify the reasoning behind our decision. You can find further information regarding your policy cover by reviewing your policy summary document and policy booklet.<br />
+<br />
+This letter outlines our decision and the evidence on which our findings are based. If you disagree with any of the evidence, we used to reach our decision, or have any further evidence for us to consider, please replying to this email, detailing why you disagree and attach any additional evidence supporting this.<br />
+<br />
+Have a great day,<br />
+The <b>Toolbox </b>team
+
+<p>&nbsp;</p>
+</div></body></html>

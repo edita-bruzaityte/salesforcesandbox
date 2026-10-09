@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Support Sub-Category --></label>
+        <name>Support_Sub_Category__c</name>
+        <picklistValues>
+            <masterLabel>Ability to Understand</masterLabel>
+            <translation><!-- Ability to Understand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Addiction</masterLabel>
+            <translation><!-- Addiction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bankrupt/IVA</masterLabel>
+            <translation><!-- Bankrupt/IVA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blindness</masterLabel>
+            <translation><!-- Blindness --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Caring Responsibilities</masterLabel>
+            <translation><!-- Caring Responsibilities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Computer Illiterate/Technology</masterLabel>
+            <translation><!-- Computer Illiterate/Technology --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deafness</masterLabel>
+            <translation><!-- Deafness --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Debt/Low Income</masterLabel>
+            <translation><!-- Debt/Low Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disability</masterLabel>
+            <translation><!-- Disability --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Divorce/Separation</masterLabel>
+            <translation><!-- Divorce/Separation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Domestic Matters</masterLabel>
+            <translation><!-- Domestic Matters --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emotional Distress</masterLabel>
+            <translation><!-- Emotional Distress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Family Bereavement</masterLabel>
+            <translation><!-- Family Bereavement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Family Illness</masterLabel>
+            <translation><!-- Family Illness --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jobless/Redundancy</masterLabel>
+            <translation><!-- Jobless/Redundancy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lack of Insurance Knowledge/Experience</masterLabel>
+            <translation><!-- Lack of Insurance Knowledge/Experience --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Language Barrier</masterLabel>
+            <translation><!-- Language Barrier --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Major Incident</masterLabel>
+            <translation><!-- Major Incident --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mental Capacity</masterLabel>
+            <translation><!-- Mental Capacity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mental Health</masterLabel>
+            <translation><!-- Mental Health --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Physical Health</masterLabel>
+            <translation><!-- Physical Health --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Surgery/Treatment/Hospital</masterLabel>
+            <translation><!-- Surgery/Treatment/Hospital --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Terminal Illness</masterLabel>
+            <translation><!-- Terminal Illness --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

@@ -1,0 +1,35 @@
+<html><head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: 0%;">
+<div style="font-family: Poppins, sans-serif; width: 960px;"><img alt="ToolboxByAdmiral_printLogo-04" src="" style="max-width: 1188.55px; width: 306.992px; height: 53.9974px;" title="ToolboxByAdmiral_printLogo-04" />
+<p><span style="float:right;"><span>Policy Number:</span> {{{Case.Insurance_Policy_Number__c}}}</span></p>
+
+<p>&nbsp;</p>
+
+<p style="text-align: right;"><b>Date:{{{Case.Today_s_Date__c}}}</b></p>
+
+<p><br />
+<br />
+<span style="color:#024eff;"><b><span style="font-size:24px;">We've reviewed your claim.</span></b></span><br />
+<br />
+<br />
+Hi {{{Recipient.FirstName}}},<br />
+<br />
+We write further to our <span style="color:#e6007e;">Email/conversation</span> on <span style="color:#e6007e;">XX/XX/XXXX</span><br />
+<br />
+You advised us that <font color="#e6007e">insert description of loss.</font><br />
+<br />
+Your policy covers you for damage or loss as a direct result of the insured causes listed in&nbsp;your policy documents such as fire, theft or accidental damage as a result of a road traffic&nbsp;accident. These are subject to the terms, conditions and exclusions which are also listed in your policy documents. We have considered all the potential areas of cover under the terms of your policy and unfortunately concluded that <span style="color:#e6007e;">enter reason for repudiation here with reference to all applicable exclusions and conditions.</span></p>
+
+<p>It is with regret that we must inform you that we are unable to provide cover or offer finanicial&nbsp;assistance for this claim under the policy terms and conditions.</p>
+
+<p>We hope that this explanation has helped to clarify the reasoning behind our decision. You&nbsp;can find further information regarding your policy cover by reviewing your policy summary&nbsp;document and policy booklet.</p>
+
+<p>This letter outlines our decision and the evidence on which our findings are based. If you&nbsp;disagree with any of the evidence, we used to reach our decision, or have any further evidence for us to consider, please replying to this email, detailing why you disagree and attach any additional evidence supporting this.<br />
+<br />
+Have a great day,<br />
+The <b>Toolbox </b>team</p>
+</div>
+
+</body></html>

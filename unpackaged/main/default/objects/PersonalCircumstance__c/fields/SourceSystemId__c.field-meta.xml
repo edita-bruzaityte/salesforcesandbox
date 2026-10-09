@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SourceSystemId__c</fullName>
+    <description>Used to store the ID/reference from the source system allowing us to link the personal circumstance to the initial interaction with the customer</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Store the the Id/reference of the interaction in the source system</inlineHelpText>
+    <label>Source System ID</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
